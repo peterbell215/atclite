@@ -3,11 +3,13 @@ require 'ruby2d'
 require 'singleton'
 
 module ATCLite
-  class ATCScreen < Window
+  # include Ruby2D
+
+  class ATCScreen
     include Singleton
 
     def start
-      set title: "Hello Triangle"
+      Window.set title: "Hello Triangle"
 
       Triangle.new(
         x1: 320, y1:  50,
@@ -16,7 +18,14 @@ module ATCLite
         color: %w[red green blue]
       )
 
-      show
+      Square.new(
+        x: 100, y: 200,
+        size: 125,
+        color: 'green',
+        z: 10
+      )
+
+      Window.show
     end
   end
 end

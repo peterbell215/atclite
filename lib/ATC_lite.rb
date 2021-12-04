@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-require_relative "ATCLite/version"
-require_relative 'ATCLite/ATCscreen'
+require_relative "ATC_lite/version"
+require_relative 'ATC_lite/ATC_screen'
 
 module ATCLite
   class Error < StandardError; end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/ATCLite/version"
+require_relative "lib/ATC_lite/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "ATCLite"
