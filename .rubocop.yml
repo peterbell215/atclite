@@ -19,6 +19,10 @@ Metrics/ModuleLength:
 RSpec/DescribedClass:
   Enabled: false
 
+RSpec/FilePath:
+  CustomTransform:
+    'ATCLite': 'ATC_lite'
+
 RSpec/LetSetup:
   Enabled: false
 

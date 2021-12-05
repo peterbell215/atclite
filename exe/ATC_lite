@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-require "ATC_lite"
+require 'ATC_lite'
+
+ATCLite.run
