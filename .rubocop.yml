@@ -1,13 +1,29 @@
-AllCops:
-  TargetRubyVersion: 2.4
-
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
-
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
+require: rubocop-rspec
 
 Layout/LineLength:
   Max: 120
+
+AllCops:
+  TargetRubyVersion: 3.0
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - "spec/*/**/*_spec.rb"
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 3
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'feature', 'define', 'shared_examples', 'factory']

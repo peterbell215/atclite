@@ -4,21 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9343d27c-de66-432a-ad83-6811b0edc25a" name="Changes" comment="Initial commit.">
+    <list default="true" id="9343d27c-de66-432a-ad83-6811b0edc25a" name="Changes" comment="Fixes to make the structure work better.">
+      <change afterPath="$PROJECT_DIR$/lib/ATC_lite/aircraft_renderer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/atclite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/atclite.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.rubocop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.rubocop.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/atclite.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/atclite.gemspec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exe/atclite" beforeDir="false" afterPath="$PROJECT_DIR$/exe/ATC_lite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATCLite/ATCscreen.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/ATC_screen.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATCLite/aircraft.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/aircraft.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATCLite/version.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/version.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATLite.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/atc_lite_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/ATC_screen.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/ATC_screen.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/spec_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Ruby File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -53,6 +63,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="RSpecRunConfigurationType" factoryName="RSpec">
@@ -90,8 +105,8 @@
       <module name="atclite" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
       <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/lib" />
-      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="true" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="RVM: ruby-3.0.2" />
       <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
@@ -101,7 +116,7 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/lib/ATC_lite.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/exe/ATC_lite" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <method v="2" />
     </configuration>
@@ -141,7 +156,11 @@
       <option name="presentableId" value="Default" />
       <updated>1638562939919</updated>
       <workItem from="1638562941073" duration="7937000" />
-      <workItem from="1638639957329" duration="349000" />
+      <workItem from="1638639957329" duration="5685000" />
+      <workItem from="1638646733481" duration="1432000" />
+      <workItem from="1638648169169" duration="633000" />
+      <workItem from="1638703543048" duration="385000" />
+      <workItem from="1638707023414" duration="2461000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1638600789202</created>
@@ -150,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638600789202</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixes to make the structure work better.">
+      <created>1638640492164</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1638640492164</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,11 +195,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit." />
+    <MESSAGE value="Fixes to make the structure work better." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes to make the structure work better." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/atclite@ATLite.rcov" NAME="ATLite Coverage Results" MODIFIED="1638614108980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="atclite" />
-    <SUITE FILE_PATH="coverage/atclite@ATC_lite.rcov" NAME="ATC_lite Coverage Results" MODIFIED="1638640304397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@ATC_lite.rcov" NAME="ATC_lite Coverage Results" MODIFIED="1638716595052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@atclite.rcov" NAME="ATCLite Coverage Results" MODIFIED="1638600858038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/exe" MODULE_NAME="atclite" />
   </component>
 </project>
