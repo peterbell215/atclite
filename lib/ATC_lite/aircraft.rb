@@ -9,7 +9,10 @@ module ATCLite
       @callsign = callsign
       @speed = speed
       @altitude = altitude
+      @target_altitude = altitude
+      @climb_rate = 0
       @heading = heading
+      @target_heading = heading
       @x = x
       @y = y
     end
