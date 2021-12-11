@@ -14,7 +14,7 @@ module ATCLite
       @y = y
     end
 
-    def update
+    def update_position
       heading_in_radians = self.heading * Math::PI / 180.0
       distance_covered_in_1_s = self.speed / 3600.0
 

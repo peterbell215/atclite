@@ -5,7 +5,7 @@ RSpec.describe ATCLite::Aircraft do
     shared_examples_for 'updated position based on heading' do |heading, x, y|
       before do
         aircraft.heading = heading
-        aircraft.update
+        aircraft.update_position
       end
 
       it "calculates the updated position for #{heading}" do

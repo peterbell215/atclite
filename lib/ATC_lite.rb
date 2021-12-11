@@ -7,9 +7,7 @@ module ATCLite
   class Error < StandardError; end
 
   def self.run
-    aircraft = Aircraft.new
-    aircraft.x = 100
-    aircraft.y = 100
+    aircraft = Aircraft.new(x: 100, y: 100)
 
     ATCScreen.instance.add_aircraft(aircraft)
 
