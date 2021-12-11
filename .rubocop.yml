@@ -1,7 +1,7 @@
 require: rubocop-rspec
 
 Layout/LineLength:
-  Max: 120
+  Max: 130
 
 AllCops:
   TargetRubyVersion: 3.0
