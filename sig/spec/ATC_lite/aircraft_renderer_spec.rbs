@@ -1,0 +1,3 @@
+class Object
+  def set_expectations_for_line: ( line_instance: Line, x1: Float x1, y1: Float y1, x2: Float x2, y2: Float y2) -> void
+end
