@@ -17,7 +17,7 @@ module ATCLite
       @centre_y = 100
     end
 
-    attr_reader :centre_x, :centre_y
+    attr_reader :centre_x, :centre_y, :scale
 
     def start
       Window.set title: 'ATC Lite'
