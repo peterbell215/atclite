@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module ATCLite
-  include Comparable
-  
   # Class to represent an altitude.  Is aware of the difference between ft and FL.
   class Altitude
+    include Comparable
+
     @@transition_altitude = 6000
 
     def self.transition_altitude=(arg)
@@ -21,13 +21,11 @@ module ATCLite
         @feet = Regexp.last_match(1).to_i * 1000
       when Integer
         @feet = altitude
+      when Altitude
+        @feet = altitude.ft
       else
         raise AltitudeParameterError
       end
-    end
-
-    def ==(operand)
-      (self <=> operand) == 0
     end
 
     # Provides a mechanism to compare altitude to other scalars by converting both to integer and comparing.
