@@ -2,6 +2,10 @@
 require_relative "ATC_lite/version"
 require_relative 'ATC_lite/ATC_screen'
 require_relative 'ATC_lite/aircraft'
+require_relative 'ATC_lite/aircraft_performance_entry'
+require_relative 'ATC_lite/aircraft_performance'
+require_relative 'ATC_lite/aircraft_renderer'
+require_relative 'ATC_lite/altitude'
 
 module ATCLite
   class Error < StandardError; end
