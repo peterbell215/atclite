@@ -3,23 +3,23 @@ module ATCLite
 
   # Class to represent an altitude.  Is aware of the difference between ft and FL.
   class Altitude
-    def self.transition_altitude=: (untyped arg) -> untyped
+    def self.transition_altitude=: (Integer arg) -> void
 
-    def self.transition_altitude: () -> untyped
+    def self.transition_altitude: () -> Integer
 
-    def initialize: (untyped altitude) -> untyped
+    def initialize: ((String | Integer | Altitude) altitude) -> void
 
-    def ==: (untyped operand) -> untyped
+    def ==: ((Altitude|Integer) operand) -> bool
 
     # Provides a mechanism to compare altitude to other scalars by converting both to integer and comparing.
-    def <=>: (untyped operand) -> untyped
+    def <=>: (Altitude|Integer) -> Integer
 
     # Returns the altitude in feet.
-    def ft: () -> untyped
+    def ft: () -> Integer
 
     alias to_i ft
 
-    def fl: () -> untyped
+    def fl: () -> Integer
 
     def cooerce: (untyped value) -> ::Array[untyped]
   end
@@ -30,6 +30,6 @@ module ATCLite
   # Add the ability to write:
   # * 1000.ft to create an Altitude object at 1000 ft
   class ::Integer
-    def ft: () -> untyped
+    def ft: () -> Altitude
   end
 end
