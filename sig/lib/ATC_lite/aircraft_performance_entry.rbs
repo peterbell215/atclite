@@ -1,0 +1,20 @@
+module ATCLite
+  # Single entry of performance data for an aircraft.  Used by AircraftPerformance
+  class AircraftPerformanceEntry
+    attr_accessor phase: Symbol
+
+    attr_accessor ias: untyped
+
+    attr_accessor roc: Integer
+
+    attr_reader lower_altitude: Altitude
+
+    attr_reader upper_altitude: Altitude
+
+    def initialize: (phase: Symbol, ias: untyped ias, roc: Integer, lower_altitude: (Altitude|String|Integer), upper_altitude: (Altitude|String|Integer) ) -> void
+
+    def lower_altitude=: ((Altitude|String|Integer) value) -> Altitude
+
+    def upper_altitude=: ((Altitude|String|Integer) value) -> Altitude
+  end
+end
