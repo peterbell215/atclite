@@ -5,6 +5,7 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in atclite.gemspec
 gemspec
 
+gem 'activesupport'
 gem 'ruby2d'
 
 gem "rake", "~> 13.0"
