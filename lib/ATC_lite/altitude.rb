@@ -57,6 +57,10 @@ module ATCLite
     def ft
       Altitude.new(self)
     end
+
+    def fl
+      Altitude.new("FL#{self}")
+    end
   end
 end
 
