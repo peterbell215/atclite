@@ -26,6 +26,12 @@ RSpec.describe ATCLite::Altitude do
 
       specify { expect(altitude).to eq(1000.ft) }
     end
+
+    context 'when the altitude is specified as a flight level' do
+      subject(:altitude) { ATCLite::Altitude.new('FL100') }
+
+      specify { expect(altitude).to eq(100.fl) }
+    end
   end
 
   describe '#==' do
