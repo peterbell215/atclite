@@ -1,0 +1,9 @@
+module ATCLite
+  module Navigation
+    class Intersection < Waypoint
+      attr_reader alternate_name: String
+
+      def initialize: (name: String name, alternate_name: String alternate_name, latitude: (Numeric|String) latitude, longitude: (Numeric|String) longitude, ?region: String? region) -> void
+    end
+  end
+end

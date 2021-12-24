@@ -1,0 +1,14 @@
+module ATCLite
+  module Navigation
+    module NavigationDataImporter
+      LONGLAT: Regexp
+      FREQUENCY: Regexp
+
+      module ClassMethods
+        def parse_file: (String name, Class nav_class) -> void
+
+        def navs_line: (String line, Integer line_number) -> Hash[Symbol, String]
+      end
+    end
+  end
+end

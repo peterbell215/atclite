@@ -1,0 +1,12 @@
+module ATCLite
+  module Navigation
+    # Reads an FSBuild intersection file and stores the data.
+    class IntersectionImporter
+      include NavigationDataImporter
+
+      FIELDS: [ [Symbol, Regexp] ]
+
+      def self.parse_ints_file: (?::String name) -> untyped
+    end
+  end
+end

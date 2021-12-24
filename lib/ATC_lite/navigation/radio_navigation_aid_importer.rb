@@ -2,17 +2,17 @@
 
 module ATCLite
   module Navigation
-    # Reads a Euroscope Sector File and stores the data.
+    # Reads an FSBuild Radio Navigation Aids File and stores the data.
     class RadioNavigationAidImporter
       include NavigationDataImporter
 
       NAVTYPE = /VOR|NDB/
       FIELDS = [
-        [:name , /^[0-9A-Z]{1,3}/],
+        [:name, /^[0-9A-Z]{1,3}/],
         [:fullname, /[_A-Z]+/],
         [:latitude, LONGLAT],
         [:longitude, LONGLAT],
-        [:navtype, NAVTYPE ],
+        [:navtype, NAVTYPE],
         [:frequency, FREQUENCY],
         [:region, /[A-Z]{3}/]
       ].freeze

@@ -1,0 +1,11 @@
+module ATCLite
+  module Navigation
+    class Waypoint < Coordinate
+      attr_reader name: String
+
+      attr_reader region: String
+
+      def initialize: (name: String name, latitude: (Numeric|String) latitude, longitude: (Numeric|String) longitude, region: String region) -> void
+    end
+  end
+end

@@ -4,13 +4,15 @@ require 'latitude'
 
 module ATCLite
   module Navigation
-    # Flightplan describes the flightplan the aircraft is following.  It is made up of a sequence of paths with the
-    # first element of the sequence being the current active path being followed.
+    # Describes a navigational position on the earth.  Super class for the various navigational points loaded into
+    # the system.  Don't foresee objects of this class being created.
     class Waypoint < Coordinate
-      attr_reader :name
+      attr_reader :name, :region
 
-      def initialize(name:, latitude:, longitude:)
+      # Initializes a waypoint with key elements.
+      def initialize(name:, latitude:, longitude:, region:)
         @name = name
+        @region = region
         super(latitude: latitude, longitude: longitude)
       end
     end

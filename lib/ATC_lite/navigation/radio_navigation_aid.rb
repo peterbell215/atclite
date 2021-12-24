@@ -9,16 +9,18 @@ module ATCLite
     class RadioNavigationAid < Waypoint
       include NavigationStorage
 
-      attr_reader :fullname, :frequency, :navtype, :region
+      attr_reader :fullname, :frequency, :navtype
 
+      # Initialises a navigation aid with the key parameters
+      # rubocop: disable Metrics/ParameterLists - parameters defined by the import file.  Prefer the type checking.
       def initialize(name:, fullname:, latitude:, longitude:, frequency:, navtype:, region:)
         @fullname = fullname
         @frequency = frequency
         @navtype = navtype
-        @region = region
 
-        super(latitude: latitude, longitude: longitude, name: name)
+        super(latitude: latitude, longitude: longitude, name: name, region: region)
       end
+      # rubocop: enable Metrics/ParameterLists
     end
   end
 end
