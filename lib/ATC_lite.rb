@@ -1,6 +1,11 @@
 # frozen_string_literal: true
+
+require 'active_support'
+require 'latitude'
+
 require_relative "ATC_lite/version"
 require_relative 'ATC_lite/ATC_screen'
+require_relative 'ATC_lite/navigation'
 require_relative 'ATC_lite/aircraft'
 require_relative 'ATC_lite/aircraft_performance_entry'
 require_relative 'ATC_lite/aircraft_performance'
