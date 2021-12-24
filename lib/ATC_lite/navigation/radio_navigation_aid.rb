@@ -7,15 +7,7 @@ module ATCLite
     # Flightplan describes the flightplan the aircraft is following.  It is made up of a sequence of paths with the
     # first element of the sequence being the current active path being followed.
     class RadioNavigationAid < Waypoint
-      @data = Hash.new { |hash, key| hash[key] = [] }
-
-      def self.add_aid(radio_navigation_aid)
-        @data[radio_navigation_aid.name].push(radio_navigation_aid)
-      end
-
-      def self.lookup(name, near_to)
-        @data[name].min_by { |aid| aid.distance_to(near_to) }
-      end
+      include NavigationStorage
 
       attr_reader :fullname, :frequency, :navtype, :region
 

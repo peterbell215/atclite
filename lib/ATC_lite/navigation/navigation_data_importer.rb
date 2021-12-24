@@ -3,40 +3,34 @@
 module ATCLite
   module Navigation
     # Reads a Euroscope Sector File and stores the data.
-    class NavigationDataImport
+    module NavigationDataImporter
       LONGLAT = /[+-]?[0-9]+\.[0-9]+/
-      NAVTYPE = /VOR|NDB/
       FREQUENCY = /[1-9][0-9]{2,3}\.[0-9]{2,3}/
-      FIELDS = [
-        [ :name , /^[0-9A-Z]{1,3}/ ],
-        [ :fullname, /[_A-Z]+/ ],
-        [ :latitude, LONGLAT ],
-        [ :longitude, LONGLAT ],
-        [ :navtype, NAVTYPE ],
-        [ :frequency, FREQUENCY],
-        [ :region, /[A-Z]{3}/]
-      ].freeze
 
-      def self.parse_navs_file(name = 'data/navs.txt')
-        File.readlines(name, chomp: true).each_with_index do |line, line_number|
-          line.strip!
-
-          next if line[0] == ';' || line.empty?
-
-          radio_navigation_aid = NavigationDataImport.navs_line(line, line_number)
-
-          next unless radio_navigation_aid
-
-          RadioNavigationAid.add_aid(radio_navigation_aid)
-        end
+      def self.included(base)
+        base.extend(ClassMethods)
       end
 
-      def self.navs_line(line, line_number)
-        fields = FIELDS.each
+      module ClassMethods
+        def parse_file(name, nav_class)
+          File.readlines(name, chomp: true).each_with_index do |line, line_number|
+            line.strip!
 
-        params =
+            next if line[0] == ';' || line.empty?
+
+            params = navs_line(line, line_number)
+
+            next unless params
+
+            nav_class.add(nav_class.new(**params))
+          end
+        end
+
+        def navs_line(line, line_number)
+          fields_iterator = self::FIELDS.each
+
           line.split.inject({}) do |params, element|
-            field, regexp = fields.next
+            field, regexp = fields_iterator.next
 
             if regexp =~ element
               params&.store(field, element)
@@ -47,8 +41,7 @@ module ATCLite
             end
             params
           end
-
-        params && RadioNavigationAid.new(**params)
+        end
       end
     end
   end
