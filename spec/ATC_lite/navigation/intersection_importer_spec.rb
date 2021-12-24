@@ -21,7 +21,7 @@ RSpec.describe ATCLite::Navigation::IntersectionImporter do
   describe '::navs_line' do
     context 'when its an Intersection in Europe' do
       subject(:nav_hash) do
-        described_class.navs_line('GUVRI  GUVRI  38.497778  115.700000 EEU', 1)
+        described_class.navs_string('GUVRI  GUVRI  38.497778  115.700000 EEU', 1)
       end
 
       specify { expect(nav_hash[:name]).to eq 'GUVRI' }
@@ -33,7 +33,7 @@ RSpec.describe ATCLite::Navigation::IntersectionImporter do
 
     context 'when it is an Intersection without region' do
       subject(:nav_hash) do
-        described_class.navs_line('4878N  4878N  48.000000  -78.000000   ', 1)
+        described_class.navs_string('4878N  4878N  48.000000  -78.000000   ', 1)
       end
 
       specify { expect(nav_hash[:name]).to eq '4878N' }

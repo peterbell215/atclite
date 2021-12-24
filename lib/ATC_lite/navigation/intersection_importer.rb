@@ -13,6 +13,7 @@ module ATCLite
         [:longitude, LONGLAT],
         [:region, /[A-Z]{3}/]
       ].freeze
+      FIELD_SEPARATOR = ' '
 
       def self.parse_ints_file(name = 'data/ints.txt')
         self.parse_file(name, Intersection)

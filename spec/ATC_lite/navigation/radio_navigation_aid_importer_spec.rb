@@ -17,7 +17,7 @@ RSpec.describe ATCLite::Navigation::RadioNavigationAidImporter do
   describe '::navs_line' do
     context 'when its a VOR in Europe' do
       subject(:nav_hash) do
-        described_class.navs_line('BNN  BOVINGDON   51.726164  -0.549750  VOR 113.75 EUR', 1)
+        described_class.navs_string('BNN  BOVINGDON   51.726164  -0.549750  VOR 113.75 EUR', 1)
       end
 
       specify { expect(nav_hash[:name]).to eq 'BNN' }
@@ -30,7 +30,7 @@ RSpec.describe ATCLite::Navigation::RadioNavigationAidImporter do
 
     context 'when it is an NDB in Canada' do
       subject(:nav_hash) do
-        described_class.navs_line('1B  SABLE_ISLAND  43.930556   -60.022778   NDB 277.00 CAN', 1)
+        described_class.navs_string('1B  SABLE_ISLAND  43.930556   -60.022778   NDB 277.00 CAN', 1)
       end
 
       specify { expect(nav_hash[:name]).to eq '1B' }
@@ -46,7 +46,7 @@ RSpec.describe ATCLite::Navigation::RadioNavigationAidImporter do
       let(:error_offset) {     '                                                   '.size }
 
       it 'sends an appropriate error message to stderr' do
-        expect { described_class.navs_line(mis_formed_input, 1) }
+        expect { described_class.navs_string(mis_formed_input, 1) }
           .to output("#{mis_formed_input}\n#{' ' * error_offset}^Mis-formed frequency on line 1\n").to_stderr
       end
     end
