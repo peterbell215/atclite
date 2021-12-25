@@ -36,19 +36,33 @@ module ATCLite
           fields_iterator = self::FIELDS.each
 
           string.split(self::FIELD_SEPARATOR).inject({}) do |params, element|
-            field, regexp = fields_iterator.next
+            field, regexp_or_subclass = fields_iterator.next
 
-            if regexp =~ element
-              params&.store(field, element)
+            result = regexp_or_subclass.match(element)
+
+            case result
+            when MatchData then params&.store(field, element)
+            when Waypoint then params && push_subclass(field, params, result)
             else
-              warn(string)
-              warn("#{' ' * string.index(element)}^Mis-formed #{field} on line #{line_number}")
+              issue_warning(element, field, line_number, string)
               params = nil
             end
             params
           end
         end
         # rubocop: enable Metrics/MethodLength
+
+        private
+
+        def issue_warning(element, field, line_number, string)
+          warn(string)
+          warn("#{' ' * string.index(element)}^Mis-formed #{field} on line #{line_number}")
+        end
+
+        def push_subclass(field, params, result)
+          params[field] ||= []
+          params[field].push(result)
+        end
       end
     end
   end
