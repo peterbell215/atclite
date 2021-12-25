@@ -20,7 +20,7 @@ module ATCLite
 
             next if line[0] == ';' || line.empty?
 
-            params = navs_string(line, line_number)
+            params = match(line, line_number)
 
             next unless params
 
@@ -32,7 +32,7 @@ module ATCLite
         # store in a hash that can be passed to the class constructor.
         # rubocop: disable Metrics/MethodLength  Arguable that pushing anything into a separate private method would
         #                                        make the code more readable.
-        def navs_string(string, line_number)
+        def match(string, line_number)
           fields_iterator = self::FIELDS.each
 
           string.split(self::FIELD_SEPARATOR).inject({}) do |params, element|
