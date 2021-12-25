@@ -5,9 +5,14 @@ require 'rspec'
 RSpec.describe ATCLite::Navigation::RadioNavigationAidImporter do
   describe '::parse_navs_file' do
     subject(:bnn) do
-      described_class.parse_navs_file
       ATCLite::Navigation::RadioNavigationAid.lookup('BNN', Coordinate.new(latitude: 51.0, longitude: 0.0))
     end
+
+    # rubocop: disable RSpec/BeforeAfterAll the data is read in read-only so no danger of state
+    #                                       leakage.  Its a large data file so reading once rather
+    #                                       than for every test is better.
+    before(:all) { described_class.parse_navs_file }
+    # rubocop: enable RSpec/BeforeAfterAll
 
     specify { expect(bnn.frequency).to eq '113.75' }
     specify { expect(bnn.latitude).to eq 51.726164 }
