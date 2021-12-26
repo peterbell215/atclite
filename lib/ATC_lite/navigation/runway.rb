@@ -16,6 +16,11 @@ module ATCLite
 
         super(latitude: latitude, longitude: longitude, name: name, region: nil)
       end
+
+      def eql?(other)
+        super(other) && @length == other.length && @ils == other.ils && @heading == other.heading
+      end
+      alias == eql?
     end
   end
 end
