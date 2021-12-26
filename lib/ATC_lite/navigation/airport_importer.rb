@@ -19,10 +19,6 @@ module ATCLite
       def self.parse_apts_file(name: 'data/apts.txt')
         self.parse_file(name, Airport)
       end
-
-      def self.match(string)
-        self.parse_file(name, Airport)
-      end
     end
   end
 end

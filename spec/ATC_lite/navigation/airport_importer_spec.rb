@@ -4,9 +4,8 @@ require 'rspec'
 
 RSpec.describe ATCLite::Navigation::AirportImporter do
 
-=begin
   describe '::parse_apts_file' do
-    subject(:egll) { ATCLite::Navigation::AirportImporter.lookup('EGLL') }
+    subject(:egll) { ATCLite::Navigation::Airport.lookup('EGLL') }
 
     # rubocop: disable RSpec/BeforeAfterAll the data is read in read-only so no danger of state
     #                                       leakage.  Its a large data file so reading once rather
@@ -14,10 +13,14 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
     before(:all) { described_class.parse_apts_file }
     # rubocop: enable RSpec/BeforeAfterAll
 
+    specify { expect(egll.name).to eq 'EGLL' }
+    specify { expect(egll.fullname).to eq 'HEATHROW' }
+    specify { expect(egll.altitude).to eq ATCLite::Altitude.new(83) }
     specify { expect(egll.latitude).to eq 51.477500 }
-    specify { expect(egll.longitude).to eq -0.484992 }
+    specify { expect(egll.longitude).to eq -0.461389 }
+    specify { expect(egll.runways.size).to eq 4 }
+    specify { expect(egll.runways[0].name).to eq '09L' }
   end
-=end
 
   describe '::parse' do
     context 'when it is a multi-runway airport' do
