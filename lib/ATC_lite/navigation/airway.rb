@@ -16,6 +16,11 @@ module ATCLite
         @airways[name]
       end
 
+      def self.clear_data
+        @airways = {}
+        GC.start
+      end
+
       # Constructor for the Airway object
       def initialize(name)
         @name = name

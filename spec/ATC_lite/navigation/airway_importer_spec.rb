@@ -14,6 +14,12 @@ RSpec.describe ATCLite::Navigation::AirwayImporter do
       ATCLite::Navigation::IntersectionImporter.parse_ints_file
       described_class.parse_awys_file
     end
+
+    after(:all) do
+      ATCLite::Navigation::Airway.clear_data
+      ATCLite::Navigation::RadioNavigationAid.clear_data
+      ATCLite::Navigation::Intersection.clear_data
+    end
     # rubocop: enable RSpec/BeforeAfterAll
 
     let(:pj) { ATCLite::Navigation::RadioNavigationAid.lookup(name: 'PJ') }

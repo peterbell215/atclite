@@ -15,7 +15,7 @@ module ATCLite
       module ClassMethods
         # Parse an FSBuild data file and store the results in the relevant class.
         def parse_file(name, nav_class)
-          File.readlines(name, chomp: true).each_with_index do |line, line_number|
+          File.foreach(name, chomp: true).each_with_index do |line, line_number|
             line.strip!
 
             next if line[0] == ';' || line.empty?
@@ -33,10 +33,13 @@ module ATCLite
         # rubocop: disable Metrics/MethodLength  Arguable that pushing anything into a separate private method would
         #                                        make the code more readable.
         def parse(string, line_number)
-          fields_iterator = fields_enumerator
+          index = 0
+          index_limit = self::FIELDS.size - 1
 
           string.split(self::FIELD_SEPARATOR).inject({}) do |params, element|
-            field, regexp_or_subclass = fields_iterator.next
+            field, regexp_or_subclass = self::FIELDS[index]
+            index += 1 if index < index_limit
+
             result = parse_field(regexp_or_subclass, element, line_number)
 
             if result.nil?
@@ -52,17 +55,6 @@ module ATCLite
         # rubocop: enable Metrics/MethodLength
 
         private
-
-        def fields_enumerator
-          Enumerator.new do |y|
-            index = 0
-            limit = self::FIELDS.size - 1
-            loop do
-              y << self::FIELDS[index]
-              index += 1 if index < limit
-            end
-          end
-        end
 
         def parse_field(regexp_or_subclass, element, line)
           case regexp_or_subclass

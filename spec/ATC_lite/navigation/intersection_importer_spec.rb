@@ -12,6 +12,8 @@ RSpec.describe ATCLite::Navigation::IntersectionImporter do
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
     before(:all) { described_class.parse_ints_file }
+
+    after(:all) { ATCLite::Navigation::Intersection.clear_data }
     # rubocop: enable RSpec/BeforeAfterAll
 
     specify { expect(guvri.latitude).to eq 38.497778 }

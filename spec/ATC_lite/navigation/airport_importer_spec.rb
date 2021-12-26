@@ -11,6 +11,8 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
     before(:all) { described_class.parse_apts_file }
+
+    after(:all) { ATCLite::Navigation::Airport.clear_data }
     # rubocop: enable RSpec/BeforeAfterAll
 
     specify { expect(egll.name).to eq 'EGLL' }

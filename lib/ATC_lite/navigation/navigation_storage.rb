@@ -24,6 +24,13 @@ module ATCLite
             @data[name].first
           end
         end
+
+        # Allows complete wiping of the storage.  Important for RSpec tests, where loading the Intersections consumes
+        # significant memory.
+        def clear_data
+          @data = nil
+          GC.start
+        end
       end
     end
   end
