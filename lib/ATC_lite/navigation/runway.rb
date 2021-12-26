@@ -4,11 +4,12 @@ require 'latitude'
 
 module ATCLite
   module Navigation
-    # Flightplan describes the flightplan the aircraft is following.  It is made up of a sequence of paths with the
-    # first element of the sequence being the current active path being followed.
+    # The Runway class describes a runway at a specific airport.  Note the same piece of concrete is described as
+    # two runways for now.
     class Runway < Waypoint
       attr_reader :length, :heading, :ils, :altitude
 
+      # Constructor for the Runway object
       def initialize(name:, length:, latitude:, longitude:, heading:, ils:)
         @length = length.to_i
         @ils = ils != '---' ? ils : nil
