@@ -16,21 +16,18 @@ module ATCLite
     end
 
     def initialize(altitude)
-      case altitude
-      when /FL([0-9]{3})/
-        @feet = Regexp.last_match(1).to_i * 1000
-      when Integer
-        @feet = altitude
-      when Altitude
-        @feet = altitude.ft
-      else
-        raise AltitudeParameterError
-      end
+      @feet = case altitude
+              when /FL([0-9]{3})/ then Regexp.last_match(1).to_i * 1000
+              when /[0-9]+/ then altitude.to_i
+              when Integer then altitude
+              when Altitude then altitude.ft
+              else raise AltitudeParameterError
+              end
     end
 
     # Provides a mechanism to compare altitude to other scalars by converting both to integer and comparing.
-    def <=>(operand)
-      operand.respond_to?(:to_i) ? @feet <=> operand.to_i : nil
+    def <=>(other)
+      other.respond_to?(:to_i) ? @feet <=> other.to_i : nil
     end
 
     # Returns the altitude in feet.
@@ -41,7 +38,7 @@ module ATCLite
     alias to_i ft
 
     def fl
-      @flight_level / 1000
+      @feet / 1000
     end
 
     def cooerce(value)
@@ -63,4 +60,3 @@ module ATCLite
     end
   end
 end
-
