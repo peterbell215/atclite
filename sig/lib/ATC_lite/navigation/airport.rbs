@@ -1,0 +1,17 @@
+module ATCLite
+  module Navigation
+    class Airport < Waypoint
+      include NavigationStorage
+
+      attr_reader fullname: String
+
+      attr_reader altitude: Altitude
+
+      attr_reader runways: Array[Runway]
+
+      # Constructor for the Airport object
+      # rubocop: disable Metrics/ParameterLists - parameters defined by the import file.  Prefer the type checking.
+      def initialize: (name: untyped name, fullname: untyped fullname, altitude: untyped altitude, latitude: untyped latitude, longitude: untyped longitude, runways: untyped runways) -> untyped
+    end
+  end
+end

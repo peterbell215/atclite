@@ -1,0 +1,20 @@
+module ATCLite
+  module Navigation
+    class Runway < Waypoint
+      attr_reader length: Integer
+
+      attr_reader heading: Integer
+
+      attr_reader ils: String
+
+      attr_reader altitude: Altitude
+
+      def initialize: (name: String name, length: Integer length, latitude: (Float|String) latitude,
+                       longitude: (Float|String) longitude, heading: Integer heading, ils: String ils) -> void
+
+      def eql?: (Runway other) -> bool
+
+      alias == eql?
+    end
+  end
+end
