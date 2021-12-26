@@ -16,6 +16,9 @@ Metrics/ModuleLength:
   Exclude:
     - "spec/*/**/*_spec.rb"
 
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
 RSpec/DescribedClass:
   Enabled: false
 

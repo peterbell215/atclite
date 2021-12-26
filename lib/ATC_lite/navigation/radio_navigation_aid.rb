@@ -12,7 +12,6 @@ module ATCLite
       attr_reader :fullname, :frequency, :navtype
 
       # Initialises a navigation aid with the key parameters
-      # rubocop: disable Metrics/ParameterLists - parameters defined by the import file.  Prefer the type checking.
       def initialize(name:, fullname:, latitude:, longitude:, frequency:, navtype:, region:)
         @fullname = fullname
         @frequency = frequency
@@ -20,7 +19,6 @@ module ATCLite
 
         super(latitude: latitude, longitude: longitude, name: name, region: region)
       end
-      # rubocop: enable Metrics/ParameterLists
     end
   end
 end
