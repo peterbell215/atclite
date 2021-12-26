@@ -33,35 +33,58 @@ module ATCLite
         # rubocop: disable Metrics/MethodLength  Arguable that pushing anything into a separate private method would
         #                                        make the code more readable.
         def parse(string, line_number)
-          fields_iterator = self::FIELDS.each
+          fields_iterator = fields_enumerator
 
           string.split(self::FIELD_SEPARATOR).inject({}) do |params, element|
             field, regexp_or_subclass = fields_iterator.next
+            result = parse_field(regexp_or_subclass, element, line_number)
 
-            result = regexp_or_subclass.match(element)
-
-            case result
-            when MatchData then params&.store(field, element)
-            when Waypoint then params && push_subclass(field, params, result)
-            else
+            if result.nil?
               issue_warning(element, field, line_number, string)
-              params = nil
+              break nil
             end
-            params
+
+            break nil unless params # We have stopped storing result due to a previous parse error in the line.
+
+            store_result(params, regexp_or_subclass.is_a?(Array), field, result)
           end
         end
         # rubocop: enable Metrics/MethodLength
 
         private
 
+        def fields_enumerator
+          Enumerator.new do |y|
+            index = 0
+            limit = self::FIELDS.size - 1
+            loop do
+              y << self::FIELDS[index]
+              index += 1 if index < limit
+            end
+          end
+        end
+
+        def parse_field(regexp_or_subclass, element, line)
+          case regexp_or_subclass
+          when Regexp then regexp_or_subclass =~ element ? element : nil
+          when Array then parse_field(regexp_or_subclass[0], element, line)
+          else regexp_or_subclass.match(element, line)
+          end
+        end
+
         def issue_warning(element, field, line_number, string)
           warn(string)
           warn("#{' ' * string.index(element)}^Mis-formed #{field} on line #{line_number}")
         end
 
-        def push_subclass(field, params, result)
-          params[field] ||= []
-          params[field].push(result)
+        def store_result(params, store_as_array, field, value)
+          if store_as_array
+            params[field] ||= []
+            params[field].push(value)
+          else
+            params[field] = value
+          end
+          params
         end
       end
     end
