@@ -11,15 +11,27 @@ module ATCLite
       end
 
       module ClassMethods
-        def add(radio_navigation_aid)
+        def add(object)
           @data ||= Hash.new { |hash, key| hash[key] = [] }
-          @data[radio_navigation_aid.name].push(radio_navigation_aid)
+          @data[object.name].push(object)
         end
 
-        def lookup(name, near_to)
-          @data[name].min_by { |aid| aid.distance_to(near_to) }
+        def lookup(name, near_to = nil)
+          if near_to
+            @data[name].min_by { |aid| aid.distance_to(near_to) }
+          else
+            raise AmbiguousReferenceError(name) if @data[name].size > 1
+            @data[name].first
+          end
         end
       end
+    end
+  end
+
+  # If we look up a navigation reference using name only, and multiple references share the same name.
+  class AmbiguousReferenceError < StandardError
+    def initialize(name)
+      super("Ambiguous reference to #{name}")
     end
   end
 end
