@@ -9,16 +9,19 @@ module ATCLite
       FIELDS = [
         [:name, /^[0-9A-Z]{4}/],
         [:fullname, /[0-9_A-Z]+/],
-        [:elevation, /[0-9]+/],
+        [:altitude, /[0-9]+/],
         [:latitude, LONGLAT],
         [:longitude, LONGLAT],
-        [:runways, RunwayImporter]
+        [:runways, [RunwayImporter]]
       ].freeze
+      FIELD_SEPARATOR = ' '
+
+      def self.parse_apts_file(name: 'data/apts.txt')
+        self.parse_file(name, Airport)
+      end
 
       def self.match(string)
-        RadioNavigationAidImporter.parse(string)
-
-        self.parse_file(name, Intersection)
+        self.parse_file(name, Airport)
       end
     end
   end
