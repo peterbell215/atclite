@@ -9,11 +9,12 @@ module ATCLite
     class Airport < Waypoint
       include NavigationStorage
 
-      attr_reader :fullname, :elevation, :runways
+      attr_reader :fullname, :altitude, :runways
 
-      def initialize(name:, fullname:, elevation:, latitude:, longitude:, runways:)
+      # Constructor for the Airport object
+      def initialize(name:, fullname:, altitude:, latitude:, longitude:, runways:)
         @fullname = fullname
-        @elevation = elevation
+        @altitude = Altitude.new(altitude)
         @runways = runways
 
         super(latitude: latitude, longitude: longitude, name: name, region: nil)
