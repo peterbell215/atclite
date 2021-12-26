@@ -3,7 +3,7 @@
 require 'rspec'
 
 RSpec.describe ATCLite::Navigation::IntersectionImporter do
-  describe '::parse_navs_file' do
+  describe '::parse_ints_file' do
     subject(:guvri) do
       ATCLite::Navigation::Intersection.lookup('GUVRI', Coordinate.new(latitude: 38.0, longitude: 115.0))
     end

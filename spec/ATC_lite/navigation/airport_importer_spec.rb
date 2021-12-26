@@ -3,7 +3,6 @@
 require 'rspec'
 
 RSpec.describe ATCLite::Navigation::AirportImporter do
-
   describe '::parse_apts_file' do
     subject(:egll) { ATCLite::Navigation::Airport.lookup('EGLL') }
 
@@ -19,7 +18,7 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
     specify { expect(egll.fullname).to eq 'HEATHROW' }
     specify { expect(egll.altitude).to eq ATCLite::Altitude.new(83) }
     specify { expect(egll.latitude).to eq 51.477500 }
-    specify { expect(egll.longitude).to eq -0.461389 }
+    specify { expect(egll.longitude).to eq(-0.461389) }
     specify { expect(egll.runways.size).to eq 4 }
     specify { expect(egll.runways[0].name).to eq '09L' }
   end
@@ -39,7 +38,7 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
 
       specify { expect(airport_hash[:name]).to eq 'EGLL' }
       specify { expect(airport_hash[:fullname]).to eq 'HEATHROW' }
-      specify { expect(airport_hash[:altitude]).to eq '83'}
+      specify { expect(airport_hash[:altitude]).to eq '83' }
       specify { expect(airport_hash[:latitude]).to eq '51.477500' }
       specify { expect(airport_hash[:longitude]).to eq '-0.461389' }
       specify { expect(airport_hash[:runways].size).to eq 4 }
