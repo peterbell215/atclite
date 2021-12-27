@@ -32,9 +32,9 @@ module ATCLite
       def self._build_airway(params)
         airway = Airway.find_or_create(params[:name])
 
-        waypoint_coordinate = Coordinate.new(latitude: params[:latitude], longitude: params[:parse_awys_file])
-        waypoint = RadioNavigationAid.lookup(name: params[:waypoint], near: waypoint_coordinate) ||
-                   Intersection.lookup(name: params[:waypoint], near: waypoint_coordinate)
+        waypoint_coordinate = Coordinate.new(latitude: params[:latitude], longitude: params[:longitude])
+        waypoint = RadioNavigationAid.lookup(params[:waypoint], waypoint_coordinate) ||
+                   Intersection.lookup(params[:waypoint], waypoint_coordinate)
 
         airway[params[:index].to_i-1] = waypoint
       end
