@@ -2,8 +2,15 @@
 
 require 'rspec'
 
-RSpec.describe ATCLite::Navigation::Flightplan do
+RSpec.describe ATCLite::Flightplan::Flightplan do
   describe '#initialize' do
+
+=begin
+     departure: 'EGLL'
+    path: 'SID UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP STAR'
+    arrival: 'EGPH'
+
+
     context 'when the performance data is fully specified' do
       subject(:aircraft_performance_entry) do
         ATCLite::AircraftPerformanceEntry.new(phase: :initial_climb, ias: 250, roc: 1000, lower_altitude: 4000,
@@ -24,5 +31,6 @@ RSpec.describe ATCLite::Navigation::Flightplan do
           .to raise_error(ATCLite::MissingAttributesError)
       end
     end
+=end
   end
 end
