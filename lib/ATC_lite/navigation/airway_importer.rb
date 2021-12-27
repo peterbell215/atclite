@@ -17,7 +17,7 @@ module ATCLite
       FIELD_SEPARATOR = ' '
 
       def self.parse_awys_file(name = 'data/awys.txt')
-        File.readlines(name, chomp: true).each_with_index do |line, line_number|
+        File.foreach(name, chomp: true).each_with_index do |line, line_number|
           line.strip!
 
           next if line[0] == ';' || line.empty?
