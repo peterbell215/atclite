@@ -16,6 +16,10 @@ module ATCLite
 
         super(latitude: latitude, longitude: longitude, name: name, region: region)
       end
+
+      def to_s
+        "#{name}    #{longitude}   #{latitude}"
+      end
     end
   end
 end
