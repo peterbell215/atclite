@@ -22,8 +22,8 @@ RSpec.describe ATCLite::Navigation::AirwayImporter do
     end
     # rubocop: enable RSpec/BeforeAfterAll
 
-    let(:pj) { ATCLite::Navigation::RadioNavigationAid.lookup(name: 'PJ') }
-    let(:belox) { ATCLite::Navigation::Intersection.lookup(name: 'BELOX') }
+    let(:pj) { ATCLite::Navigation::RadioNavigationAid.lookup('PJ') }
+    let(:belox) { ATCLite::Navigation::Intersection.lookup('BELOX') }
 
     specify { expect(l603.size).to eq 48 }
     specify { expect(l603[0]).to equal pj }
