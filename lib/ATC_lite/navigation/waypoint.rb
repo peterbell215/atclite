@@ -9,6 +9,11 @@ module ATCLite
     class Waypoint < Coordinate
       attr_reader :name, :region
 
+      # Finds an appropriate waypoint by name
+      def self.lookup(name, nearest = nil)
+        RadioNavigationAid.lookup(name, nearest) || Intersection.lookup(name, nearest)
+      end
+
       # Initializes a waypoint with key elements.
       def initialize(name:, latitude:, longitude:, region:)
         @name = name
