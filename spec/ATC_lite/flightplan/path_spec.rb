@@ -17,6 +17,7 @@ RSpec.describe ATCLite::Flightplan::Path do
     ATCLite::Navigation::Airway.clear_data
     ATCLite::Navigation::RadioNavigationAid.clear_data
     ATCLite::Navigation::Intersection.clear_data
+    ATCLite::Navigation::Airport.clear_data
   end
   # rubocop: enable RSpec/BeforeAfterAll
 
