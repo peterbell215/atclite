@@ -20,7 +20,8 @@ module ATCLite
           if near_to
             @data[name].min_by { |aid| aid.distance_to(near_to) }
           else
-            raise AmbiguousReferenceError(name) if @data[name].size > 1
+            raise AmbiguousReferenceError.new(name) if @data[name].size > 1
+
             @data[name].first
           end
         end
@@ -33,12 +34,12 @@ module ATCLite
         end
       end
     end
-  end
 
-  # If we look up a navigation reference using name only, and multiple references share the same name.
-  class AmbiguousReferenceError < StandardError
-    def initialize(name)
-      super("Ambiguous reference to #{name}")
+    # If we look up a navigation reference using name only, and multiple references share the same name.
+    class AmbiguousReferenceError < StandardError
+      def initialize(name)
+        super("Ambiguous reference to #{name}")
+      end
     end
   end
 end
