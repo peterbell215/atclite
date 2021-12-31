@@ -58,4 +58,14 @@ RSpec.describe ATCLite::Altitude do
     specify { expect(1000.ft + 1000).to eq 2000.ft }
     specify { expect(1000 + 1000.ft).to eq 2000 }
   end
+
+  describe 'Integer::ft' do
+    specify { expect(100.ft).to eq ATCLite::Altitude.new(100) }
+  end
+
+  describe 'Integer::fl' do
+    specify { expect(0.fl). to eq ATCLite::Altitude.new(0) }
+    specify { expect(50.fl).to eq ATCLite::Altitude.new(5_000) }
+    specify { expect(330.fl).to eq ATCLite::Altitude.new(33_000) }
+  end
 end

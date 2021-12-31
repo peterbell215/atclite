@@ -17,8 +17,8 @@ module ATCLite
 
     def initialize(altitude)
       @ft = case altitude
-              when /FL([0-9]{3})/ then Regexp.last_match(1).to_i * 100
-              when /[0-9]+/ then altitude.to_i
+              when /^FL([0-9]+)/ then Regexp.last_match(1).to_i * 100
+              when /^[0-9]+/ then altitude.to_i
               when Integer then altitude
               when Altitude then altitude.ft
               else raise AltitudeParameterError
@@ -36,7 +36,7 @@ module ATCLite
     alias to_i ft
 
     def fl
-      @ft / 1000
+      @ft * 100
     end
 
     def arithmetic(other)
