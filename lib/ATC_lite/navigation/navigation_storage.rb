@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'latitude'
+require 'great-circle'
 
 module ATCLite
   module Navigation

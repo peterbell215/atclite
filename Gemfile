@@ -5,4 +5,4 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in atclite.gemspec
 gemspec
 
-gem 'latitude', path: '~/RubymineProjects/latitude-gem'
+gem 'great-circle', path: '~/RubymineProjects/great-circle'

@@ -1,7 +1,7 @@
 PATH
-  remote: ../latitude-gem
+  remote: ../great-circle
   specs:
-    latitude (0.2.0)
+    great-circle (0.0.1)
 
 PATH
   remote: .
@@ -69,7 +69,7 @@ PLATFORMS
 DEPENDENCIES
   ATCLite!
   bundler (~> 2.2)
-  latitude!
+  great-circle!
   rake
   rspec
   rubocop (~> 1.7)

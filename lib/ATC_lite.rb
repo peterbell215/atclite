@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'active_support'
-require 'latitude'
+require 'great-circle'
 
 require_relative "ATC_lite/version"
 require_relative 'ATC_lite/ATC_screen'

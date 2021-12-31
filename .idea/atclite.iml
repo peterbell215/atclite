@@ -11,17 +11,42 @@
     </content>
     <orderEntry type="jdk" jdkName="RVM: ruby-3.0.2" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="great-circle (v[path]) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../great-circle/lib" />
+          <root url="file://$MODULE_DIR$/../great-circle/sig" />
+          <root url="file://$MODULE_DIR$/../great-circle/.git" />
+          <root url="file://$MODULE_DIR$/../great-circle/spec" />
+          <root url="file://$MODULE_DIR$/../great-circle/.idea" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../great-circle/lib" />
+          <root url="file://$MODULE_DIR$/../great-circle/sig" />
+          <root url="file://$MODULE_DIR$/../great-circle/.git" />
+          <root url="file://$MODULE_DIR$/../great-circle/spec" />
+          <root url="file://$MODULE_DIR$/../great-circle/.idea" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/../great-circle/.git" />
+          <root url="file://$MODULE_DIR$/../great-circle/spec" />
+          <root url="file://$MODULE_DIR$/../great-circle/.idea" />
+        </excluded>
+      </library>
+    </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v7.0.0, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.2, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.2.22, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.1.9, RVM: ruby-3.0.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="debase (v0.2.4.1, RVM: ruby-3.0.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="debase-ruby_core_source (v0.10.13, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.4.4, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.8.11, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.15.0, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parallel (v1.21.0, RVM: ruby-3.0.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="parser (v3.0.3.1, RVM: ruby-3.0.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="parser (v3.0.3.2, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.0.0, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.2.0, RVM: ruby-3.0.2) [gem]" level="application" />
@@ -32,9 +57,8 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.10.2, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.10.3, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.23.0, RVM: ruby-3.0.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.14.0, RVM: ruby-3.0.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.15.0, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v2.6.0, RVM: ruby-3.0.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ruby-debug-ide (v0.7.3, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.11.0, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby2d (v0.11.1, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.4, RVM: ruby-3.0.2) [gem]" level="application" />
