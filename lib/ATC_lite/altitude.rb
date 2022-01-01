@@ -18,10 +18,10 @@ module ATCLite
     def initialize(altitude)
       @ft = case altitude
               when /^FL([0-9]+)/ then Regexp.last_match(1).to_i * 100
-              when /^[0-9]+/ then altitude.to_i
+              when /^-?[0-9]+/ then altitude.to_i
               when Integer then altitude
               when Altitude then altitude.ft
-              else raise AltitudeParameterError
+              else raise AltitudeParameterError.new(altitude)
               end
     end
 
@@ -54,7 +54,18 @@ module ATCLite
     end
   end
 
-  class AltitudeParameterError < Error; end
+  class AltitudeParameterError < Error
+    attr_reader :altitude_string
+
+    def initialize(altitude_string)
+      super
+      @altitude_string = altitude_string
+    end
+
+    def message
+      "The altitude string is: #{altitude_string}"
+    end
+  end
 
   # Add the ability to write:
   # * 1000.ft to create an Altitude object at 1000 ft

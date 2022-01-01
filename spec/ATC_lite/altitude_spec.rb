@@ -27,6 +27,15 @@ RSpec.describe ATCLite::Altitude do
       specify { expect(altitude).to eq(1000.ft) }
     end
 
+    context 'when the altitude is specified as a string' do
+      specify { expect(ATCLite::Altitude.new('1000')).to eq(1000.ft) }
+      specify { expect(ATCLite::Altitude.new('-010')).to eq(-10.ft) }
+      specify do
+        expect { ATCLite::Altitude.new('aaaa') }
+          .to raise_error(ATCLite::AltitudeParameterError, 'The altitude string is: aaaa')
+      end
+    end
+
     context 'when the altitude is specified as a flight level' do
       subject(:altitude) { ATCLite::Altitude.new('FL100') }
 
