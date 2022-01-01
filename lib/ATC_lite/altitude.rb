@@ -39,6 +39,10 @@ module ATCLite
       @ft * 100
     end
 
+    def to_s
+      @ft < @@transition_altitude ? "#{@ft}ft" : "FL%03d" % self.fl
+    end
+
     def arithmetic(other)
       case other
       when Altitude then Altitude.new(@ft.send(__callee__, other.ft))
