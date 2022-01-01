@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 module ATCLite
-  # Class to represent an altitude.  Is aware of the difference between ft and FL.
+  # Class to represent an speed.  Speeds can either be defined in knots or mach.  The object is aware how the speed
+  # was set, and automatically manages conversion if speed is requested in the alternative unit.
   class Speed
     include Comparable
 
+    # Define the speed either in knots or in mach.
     def initialize(speed = nil, mach: nil)
       if mach
         @mach = mach.to_f
@@ -13,16 +15,25 @@ module ATCLite
       end
     end
 
+    # Return the speed as a mach number.  If the speed was set as a mach number, simply returns the original setting.
+    # If set as knots and if the altitude adjusts for them.  Includes the temperature to allow for a temperature
+    # adjustment as well.
     def mach(altitude: nil, temperature: nil)
       @mach || @knots / mach_1_for_altitude_and_temperature(altitude, temperature)
     end
 
+    # Return the speed as a mach number.  If the speed was set as a mach number, simply returns the original setting.
+    # If set as knots and if the altitude adjusts for them.  Includes the temperature to allow for a temperature
+    # adjustment as well.
     def knots(altitude: nil, temperature: nil)
       @knots || @mach * mach_1_for_altitude_and_temperature(altitude, temperature)
     end
 
     private
 
+    # Table the provides the speed of sound at altitudes 5000ft apart.  Above FL 350, speed of sound is close to
+    # constant
+    #
     # rubocop: disable Layout/ExtraSpacing - array laid out for easier reading
     # rubocop: disable Layout/SpaceInsideArrayLiteralBrackets
     SPEED_OF_SOUND_BY_FL = [
@@ -39,7 +50,9 @@ module ATCLite
     # rubocop: enable Layout/ExtraSpacing
     # rubocop: enable Layout/SpaceInsideArrayLiteralBrackets
 
-    def mach_1_for_altitude_and_temperature(altitude, temperature)
+    # Private method that interpolates the speed of sound for a give altitude.
+    # @todo: needs to add adjusting for temperature
+    def mach_1_for_altitude_and_temperature(altitude, _temperature)
       SPEED_OF_SOUND_BY_FL.each_cons(2) do |lower, higher|
         next unless altitude.between? lower[:altitude], higher[:altitude]
 
@@ -51,15 +64,17 @@ module ATCLite
     end
   end
 
-  # Add the ability to write:
-  # * 1000.ft to create an Altitude object at 1000 ft
-  class ::Integer
-    def ft
-      Altitude.new(self)
+  # Add the ability to write: 0.8.mach to create an appropriate Speed object
+  class ::Float
+    def mach
+      Speed.new(mach: self)
     end
+  end
 
-    def fl
-      Altitude.new("FL#{self}")
+  # Add the ability to write: 245.knots to create an appropriate Speed object
+  class ::Numeric
+    def knots
+      Speed.new(self)
     end
   end
 end

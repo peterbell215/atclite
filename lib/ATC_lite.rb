@@ -13,6 +13,7 @@ require_relative 'ATC_lite/aircraft_performance_entry'
 require_relative 'ATC_lite/aircraft_performance'
 require_relative 'ATC_lite/aircraft_renderer'
 require_relative 'ATC_lite/altitude'
+require_relative 'ATC_lite/speed'
 
 module ATCLite
   class Error < StandardError; end
