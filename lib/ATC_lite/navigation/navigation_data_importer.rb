@@ -25,6 +25,9 @@ module ATCLite
             next unless params
 
             nav_class.add(nav_class.new(**params))
+          rescue AltitudeParameterError => altitude_error
+            issue_warning(altitude_error.altitude_string, 'Altitude', line_number, line)
+            next
           end
         end
 
