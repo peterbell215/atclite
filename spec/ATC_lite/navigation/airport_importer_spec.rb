@@ -50,4 +50,22 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
       end
     end
   end
+
+  describe '::output' do
+    subject(:airport) do
+      ATCLite::Navigation::Airport.new(name: 'EGLL',
+                                       fullname: 'HEATHROW',
+                                       altitude: 83.ft,
+                                       latitude: Latitude.new(51.477500), longitude: Longitude.new(-0.484992),
+                                       runways: [runway_9l])
+    end
+
+    let(:runway_9l) do
+      ATCLite::Navigation::Runway.new(name: '09L', length: 12799, latitude: 51.477500, longitude: -0.484992, heading: 89, ils: '110.30')
+    end
+
+    it 'generates the correct string' do
+      expect(described_class.output(airport)).to eq 'EGLL HEATHROW 83ft 51.477500 -0.484992 09L_12799_51.477500_-0.484992_89_110.30_'
+    end
+  end
 end

@@ -57,6 +57,23 @@ module ATCLite
         end
         # rubocop: enable Metrics/MethodLength
 
+        def output(record)
+          self::FIELDS.inject('') do |string_so_far, field_details|
+            field = field_details[0]
+
+            if field_details[1].is_a?(Array)
+              importer_class = field_details[1][0]
+
+              record.send(field).each do |sub_record|
+                string_so_far += importer_class.output(sub_record) + self::FIELD_SEPARATOR
+              end
+              string_so_far
+            else
+              string_so_far += record.send(field_details[0]).to_s + self::FIELD_SEPARATOR
+            end
+          end.strip
+        end
+
         private
 
         def parse_field(regexp_or_subclass, element, line)
