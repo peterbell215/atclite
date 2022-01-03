@@ -16,7 +16,7 @@ module ATCLite
       ].freeze
       FIELD_SEPARATOR = ' '
 
-      def self.parse_apts_file(name: 'data/apts.txt')
+      def self.parse_apts_file(name='data/apts.txt')
         self.parse_file(name, Airport)
       end
     end
