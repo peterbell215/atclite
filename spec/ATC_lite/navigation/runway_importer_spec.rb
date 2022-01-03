@@ -10,7 +10,7 @@ RSpec.describe ATCLite::Navigation::RunwayImporter do
       specify { expect(runway.name).to eq '09L' }
       specify { expect(runway.length).to eq 12_799 }
       specify { expect(runway.latitude).to eq 51.477500 }
-      specify { expect(runway.longitude).to eq -0.484992 }
+      specify { expect(runway.longitude).to eq(-0.484992) }
       specify { expect(runway.heading).to eq 89 }
       specify { expect(runway.ils).to eq '110.30' }
     end
@@ -21,7 +21,7 @@ RSpec.describe ATCLite::Navigation::RunwayImporter do
       specify { expect(runway.name).to eq '07' }
       specify { expect(runway.length).to eq 4_380 }
       specify { expect(runway.latitude).to eq 51.322547 }
-      specify { expect(runway.longitude).to eq -0.854633 }
+      specify { expect(runway.longitude).to eq(-0.854633) }
       specify { expect(runway.heading).to eq 71 }
       specify { expect(runway.ils).to be_nil }
     end

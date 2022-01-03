@@ -4,12 +4,13 @@ require 'great-circle'
 
 module ATCLite
   module Navigation
-
+    # Provides generic functionality to support having a set of navigation items held in a hash that can be searched.
     module NavigationStorage
       def self.included(base)
         base.extend(ClassMethods)
       end
 
+      # Define the class methods for NavigationStorage
       module ClassMethods
         def add(object)
           @data ||= Hash.new { |hash, key| hash[key] = [] }
@@ -20,7 +21,7 @@ module ATCLite
           if near_to
             @data[name].min_by { |aid| aid.distance_to(near_to) }
           else
-            raise AmbiguousReferenceError.new(name) if @data[name].size > 1
+            raise AmbiguousReferenceError, name if @data[name].size > 1
 
             @data[name].first
           end

@@ -26,21 +26,7 @@ RSpec.describe ATCLite::Navigation::AirwayImporter do
     let(:belox) { ATCLite::Navigation::Intersection.lookup('BELOX') }
 
     specify { expect(l603.size).to eq 48 }
-    specify { expect(l603[0]).to equal pj }
-    specify { expect(l603[5]).to equal belox }
-  end
-
-  describe '::parse' do
-    subject(:waypoint) do
-      described_class.parse('L603    0003 LISBO               54.525000     -6.090028     B   F', 1)
-    end
-
-    specify { expect(waypoint[:name]).to eq 'L603' }
-    specify { expect(waypoint[:index]).to eq '0003' }
-    specify { expect(waypoint[:waypoint]).to eq 'LISBO' }
-    specify { expect(waypoint[:latitude]).to eq '54.525000' }
-    specify { expect(waypoint[:longitude]).to eq '-6.090028' }
-    specify { expect(waypoint[:extra][0]).to eq 'B' }
-    specify { expect(waypoint[:extra][1]).to eq 'F' }
+    specify { expect(l603[0].waypoint).to equal pj }
+    specify { expect(l603[5].waypoint).to equal belox }
   end
 end
