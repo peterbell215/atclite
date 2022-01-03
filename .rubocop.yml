@@ -33,4 +33,4 @@ RSpec/MultipleExpectations:
   Max: 3
 
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context', 'feature', 'define', 'shared_examples', 'factory']
+  ExcludedMethods: ['namespace', 'describe', 'context', 'feature', 'define', 'shared_examples', 'factory']

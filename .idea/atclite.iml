@@ -90,6 +90,15 @@
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl description="Run RSpec code examples" fullCommand="spec" id="spec" />
+          <RakeTaskImpl id="test_data">
+            <subtasks>
+              <RakeTaskImpl description="Extract a subset of airways that intersect UK airspace" fullCommand="test_data:airways" id="airways" />
+              <RakeTaskImpl description="Generate a cut-down navigation dataset for testing covering only the UK" fullCommand="test_data:all" id="all" />
+              <RakeTaskImpl description="Extract a subset of airports covering UK airspace" fullCommand="test_data:apts" id="apts" />
+              <RakeTaskImpl description="Extract a subset of intersections close to UK airspace" fullCommand="test_data:intersections" id="intersections" />
+              <RakeTaskImpl description="Extract a subset of navigation aids close to UK airspace" fullCommand="test_data:navs" id="navs" />
+            </subtasks>
+          </RakeTaskImpl>
           <RakeTaskImpl description="" fullCommand="default" id="default" />
           <RakeTaskImpl description="" fullCommand="release" id="release" />
           <RakeTaskImpl id="release">
