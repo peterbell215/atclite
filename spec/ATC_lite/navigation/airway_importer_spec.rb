@@ -10,9 +10,10 @@ RSpec.describe ATCLite::Navigation::AirwayImporter do
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
     before(:all) do
-      ATCLite::Navigation::RadioNavigationAidImporter.parse_navs_file
-      ATCLite::Navigation::IntersectionImporter.parse_ints_file
-      described_class.parse_awys_file
+      ATCLite::Navigation::RadioNavigationAidImporter.parse_navs_file('data/navs-uk.txt')
+      ATCLite::Navigation::IntersectionImporter.parse_ints_file('data/ints-uk.txt')
+      ATCLite::Navigation::AirwayImporter.parse_awys_file
+      described_class.parse_awys_file('data/awys-uk.txt')
     end
 
     after(:all) do
