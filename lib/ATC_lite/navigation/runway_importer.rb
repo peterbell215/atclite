@@ -11,8 +11,8 @@ module ATCLite
         [:length, /[0-9]+/],
         [:latitude, LONGLAT],
         [:longitude, LONGLAT],
-        [:heading, /[0-3][0-9][0-9]/],
-        [:ils, /#{FREQUENCY}|\-{3}/ ]
+        [:heading, /[0-9]{1,3}/],
+        [:ils, /#{FREQUENCY}|-{3}/, '---']
       ].freeze
       FIELD_SEPARATOR = '_'
 
