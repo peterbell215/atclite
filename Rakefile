@@ -84,7 +84,7 @@ namespace :test_data do
     file = File.open('data/awys-uk.txt', 'w')
 
     ATCLite::Navigation::Airway.all.each do |airway|
-      next unless airway.any? { |waypoint| in_uk_airspace?(waypoint) }
+      next unless airway.all? { |waypoint| in_uk_airspace?(waypoint) }
 
       file.puts ATCLite::Navigation::AirwayImporter.output_airway(airway, [8, 5, 20, 14, 14, 0])
     rescue StandardError
