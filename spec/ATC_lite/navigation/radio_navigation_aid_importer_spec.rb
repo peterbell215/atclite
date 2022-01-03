@@ -11,7 +11,7 @@ RSpec.describe ATCLite::Navigation::RadioNavigationAidImporter do
     # rubocop: disable RSpec/BeforeAfterAll the data is read in read-only so no danger of state
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
-    before(:all) { described_class.parse_navs_file }
+    before(:all) { described_class.parse_navs_file'data/navs-uk.txt' }
     # rubocop: enable RSpec/BeforeAfterAll
 
     specify { expect(bnn.frequency).to eq '113.75' }

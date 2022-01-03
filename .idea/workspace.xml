@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9343d27c-de66-432a-ad83-6811b0edc25a" name="Changes" comment="Fixes to make the structure work better.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rakefile" beforeDir="false" afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_importer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_importer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/navigation/airport_importer_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/navigation/airport_importer_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/flightplan/path_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/flightplan/path_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spec/ATC_lite/navigation/airway_importer_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/navigation/airway_importer_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/navigation/airway_segment_io_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/navigation/airway_segment_io_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/navigation/radio_navigation_aid_importer_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/navigation/radio_navigation_aid_importer_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +114,7 @@
       <command value="rake test_data:airways" />
     </option>
   </component>
-  <component name="RunManager" selected="RSpec.All specs in navigation: atclite">
+  <component name="RunManager" selected="RSpec.Rspec">
     <configuration name="ATCLite::Navigation::AirwayImporter::parse_awys_file" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="atclite" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
@@ -229,7 +228,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="true" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="RVM: ruby-3.0.2" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="DISABLE" bundleExecEnabled="false" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
       <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
@@ -333,12 +332,12 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Rake.test_data:all: atclite" />
+      <item itemvalue="Rake.test_data:airways: atclite" />
       <item itemvalue="RSpec.Rspec" />
       <item itemvalue="RSpec.All specs in navigation: atclite" />
       <item itemvalue="RSpec.All specs in ATC_lite: atclite" />
-      <item itemvalue="Rake.test_data:all: atclite" />
       <item itemvalue="RSpec.ATCLite::Navigation::AirwayImporter::parse_awys_file" />
-      <item itemvalue="Rake.test_data:airways: atclite" />
     </list>
     <recent_temporary>
       <list>
@@ -399,7 +398,8 @@
       <workItem from="1640853413929" duration="15000" />
       <workItem from="1640862938713" duration="3289000" />
       <workItem from="1641193002766" duration="255000" />
-      <workItem from="1641193458144" duration="5549000" />
+      <workItem from="1641193458144" duration="5631000" />
+      <workItem from="1641199993460" duration="740000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1638600789202</created>
@@ -540,7 +540,7 @@
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__AirwaySegmentIO__output.rcov" NAME="ATCLite::Navigation::AirwaySegmentIO::output Coverage Results" MODIFIED="1641139975485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Altitude_Integer__fl.rcov" NAME="ATCLite::Altitude Integer::fl Coverage Results" MODIFIED="1640976868726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@test_data_arpts__atclite.rcov" NAME="test_data:arpts: atclite Coverage Results" MODIFIED="1641141265092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
-    <SUITE FILE_PATH="coverage/atclite@All_specs_in_navigation__atclite.rcov" NAME="All specs in navigation: atclite Coverage Results" MODIFIED="1641199135394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@All_specs_in_navigation__atclite.rcov" NAME="All specs in navigation: atclite Coverage Results" MODIFIED="1641200716177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__IntersectionImporter__navs_line.rcov" NAME="ATCLite::Navigation::IntersectionImporter::navs_line Coverage Results" MODIFIED="1640346423723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Flightplan__Flightplan_when_the_aircraft_is_created_with_a_flightplan.rcov" NAME="ATCLite::Flightplan::Flightplan when the aircraft is created with a flightplan Coverage Results" MODIFIED="1640962513261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
   </component>
