@@ -25,9 +25,12 @@ module ATCLite
             next unless params
 
             nav_class.add(nav_class.new(**params))
-          rescue AltitudeParameterError => altitude_error
-            issue_warning(altitude_error.altitude_string, 'Altitude', line_number, line)
+          rescue AltitudeParameterError => e
+            issue_warning(e.altitude_string, 'Altitude', line_number, line)
             next
+          rescue StandardError
+            warn("Standard error caught in #{line} on line #{line_number}")
+            raise
           end
         end
 
@@ -57,24 +60,51 @@ module ATCLite
         end
         # rubocop: enable Metrics/MethodLength
 
-        def output(record)
-          self::FIELDS.inject('') do |string_so_far, field_details|
-            field = field_details[0]
+        def output(record, column_widths = nil)
+          column_widths_iterator = column_widths_iterator_factory(column_widths)
 
-            if field_details[1].is_a?(Array)
-              importer_class = field_details[1][0]
-
-              record.send(field).each do |sub_record|
-                string_so_far += importer_class.output(sub_record) + self::FIELD_SEPARATOR
-              end
-              string_so_far
+          self::FIELDS.map do |field, field_format, missing_value|
+            if field_format.is_a?(Array)
+              output_subrecords(record, field, field_format[0], column_widths_iterator)
             else
-              string_so_far += record.send(field_details[0]).to_s + self::FIELD_SEPARATOR
+              output_field(field, record, missing_value, column_widths_iterator)
             end
-          end.strip
+          end.join(self::FIELD_SEPARATOR).strip
         end
 
         private
+
+        # Given an array, constructs an iterator that returns the array until we have run out of elements,
+        # and thereafter returns 0.
+        def column_widths_iterator_factory(column_widths)
+          constant_zero = (0..).lazy.map { 1 }
+          column_widths ? (column_widths.each + constant_zero).each : constant_zero
+        end
+
+        def output_field(field, record, missing_value, column_widths_iterator)
+          field_value = record.send(field)
+          s = if field_value
+                field_value.respond_to?(:name) ? field_value.name : field_value.to_s
+              else
+                missing_value
+              end
+
+          pad_field(s, column_widths_iterator)
+        end
+
+        def output_subrecords(record, field, importer_class, column_widths_iterator)
+          record.send(field).map do |sub_record|
+            if importer_class.respond_to?(:output)
+              importer_class.output(sub_record)
+            else
+              pad_field(sub_record.to_s, column_widths_iterator)
+            end
+          end.join(self::FIELD_SEPARATOR)
+        end
+
+        def pad_field(string, column_widths_iterator)
+          string.ljust(column_widths_iterator.next - 1, self::FIELD_SEPARATOR)
+        end
 
         def parse_field(regexp_or_subclass, element, line)
           case regexp_or_subclass
