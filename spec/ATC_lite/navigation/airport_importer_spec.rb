@@ -9,7 +9,7 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
     # rubocop: disable RSpec/BeforeAfterAll the data is read in read-only so no danger of state
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
-    before(:all) { described_class.parse_apts_file }
+    before(:all) { described_class.parse_apts_file('data/apts-uk.txt') }
 
     after(:all) { ATCLite::Navigation::Airport.clear_data }
     # rubocop: enable RSpec/BeforeAfterAll
