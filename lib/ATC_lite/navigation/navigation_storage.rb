@@ -26,6 +26,15 @@ module ATCLite
           end
         end
 
+        # output
+        def all
+          @data.values.flatten.each
+        end
+
+        def loaded?
+          @data.present?
+        end
+
         # Allows complete wiping of the storage.  Important for RSpec tests, where loading the Intersections consumes
         # significant memory.
         def clear_data

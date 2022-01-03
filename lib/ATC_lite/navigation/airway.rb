@@ -21,10 +21,21 @@ module ATCLite
         GC.start
       end
 
+      # output
+      def self.all
+        @airways.values.lazy
+      end
+
+      def self.loaded?
+        !@airways.empty?
+      end
+
       # Constructor for the Airway object
+      # rubocop: disable Lint/MissingSuper
       def initialize(name)
         @name = name
       end
+      # rubocop: enable Lint/MissingSuper
     end
   end
 end
