@@ -6,7 +6,7 @@ module ATCLite
     class AirwaySegment
       attr_reader :airway, :waypoint, :index, :extra
 
-      delegate :latitude, :longitude, to: :waypoint
+      delegate :name, :latitude, :longitude, to: :waypoint
 
       # Constructor for the AirwaySegment object
       def initialize(airway:, index:, waypoint:, extra:)
@@ -14,6 +14,15 @@ module ATCLite
         @index = index
         @waypoint = waypoint
         @extra = extra
+      end
+
+      def eql?(other)
+        self.name == other.name && self.longitude == other.longitude && self.latitude == other.latitude
+      end
+      alias == eql?
+
+      def coerce(other)
+        other.is_a? Waypoint ? [self.waypoint, other] : [self, other]
       end
     end
   end
