@@ -13,5 +13,6 @@ require_relative 'navigation/intersection_importer'
 require_relative 'navigation/radio_navigation_aid'
 require_relative 'navigation/radio_navigation_aid_importer'
 require_relative 'navigation/airway'
+require_relative 'navigation/airway_segment'
+require_relative 'navigation/airway_segment_io'
 require_relative 'navigation/airway_importer'
-
