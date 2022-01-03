@@ -24,14 +24,12 @@ module ATCLite
         airway = Airway.find_or_create(params[:airway])
         waypoint_coordinate = Coordinate.new(latitude: params[:latitude], longitude: params[:longitude])
         waypoint = Waypoint.lookup(params[:waypoint], waypoint_coordinate)
-        index = params[:index].to_i-1
-        airway[index] = AirwaySegment.new(airway: airway, index: index, waypoint: waypoint, extra: params[:extra])
+        index = params[:index].to_i
+        airway[index - 1] = AirwaySegment.new(airway: airway, index: index, waypoint: waypoint, extra: params[:extra])
       end
 
       def self.output_airway(airway, columns)
-        airway.map do |segment|
-          AirwaySegmentIO.output(segment, columns)
-        end.join("\n")
+        airway.map { |segment| AirwaySegmentIO.output(segment, columns) }.join("\n")
       end
     end
   end
