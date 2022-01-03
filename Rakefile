@@ -37,6 +37,9 @@ namespace :test_data do
       next if airport.name !~ /^EG[A-Z]{2}/ && !in_uk_airspace?(airport)
 
       file.puts ATCLite::Navigation::AirportImporter.output(airport, [5, 25, 6, 12, 12, 0])
+    rescue StandardError
+      warn("Standard error caught outputing airport #{airport.name}")
+      raise
     end
   end
 
@@ -50,6 +53,9 @@ namespace :test_data do
       next unless in_uk_airspace?(navigation_aid)
 
       file.puts ATCLite::Navigation::RadioNavigationAidImporter.output(navigation_aid, [10, 40, 13, 13, 4, 7, 0])
+    rescue StandardError
+      warn("Standard error caught outputing navigation aid #{navigation_aid.name}")
+      raise
     end
   end
 
@@ -63,6 +69,9 @@ namespace :test_data do
       next unless in_uk_airspace?(intersection)
 
       file.puts ATCLite::Navigation::IntersectionImporter.output(intersection, [10, 26, 13, 13, 7, 0])
+    rescue StandardError
+      warn("Standard error caught outputing intersection #{intersection.name}")
+      raise
     end
   end
 
@@ -78,6 +87,9 @@ namespace :test_data do
       next unless airway.any? { |waypoint| in_uk_airspace?(waypoint) }
 
       file.puts ATCLite::Navigation::AirwayImporter.output_airway(airway, [8, 5, 20, 14, 14, 0])
+    rescue StandardError
+      warn("Standard error caught outputing airway #{airway.name}")
+      raise
     end
   end
 
