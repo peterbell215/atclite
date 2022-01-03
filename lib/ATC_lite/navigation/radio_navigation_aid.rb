@@ -21,7 +21,7 @@ module ATCLite
       end
 
       def to_s
-        "#{name}    #{longitude}   #{latitude}    #{frequency}  #{navtype}"
+        "#{name} #{navtype.to_s}#{coordinates_to_s}"
       end
     end
   end

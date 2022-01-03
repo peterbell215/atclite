@@ -2,11 +2,10 @@
 
 module ATCLite
   module Flightplan
-    class Path
+    class Path < Array
       attr_reader :waypoints
 
       def initialize(departure_airport:, enroute:)
-        @waypoints = []
         @departure_airport = Navigation::Airport.lookup(departure_airport)
         self.enroute = enroute
       end
@@ -19,7 +18,7 @@ module ATCLite
       def enroute=(string)
         string.split.inject(nil) do |previous, current|
           case previous
-          in nil then Navigation::Waypoint.lookup(current, previous)
+          in nil then _first_waypoint(current)
           in Navigation::Airway => airway, Navigation::Waypoint => airway_entry, Integer => airway_entry_index
             _along_airway(airway, airway_entry, airway_entry_index, current)
           else _next(current, previous)
@@ -27,16 +26,17 @@ module ATCLite
         end
       end
 
-      # Returns the size of the path
-      def size
-        @waypoints.size
-      end
-
       def to_s
-        @waypoints.map(&:to_s).join("\n")
+        self.map(&:to_s).join(' ')
       end
 
       private
+
+      def _first_waypoint(current)
+        first_waypoint = Navigation::Waypoint.lookup(current, @departure_airport)
+        self.push(first_waypoint)
+        first_waypoint
+      end
 
       # Determines whether the current string identifier is an airway or a waypoint.
       def _next(current, previous)
@@ -46,6 +46,8 @@ module ATCLite
           [airway, previous, airway_entry_index]
         else
           waypoint = Navigation::Waypoint.lookup(current, previous)
+          self.push(waypoint)
+          waypoint
         end
       end
 
@@ -54,11 +56,13 @@ module ATCLite
         airway_exit = Navigation::Waypoint.lookup(current, airway_entry)
         airway_exit_index = airway&.index(airway_exit)
 
-        @waypoints += if airway_entry_index <= airway_exit_index
-                        airway[airway_entry_index, airway_exit_index]
-                      else
-                        airway[airway_exit_index, airway_entry_index].reverse!
-                      end
+        nxt_waypoints = if airway_entry_index <= airway_exit_index
+                          airway[airway_entry_index + 1..airway_exit_index]
+                        else
+                          airway[airway_exit_index..airway_entry_index - 1].reverse!
+                        end
+        self.concat(nxt_waypoints)
+
         airway_exit
       end
     end

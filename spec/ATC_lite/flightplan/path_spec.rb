@@ -22,11 +22,21 @@ RSpec.describe ATCLite::Flightplan::Path do
   # rubocop: enable RSpec/BeforeAfterAll
 
   describe 'enroute processing' do
-    subject(:path) { described_class.new(departure_airport: 'EGLL', enroute: 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP') }
+    context 'when the path is along airways' do
+      subject(:path) { described_class.new(departure_airport: 'EGLL', enroute: 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP') }
 
-    specify do
-      puts path
-      expect(path.size).to eq 23
+      let(:correct_path) { 'UMLAT WOBUN WELIN AKUPA TIMPO ELVOS TNT POL NELSA RIBEL ERGAB SHAPP ABEVI INPIP' }
+
+      specify { expect(path.map(&:name).join(' ')).to eq correct_path }
     end
+
+    context 'when the path includes a direct routing' do
+      subject(:path) { described_class.new(departure_airport: 'EGLL', enroute: 'UMLAT T418 WELIN TNT UN57 POL UN601 INPIP') }
+
+      let(:correct_path) { 'UMLAT WOBUN WELIN TNT POL NELSA RIBEL ERGAB SHAPP ABEVI INPIP' }
+
+      specify { expect(path.map(&:name).join(' ')).to eq correct_path }
+    end
+
   end
 end

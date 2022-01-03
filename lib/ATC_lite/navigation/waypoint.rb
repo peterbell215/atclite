@@ -25,6 +25,14 @@ module ATCLite
         super(other) && @name == other.name
       end
       alias == eql?
+
+      def to_s
+        "#{name}#{coordinates_to_s}"
+      end
+
+      def coordinates_to_s
+        "[#{latitude.format(decimals: 4, sign: %w[N S])},#{longitude.format(decimals: 4, sign: %w[E W])}]"
+      end
     end
   end
 end
