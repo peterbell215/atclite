@@ -42,7 +42,7 @@ module ATCLite
       def _next(current, previous)
         airway = Navigation::Airway.lookup(current)
         if airway
-          airway_entry_index = airway&.index(previous)
+          airway_entry_index = airway.index(previous)
           [airway, previous, airway_entry_index]
         else
           waypoint = Navigation::Waypoint.lookup(current, previous)
