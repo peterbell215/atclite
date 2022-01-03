@@ -103,7 +103,7 @@ module ATCLite
         end
 
         def pad_field(string, column_widths_iterator)
-          string.ljust(column_widths_iterator.next - 1, self::FIELD_SEPARATOR)
+          string&.ljust(column_widths_iterator.next - 1, self::FIELD_SEPARATOR)
         end
 
         def parse_field(regexp_or_subclass, element, line)
