@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9343d27c-de66-432a-ad83-6811b0edc25a" name="Changes" comment="Fixes to make the structure work better.">
-      <change beforePath="$PROJECT_DIR$/.idea/atclite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/atclite.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airport.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/airport.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_segment_io.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/intersection.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/intersection.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_storage.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_storage.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/radio_navigation_aid.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/radio_navigation_aid.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/runway.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/runway.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/waypoint.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/waypoint.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/navigation/airway_segment_io_spec.rb" beforeDir="false" />
-    </list>
+    <list default="true" id="9343d27c-de66-432a-ad83-6811b0edc25a" name="Changes" comment="Fixes to make the structure work better." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -426,6 +413,7 @@
       <workItem from="1640849619919" duration="141000" />
       <workItem from="1640853413929" duration="15000" />
       <workItem from="1640862938713" duration="3289000" />
+      <workItem from="1641193002766" duration="255000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1638600789202</created>
@@ -526,7 +514,7 @@
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__NavigationDataImport__navs_line_when_the_line_is_misformed_sends_an_appropriate_error_message_to_stderr.rcov" NAME="ATCLite::Navigation::NavigationDataImport::navs_line when the line is misformed sends an appropriate error message to stderr Coverage Results" MODIFIED="1640324420798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Altitude.rcov" NAME="ATCLite::Altitude Coverage Results" MODIFIED="1640979465783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@aircraft_performance_entry_spec.rcov" NAME="aircraft_performance_entry_spec Coverage Results" MODIFIED="1639727287942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
-    <SUITE FILE_PATH="coverage/atclite@All_specs_in_ATC_lite__atclite.rcov" NAME="All specs in ATC_lite: atclite Coverage Results" MODIFIED="1641140305986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@All_specs_in_ATC_lite__atclite.rcov" NAME="All specs in ATC_lite: atclite Coverage Results" MODIFIED="1641193013870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@flightplan_spec.rcov" NAME="flightplan_spec Coverage Results" MODIFIED="1641019425497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@atclite.rcov" NAME="ATCLite Coverage Results" MODIFIED="1638600858038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/exe" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__NavigationDataImport__navs_line_when_it_is_an_NDB_in_Canada.rcov" NAME="ATCLite::Navigation::NavigationDataImport::navs_line when it is an NDB in Canada Coverage Results" MODIFIED="1640293670571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
