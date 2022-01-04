@@ -22,21 +22,24 @@ RSpec.describe ATCLite::Flightplan::Path do
   # rubocop: enable RSpec/BeforeAfterAll
 
   describe 'enroute processing' do
-    context 'when the path is along airways' do
-      subject(:path) { described_class.new(departure_airport: 'EGLL', enroute: 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP') }
+    shared_examples_for 'processing a path string' do |path_string|
+      subject(:path) { described_class.new(departure_airport: 'EGLL', enroute: path_string) }
 
       let(:correct_path) { 'UMLAT WOBUN WELIN AKUPA TIMPO ELVOS TNT POL NELSA RIBEL ERGAB SHAPP ABEVI INPIP' }
 
       specify { expect(path.map(&:name).join(' ')).to eq correct_path }
     end
 
-    context 'when the path includes a direct routing' do
-      subject(:path) { described_class.new(departure_airport: 'EGLL', enroute: 'UMLAT T418 WELIN TNT UN57 POL UN601 INPIP') }
-
-      let(:correct_path) { 'UMLAT WOBUN WELIN TNT POL NELSA RIBEL ERGAB SHAPP ABEVI INPIP' }
-
-      specify { expect(path.map(&:name).join(' ')).to eq correct_path }
+    context 'when the path is along airways' do
+      it_behaves_like 'processing a path string', 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP'
     end
 
+    context 'when the path includes a direct routing' do
+      it_behaves_like 'processing a path string', 'UMLAT T418 WELIN T420 TNT POL UN601 INPIP'
+    end
+
+    context 'when the path is purely a direct routing' do
+      it_behaves_like 'processing a path string', 'UMLAT WOBUN WELIN AKUPA TIMPO ELVOS TNT POL NELSA RIBEL ERGAB SHAPP ABEVI INPIP'
+    end
   end
 end
