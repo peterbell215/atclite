@@ -3,34 +3,25 @@
 require 'rspec'
 
 RSpec.describe ATCLite::Flightplan::Flightplan do
-  describe '#initialize' do
+  subject(:flightplan) { ATCLite::Flightplan::Flightplan.new(departure_airport: 'EGLL', enroute: enroute) }
 
-=begin
-     departure: 'EGLL'
-    path: 'SID UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP STAR'
-    arrival: 'EGPH'
+  let(:enroute) { 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP' }
 
+  let(:egll) { ATCLite::Navigation::Airport.lookup('EGLL') }
+  let(:umlat) { ATCLite::Navigation::Intersection.lookup('UMLAT', egll) }
+  let(:wobun) { ATCLite::Navigation::Intersection.lookup('WOBUN', egll) }
 
-    context 'when the performance data is fully specified' do
-      subject(:aircraft_performance_entry) do
-        ATCLite::AircraftPerformanceEntry.new(phase: :initial_climb, ias: 250, roc: 1000, lower_altitude: 4000,
-                                              upper_altitude: 6000)
+  include_context 'load navigation data'
+
+  describe '#desired_heading' do
+    context 'when flying a path' do
+      it 'gives the heading to the next waypoint' do
+        expect(flightplan.desired_heading(egll)).to eq egll.initial_heading_to(umlat)
       end
 
-      specify { expect(aircraft_performance_entry.phase).to eq(:initial_climb) }
-      specify { expect(aircraft_performance_entry.ias).to eq(250) }
-      specify { expect(aircraft_performance_entry.roc).to eq(1000) }
-      specify { expect(aircraft_performance_entry.lower_altitude).to eq(ATCLite::Altitude.new(4000)) }
-    end
-
-    context 'when the hash is incomplete' do
-      let(:parameters_with_missing_ias) { { phase: :initial_climb, roc: 1000, lower_altitude: 4000, upper_altitude: 6000 } }
-
-      it 'raises an appropriate error' do
-        expect { ATCLite::AircraftPerformanceEntry.new(**parameters_with_missing_ias) }
-          .to raise_error(ATCLite::MissingAttributesError)
+      it 'moves to the next position' do
+        expect(flightplan.desired_heading(umlat)).to eq umlat.initial_heading_to(wobun)
       end
     end
-=end
   end
 end
