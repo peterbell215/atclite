@@ -5,25 +5,8 @@ module ATCLite
     class Path < Array
       attr_reader :waypoints
 
-      def initialize(departure_airport:, enroute:)
-        @departure_airport = Navigation::Airport.lookup(departure_airport)
-        self.enroute = enroute
-      end
-
-      # Given a string of the form 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP' build a path in the @waypoint
-      # array. The string has the form: 'Waypoint [Waypoint | Jetway Waypoint]*'.  If a waypoint is followed by
-      # a airway and a waypoint, then the path includes all waypoints from the initial waypoint along the airway
-      # to the specified airway.  In our example, UMLAT T418 WELIN provides UMLAT ? WELIN.  If a waypoint is followed
-      # by another waypoint it is considered a direct routing.
-      def enroute=(string)
-        string.split.inject(nil) do |previous, current|
-          case previous
-          in nil then _first_waypoint(current)
-          in Navigation::Airway => airway, Navigation::Waypoint => airway_entry, Integer => airway_entry_index
-            _along_airway(airway, airway_entry, airway_entry_index, current)
-          else _next(current, previous)
-          end
-        end
+      def initialize(string:, close_to:)
+        build_path(string, close_to)
       end
 
       def to_s
@@ -32,8 +15,24 @@ module ATCLite
 
       private
 
-      def _first_waypoint(current)
-        first_waypoint = Navigation::Waypoint.lookup(current, @departure_airport)
+      # Given a string of the form 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP' build a path in the @waypoint
+      # array. The string has the form: 'Waypoint [Waypoint | Jetway Waypoint]*'.  If a waypoint is followed by
+      # a airway and a waypoint, then the path includes all waypoints from the initial waypoint along the airway
+      # to the specified airway.  In our example, UMLAT T418 WELIN provides UMLAT ? WELIN.  If a waypoint is followed
+      # by another waypoint it is considered a direct routing.
+      def build_path(string, close_to)
+        string.split.inject(nil) do |previous, current|
+          case previous
+          in nil then _first_waypoint(current, close_to)
+          in Navigation::Airway => airway, Navigation::Waypoint => airway_entry, Integer => airway_entry_index
+            _along_airway(airway, airway_entry, airway_entry_index, current)
+          else _next(current, previous)
+          end
+        end
+      end
+
+      def _first_waypoint(current, close_to)
+        first_waypoint = Navigation::Waypoint.lookup(current, close_to)
         self.push(first_waypoint)
         first_waypoint
       end

@@ -23,9 +23,10 @@ RSpec.describe ATCLite::Flightplan::Path do
 
   describe 'enroute processing' do
     shared_examples_for 'processing a path string' do |path_string|
-      subject(:path) { described_class.new(departure_airport: 'EGLL', enroute: path_string) }
+      subject(:path) { described_class.new(string: path_string, close_to: egll) }
 
       let(:correct_path) { 'UMLAT WOBUN WELIN AKUPA TIMPO ELVOS TNT POL NELSA RIBEL ERGAB SHAPP ABEVI INPIP' }
+      let(:egll) { ATCLite::Navigation::Airport.lookup('EGLL') }
 
       specify { expect(path.map(&:name).join(' ')).to eq correct_path }
     end
