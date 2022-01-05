@@ -27,7 +27,7 @@ module ATCLite
       end
 
       def eql?(other)
-        super(other) && @name == other.name
+        other.is_a?(Waypoint) && super(other) && @name == other.name
       end
       alias == eql?
 

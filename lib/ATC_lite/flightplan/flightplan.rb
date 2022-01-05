@@ -20,6 +20,10 @@ module ATCLite
         @routing.first.desired_heading(position)
       end
 
+      def current
+        @routing.first
+      end
+
       def [](index)
         @routing[index]
       end
@@ -33,6 +37,10 @@ module ATCLite
       end
 
       def fly_direct(waypoint)
+        routings_to_be_removed = @routing.find_index do |routing|
+          routing == waypoint
+        end
+        @routing.shift(routings_to_be_removed)
         self
       end
 
