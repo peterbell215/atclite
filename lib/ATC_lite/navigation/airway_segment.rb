@@ -6,7 +6,7 @@ module ATCLite
     class AirwaySegment
       attr_reader :airway, :waypoint, :index, :extra
 
-      delegate :name, :latitude, :longitude, :to_s, to: :waypoint
+      delegate :name, :latitude, :longitude, :to_s, :desired_heading, to: :waypoint
 
       # Constructor for the AirwaySegment object
       def initialize(airway:, index:, waypoint:, extra:)

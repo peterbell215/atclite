@@ -21,6 +21,11 @@ module ATCLite
         super(latitude: latitude, longitude: longitude)
       end
 
+      def desired_heading(position)
+        distance = position.distance_to(self)
+        distance > 1.0 ? position.initial_heading_to(self) : :next_routing
+      end
+
       def eql?(other)
         super(other) && @name == other.name
       end

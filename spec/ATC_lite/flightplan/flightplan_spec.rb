@@ -23,5 +23,13 @@ RSpec.describe ATCLite::Flightplan::Flightplan do
         expect(flightplan.desired_heading(umlat)).to eq umlat.initial_heading_to(wobun)
       end
     end
+
+    context 'when flying a heading' do
+      before { flightplan.fly_heading(180.degrees) }
+
+      it 'returns the specified heading' do
+        expect(flightplan.desired_heading(umlat)).to eq 180.degrees
+      end
+    end
   end
 end

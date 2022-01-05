@@ -13,8 +13,11 @@ module ATCLite
       end
 
       def desired_heading(position)
-        @routing.shift(1) if position.distance_to(@routing.first) < 1.0
-        position.initial_heading_to(@routing.first)
+        new_heading = @routing.first.desired_heading(position)
+        return new_heading if new_heading != :next_routing
+
+        @routing.shift
+        @routing.first.desired_heading(position)
       end
 
       def [](index)
@@ -38,7 +41,7 @@ module ATCLite
       end
 
       def fly_heading(heading)
-        self
+        @routing.unshift(FlyHeading.new(heading))
       end
 
       def climb_to(altitude)
