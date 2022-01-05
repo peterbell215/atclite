@@ -16,8 +16,8 @@ RSpec.describe ATCLite::Navigation::IntersectionImporter do
     after(:all) { ATCLite::Navigation::Intersection.clear_data }
     # rubocop: enable RSpec/BeforeAfterAll
 
-    specify { expect(guvri.latitude).to eq 38.497778 }
-    specify { expect(guvri.longitude).to eq 115.700000 }
+    specify { expect(guvri.latitude).to eq Latitude.new(38.497778) }
+    specify { expect(guvri.longitude).to eq Longitude.new(115.700000) }
   end
 
   describe '::parse' do

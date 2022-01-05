@@ -15,8 +15,8 @@ RSpec.describe ATCLite::Navigation::RadioNavigationAidImporter do
     # rubocop: enable RSpec/BeforeAfterAll
 
     specify { expect(bnn.frequency).to eq '113.75' }
-    specify { expect(bnn.latitude).to eq 51.726164 }
-    specify { expect(bnn.longitude).to eq(-0.549750) }
+    specify { expect(bnn.latitude).to eq Latitude.new(51.726164) }
+    specify { expect(bnn.longitude).to eq Longitude.new(-0.549750) }
   end
 
   describe '::parse' do
