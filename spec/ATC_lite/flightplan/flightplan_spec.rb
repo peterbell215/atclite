@@ -33,11 +33,19 @@ RSpec.describe ATCLite::Flightplan::Flightplan do
     end
 
     context 'when flying direct' do
-      before { flightplan.fly_direct(tnt) }
-
       let(:tnt) { ATCLite::Navigation::RadioNavigationAid.lookup('TNT', egll) }
 
       it 'removes the previous waypoints and sets heading to the new waypoint' do
+        flightplan.fly_direct(tnt)
+
+        expect(flightplan.desired_heading(umlat)).to eq umlat.initial_heading_to(tnt)
+        expect(flightplan.current).to eq tnt
+      end
+
+      it 'deals with a fly_heading instruction' do
+        flightplan.fly_heading(180.degrees)
+        flightplan.fly_direct(tnt)
+
         expect(flightplan.desired_heading(umlat)).to eq umlat.initial_heading_to(tnt)
         expect(flightplan.current).to eq tnt
       end
