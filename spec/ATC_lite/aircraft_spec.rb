@@ -3,13 +3,55 @@
 require 'rspec'
 
 RSpec.describe ATCLite::Aircraft do
-  before { ATCLite::AircraftPerformance.load_file }
+  describe '#initialize' do
+    subject(:aircraft) { ATCLite::Aircraft.new(callsign: 'BA001', type: 'A3N') }
+
+    specify { expect(aircraft.callsign).to eq 'BA001' }
+    specify { expect(aircraft.type).to eq 'A3N' }
+  end
+
+  describe '#build' do
+    subject(:aircraft) do
+      ATCLite::Aircraft.build(callsign: 'BA001', type: 'A3N', altitude: 3000.ft, position: position)
+    end
+
+    let(:position) { Coordinate.new(latitude: 51.0, longitude: -0.2 ) }
+
+    specify { expect(aircraft.callsign).to eq 'BA001' }
+    specify { expect(aircraft.type).to eq 'A3N' }
+    specify { expect(aircraft.altitude).to eq 3000.ft }
+    specify { expect(aircraft.position).to eq Coordinate.new(latitude: 51.0, longitude: -0.2 ) }
+  end
+
+  describe '#file_flightplan' do
+    subject(:aircraft) do
+      ATCLite::Aircraft.file_flightplan(callsign: 'BA001', type: 'A3N', flightplan: flightplan)
+    end
+
+    include_context 'load navigation data'
+
+    let(:flightplan) do
+      ATCLite::Flightplan::Flightplan.new(departure_airport: 'EGLL',
+                                          enroute: 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP')
+    end
+    let(:egll) { ATCLite::Navigation::Airport.lookup('EGLL') }
+    let(:umlat) { ATCLite::Navigation::Intersection.lookup('UMLAT', egll) }
+    let(:wobun) { ATCLite::Navigation::Intersection.lookup('WOBUN', egll) }
+
+    specify { expect(aircraft.callsign).to eq 'BA001' }
+    specify { expect(aircraft.type).to eq 'A3N' }
+    specify { expect(aircraft.position).to eq egll }
+    specify { expect(aircraft.position).to_not be_equal egll }
+    specify { expect(aircraft.heading).to eq egll.initial_heading_to(umlat) }
+    specify { expect(aircraft.altitude).to eq egll.altitude }
+  end
 
   describe '#update_position' do
-
-
     shared_examples_for 'updated position based on heading' do |heading, latitude, longitude|
-      subject(:aircraft) { ATCLite::Aircraft.new(speed: 3600.0, heading: heading, altitude: 330.fl, position: position) }
+      subject(:aircraft) do
+        ATCLite::Aircraft.build(callsign: 'BA001', type: 'A3N',
+                                speed: 3600.0, heading: heading, altitude: 330.fl, position: position)
+      end
 
       let(:position) { Coordinate.new(latitude: 0.0, longitude: 0.0) }
       let(:arc_minute) { 1.0/60.0 }
@@ -29,11 +71,10 @@ RSpec.describe ATCLite::Aircraft do
   end
 
   describe '#update_heading' do
-    subject(:aircraft) { ATCLite::Aircraft.new }
-
     shared_examples_for 'updated heading' do |current_heading, target_heading, new_heading|
       subject(:aircraft) do
-        ATCLite::Aircraft.new(speed: 3600.0, heading: current_heading.degrees, altitude: 330.fl, position: position)
+        ATCLite::Aircraft.build(callsign: 'BA001', type: 'A3N',
+                                speed: 3600.0, heading: current_heading, altitude: 330.fl, position: position)
       end
 
       let(:position) { Coordinate.new(latitude: 0.0, longitude: 0.0) }
@@ -51,35 +92,5 @@ RSpec.describe ATCLite::Aircraft do
     it_behaves_like 'updated heading', 270, 269, 269
     it_behaves_like 'updated heading', 359, 10, 1
     it_behaves_like 'updated heading', 1, 350, 359
-  end
-
-  describe '#update_altitude_and_phase' do
-    context 'when it is in the cruise at the target altitude' do
-      subject(:aircraft) { ATCLite::Aircraft.new(altitude: 370.fl) }
-
-      before { aircraft.update_altitude_and_phase }
-
-      specify { expect(aircraft.roc).to eq 0 }
-      specify { expect(aircraft.phase).to eq :cruise }
-    end
-
-    context 'when it is flying level during the initial climb' do
-      subject(:aircraft) { ATCLite::Aircraft.new(flightplan: nil, altitude: 5000) }
-
-      before { aircraft.update_altitude_and_phase }
-
-      specify { expect(aircraft.roc).to eq 0 }
-      specify { expect(aircraft.phase).to eq :initial_climb }
-    end
-
-    context 'when it starts the climb' do
-      before do
-        aircraft.target_altitude = 5000
-        aircraft.update_altitude_and_phase
-      end
-
-      specify { expect(aircraft.phase).to eq :initial_climb }
-      specify { expect(aircraft.roc).to eq 2500 }
-    end
   end
 end

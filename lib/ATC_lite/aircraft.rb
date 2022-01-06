@@ -3,33 +3,45 @@
 module ATCLite
   # Details of an aircraft.
   class Aircraft
-    attr_reader :callsign, :speed, :heading, :altitude, :position, :roc, :performance_data, :flightplan
-
-    attr_accessor :target_heading, :target_altitude
-
     KNOTS_TO_NM_PER_SECOND = 1.0 / 3600.00
     TURN_RATE_PER_SECOND = 2
 
-    def initialize(callsign: 'BA001', type: 'A19N', flightplan:)
+    attr_reader :callsign, :type, :speed, :heading, :altitude, :position, :roc, :performance_data, :flightplan
+    attr_accessor :target_heading, :target_altitude
+
+    # Build an aircraft with defined key parameters.  Once created, only aircraft object can update itself.
+    def self.build(callsign:, type:, altitude:, position:, speed: 0.knots, heading: 0.degrees)
+      aircraft = Aircraft.new(callsign: callsign, type: type)
+
+      aircraft.instance_eval do
+        self.position = position.dup
+        self.speed = speed
+        self.heading = heading.is_a?(Angle) ? heading : heading.degrees
+        self.altitude = altitude
+      end
+      aircraft
+    end
+
+    # Create an aircraft from a flightplan.  In this case, the aircraft positoon is set to be at the departure airport.
+    # The altitude is set to the departure airport's altitude.  Speed is set to zero.  Heading is to zero.
+    def self.file_flightplan(callsign:, type:, flightplan:)
+      aircraft = Aircraft.new(callsign: callsign, type: type)
+      departure_airport = flightplan.departure_airport
+
+      aircraft.instance_eval do
+        self.position = departure_airport
+        self.speed = 0.knots
+        self.heading = self.position.initial_heading_to flightplan.current
+        self.altitude = departure_airport.altitude
+      end
+      aircraft
+    end
+
+    # Create an aircraft object with a given callsign and of a particular type.
+    def initialize(callsign: 'BA001', type: 'A19N')
       @callsign = callsign
       @type = type
       @performance_data = ATCLite::AircraftPerformance.new(type)
-      @flightplan = flightplan
-
-      set_state_from_flightplan
-    end
-
-    def set_state_from_flightplan
-      @position = flightplan.departure_airport
-      @target_altitude = @altitude = flightplan.departing_airport.altitude
-      @speed = 0.knots
-      @roc = 0
-      @heading = @position.initial_heading_to(flightplan.next_waypoint)
-    end
-
-    # Altitude setter that also converts to the Altitude class.
-    def altitude=(value)
-      @altitude = Altitude.new(value)
     end
 
     def target_altitude=(value)
@@ -51,19 +63,24 @@ module ATCLite
       @heading.abs!
     end
 
-    # Based on current altitude and target altitude, adjust the current altitude and phase of the flight
-    def update_altitude_and_phase
-      case @altitude <=> @target_altitude
-      when 0
-        @phase = self.performance_data.match_phase(self)
-      end
-    end
-
     # calculates, given a speed over ground, the updated position.
     def update_position
       distance_covered_in_1_s = self.speed * KNOTS_TO_NM_PER_SECOND
 
       @position.new_position!(distance: distance_covered_in_1_s, heading: heading)
+    end
+
+    private
+
+    attr_writer :speed, :heading
+
+    def position=(value)
+      @position = value.dup
+    end
+
+    # Altitude setter that also converts to the Altitude class if it is not.
+    def altitude=(value)
+      @altitude = value.is_a?(Altitude) ? value : Altitude.new(value)
     end
   end
 end
