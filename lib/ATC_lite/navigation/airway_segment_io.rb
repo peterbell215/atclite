@@ -3,7 +3,7 @@
 module Navigation
   # Represents a segment within an airway
   class AirwaySegmentIO
-    include NavigationDataImporter
+    include NavigationDataIO
 
     FIELDS = [
       [:airway, /^[0-9A-Z]{1,5}/],

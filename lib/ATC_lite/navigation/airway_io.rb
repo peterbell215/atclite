@@ -2,8 +2,8 @@
 
 module Navigation
   # Reads an FSBuild airway file and stores the data.
-  class AirwayImporter
-    include NavigationDataImporter
+  class AirwayIO
+    include NavigationDataIO
 
     def self.parse_awys_file(name = 'data/awys.txt')
       File.foreach(name, chomp: true).each_with_index do |line, line_number|

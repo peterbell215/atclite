@@ -2,8 +2,8 @@
 
 module Navigation
   # Reads an FSBuild intersection file and stores the data.
-  class RunwayImporter
-    include NavigationDataImporter
+  class RunwayIO
+    include NavigationDataIO
 
     FIELDS = [
       [:name, /[0-3][0-9][A-Z]?/],

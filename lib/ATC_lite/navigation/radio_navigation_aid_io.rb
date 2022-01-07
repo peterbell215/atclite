@@ -2,8 +2,8 @@
 
 module Navigation
   # Reads an FSBuild Radio Navigation Aids File and stores the data.
-  class RadioNavigationAidImporter
-    include NavigationDataImporter
+  class RadioNavigationAidIO
+    include NavigationDataIO
 
     NAVTYPE = /VOR|NDB/
     FIELDS = [

@@ -5,10 +5,10 @@ RSpec.shared_context 'load navigation data', shared_context: :metadata do
   #                                       leakage.  Its a large data file so reading once rather
   #                                       than for every test is better.
   before(:all) do
-    Navigation::RadioNavigationAidImporter.parse_navs_file('data/navs-uk.txt')
-    Navigation::IntersectionImporter.parse_ints_file('data/ints-uk.txt')
-    Navigation::AirwayImporter.parse_awys_file('data/awys-uk.txt')
-    Navigation::AirportImporter.parse_apts_file('data/apts-uk.txt')
+    Navigation::RadioNavigationAidIO.parse_navs_file('data/navs-uk.txt')
+    Navigation::IntersectionIO.parse_ints_file('data/ints-uk.txt')
+    Navigation::AirwayIO.parse_awys_file('data/awys-uk.txt')
+    Navigation::AirportIO.parse_apts_file('data/apts-uk.txt')
   end
 
   after(:all) do

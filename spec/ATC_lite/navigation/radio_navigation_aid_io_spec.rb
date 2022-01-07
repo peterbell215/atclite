@@ -2,7 +2,7 @@
 
 require 'rspec'
 
-RSpec.describe Navigation::RadioNavigationAidImporter do
+RSpec.describe Navigation::RadioNavigationAidIO do
   describe '::parse_navs_file' do
     subject(:bnn) do
       Navigation::RadioNavigationAid.lookup('BNN', Coordinate.new(latitude: 51.0, longitude: 0.0))

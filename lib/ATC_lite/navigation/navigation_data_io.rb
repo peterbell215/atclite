@@ -2,7 +2,7 @@
 
 module Navigation
   # Provides generic functionality to read FSBuild data files.
-  module NavigationDataImporter
+  module NavigationDataIO
     LONGLAT = /[+-]?[0-9]+\.[0-9]+/
     FREQUENCY = /[1-9][0-9]{2,3}\.[0-9]{2,3}/
 

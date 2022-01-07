@@ -21,8 +21,8 @@ RSpec.describe Navigation::AirwaySegmentIO do
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
     before(:all) do
-      Navigation::RadioNavigationAidImporter.parse_navs_file('data/navs-uk.txt')
-      Navigation::IntersectionImporter.parse_ints_file('data/ints-uk.txt')
+      Navigation::RadioNavigationAidIO.parse_navs_file('data/navs-uk.txt')
+      Navigation::IntersectionIO.parse_ints_file('data/ints-uk.txt')
     end
 
     after(:all) do

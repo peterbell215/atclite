@@ -2,7 +2,7 @@
 
 require 'rspec'
 
-RSpec.describe Navigation::IntersectionImporter do
+RSpec.describe Navigation::IntersectionIO do
   describe '::parse_ints_file' do
     subject(:guvri) do
       Navigation::Intersection.lookup('GUVRI', Coordinate.new(latitude: 38.0, longitude: 115.0))

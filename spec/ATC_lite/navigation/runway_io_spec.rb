@@ -2,7 +2,7 @@
 
 require 'rspec'
 
-RSpec.describe Navigation::RunwayImporter do
+RSpec.describe Navigation::RunwayIO do
   describe '::match' do
     context 'when its an ILS equipped runway' do
       subject(:runway) { described_class.match('09L_12799_51.477500_-0.484992_089_110.30', 1) }

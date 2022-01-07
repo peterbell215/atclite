@@ -2,7 +2,7 @@
 
 require 'rspec'
 
-RSpec.describe Navigation::AirportImporter do
+RSpec.describe Navigation::AirportIO do
   describe '::parse_apts_file' do
     subject(:egll) { Navigation::Airport.lookup('EGLL') }
 
@@ -45,7 +45,7 @@ RSpec.describe Navigation::AirportImporter do
 
       it 'matches each runway with the indexed in the airport object' do
         [runway_9l, runway_9r, runway_27l, runway_27r].each_with_index do |runway, index|
-          expect(airport_hash[:runways][index]).to eq Navigation::RunwayImporter.match(runway, 1)
+          expect(airport_hash[:runways][index]).to eq Navigation::RunwayIO.match(runway, 1)
         end
       end
     end

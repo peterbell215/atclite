@@ -2,7 +2,7 @@
 
 require 'rspec'
 
-RSpec.describe Navigation::AirwayImporter do
+RSpec.describe Navigation::AirwayIO do
   describe '::parse_awys_file' do
     subject(:l70) { Navigation::Airway.lookup('L70') }
 
@@ -10,8 +10,8 @@ RSpec.describe Navigation::AirwayImporter do
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
     before(:all) do
-      Navigation::RadioNavigationAidImporter.parse_navs_file('data/navs-uk.txt')
-      Navigation::IntersectionImporter.parse_ints_file('data/ints-uk.txt')
+      Navigation::RadioNavigationAidIO.parse_navs_file('data/navs-uk.txt')
+      Navigation::IntersectionIO.parse_ints_file('data/ints-uk.txt')
       described_class.parse_awys_file('data/awys-uk.txt')
     end
 

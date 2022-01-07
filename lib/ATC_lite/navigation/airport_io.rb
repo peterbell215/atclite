@@ -2,8 +2,8 @@
 
 module Navigation
   # Reads an FSBuild Airport file and stores the data.
-  class AirportImporter
-    include NavigationDataImporter
+  class AirportIO
+    include NavigationDataIO
 
     FIELDS = [
       [:name, /^[0-9A-Z]{4}/],
@@ -11,7 +11,7 @@ module Navigation
       [:altitude, /[0-9]+/],
       [:latitude, LONGLAT],
       [:longitude, LONGLAT],
-      [:runways, [RunwayImporter]]
+      [:runways, [RunwayIO]]
     ].freeze
     FIELD_SEPARATOR = ' '
 
