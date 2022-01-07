@@ -26,7 +26,8 @@ module Navigation
     end
 
     def eql?(other)
-      other.is_a?(Waypoint) && super(other) && @name == other.name
+      return false if other.respond_to?(:name) && @name != other.name
+      super(other)
     end
     alias == eql?
 
