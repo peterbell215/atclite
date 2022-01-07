@@ -2,21 +2,21 @@
 
 require 'rspec'
 
-RSpec.describe ATCLite::Navigation::AirportImporter do
+RSpec.describe Navigation::AirportImporter do
   describe '::parse_apts_file' do
-    subject(:egll) { ATCLite::Navigation::Airport.lookup('EGLL') }
+    subject(:egll) { Navigation::Airport.lookup('EGLL') }
 
     # rubocop: disable RSpec/BeforeAfterAll the data is read in read-only so no danger of state
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
     before(:all) { described_class.parse_apts_file('data/apts-uk.txt') }
 
-    after(:all) { ATCLite::Navigation::Airport.clear_data }
+    after(:all) { Navigation::Airport.clear_data }
     # rubocop: enable RSpec/BeforeAfterAll
 
     specify { expect(egll.name).to eq 'EGLL' }
     specify { expect(egll.fullname).to eq 'HEATHROW' }
-    specify { expect(egll.altitude).to eq ATCLite::Altitude.new(83) }
+    specify { expect(egll.altitude).to eq Altitude.new(83) }
     specify { expect(egll.latitude).to eq Latitude.new(51.477500) }
     specify { expect(egll.longitude).to eq Longitude.new(-0.461389) }
     specify { expect(egll.runways.size).to eq 4 }
@@ -45,7 +45,7 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
 
       it 'matches each runway with the indexed in the airport object' do
         [runway_9l, runway_9r, runway_27l, runway_27r].each_with_index do |runway, index|
-          expect(airport_hash[:runways][index]).to eq ATCLite::Navigation::RunwayImporter.match(runway, 1)
+          expect(airport_hash[:runways][index]).to eq Navigation::RunwayImporter.match(runway, 1)
         end
       end
     end
@@ -53,7 +53,7 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
 
   describe '::output' do
     subject(:airport) do
-      ATCLite::Navigation::Airport.new(name: 'EGLL',
+      Navigation::Airport.new(name: 'EGLL',
                                        fullname: 'HEATHROW',
                                        altitude: 83.ft,
                                        latitude: Latitude.new(51.477500), longitude: Longitude.new(-0.484992),
@@ -61,7 +61,7 @@ RSpec.describe ATCLite::Navigation::AirportImporter do
     end
 
     let(:runway_9l) do
-      ATCLite::Navigation::Runway.new(name: '09L', length: 12_799, latitude: 51.477500, longitude: -0.484992,
+      Navigation::Runway.new(name: '09L', length: 12_799, latitude: 51.477500, longitude: -0.484992,
                                       heading: 89, ils: '110.30')
     end
 

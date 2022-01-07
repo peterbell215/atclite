@@ -2,10 +2,10 @@
 
 require 'rspec'
 
-RSpec.describe ATCLite::Navigation::RadioNavigationAidImporter do
+RSpec.describe Navigation::RadioNavigationAidImporter do
   describe '::parse_navs_file' do
     subject(:bnn) do
-      ATCLite::Navigation::RadioNavigationAid.lookup('BNN', Coordinate.new(latitude: 51.0, longitude: 0.0))
+      Navigation::RadioNavigationAid.lookup('BNN', Coordinate.new(latitude: 51.0, longitude: 0.0))
     end
 
     # rubocop: disable RSpec/BeforeAfterAll the data is read in read-only so no danger of state

@@ -1,9 +1,9 @@
 require 'rspec'
 
-RSpec.describe ATCLite::AircraftPerformance do
-  subject(:aircraft_performance) { ATCLite::AircraftPerformance.new('A19N') }
+RSpec.describe AircraftPerformance do
+  subject(:aircraft_performance) { AircraftPerformance.new('A19N') }
 
-  before { ATCLite::AircraftPerformance.load_file }
+  before { AircraftPerformance.load_file }
 
   describe 'Initialization from file' do
     specify { expect(aircraft_performance).not_to be_nil }
@@ -15,7 +15,7 @@ RSpec.describe ATCLite::AircraftPerformance do
 
   describe '#match_phase' do
     it 'identifies an aircraft established in the cruise' do
-      aircraft = ATCLite::Aircraft.new(altitude: 350.fl)
+      aircraft = Aircraft.new(altitude: 350.fl)
       expect(aircraft_performance.match_phase(aircraft)).to eq :cruise
     end
   end

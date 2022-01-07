@@ -1,7 +1,7 @@
 require 'rspec'
 
-RSpec.describe ATCLite::ATCScreen do
-  subject(:atc_screen) { ATCLite::ATCScreen.instance }
+RSpec.describe ATCScreen do
+  subject(:atc_screen) { ATCScreen.instance }
 
   describe '#map_x' do
     specify { expect(atc_screen.map_x(atc_screen.centre_x)).to eq(Window.width / 2) }

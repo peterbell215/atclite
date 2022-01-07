@@ -2,9 +2,9 @@
 
 require 'rspec'
 
-RSpec.describe ATCLite::Aircraft do
+RSpec.describe Aircraft do
   describe '#initialize' do
-    subject(:aircraft) { ATCLite::Aircraft.new(callsign: 'BA001', type: 'A3N') }
+    subject(:aircraft) { Aircraft.new(callsign: 'BA001', type: 'A3N') }
 
     specify { expect(aircraft.callsign).to eq 'BA001' }
     specify { expect(aircraft.type).to eq 'A3N' }
@@ -12,7 +12,7 @@ RSpec.describe ATCLite::Aircraft do
 
   describe '#build' do
     subject(:aircraft) do
-      ATCLite::Aircraft.build(callsign: 'BA001', type: 'A3N', altitude: 3000.ft, position: position)
+      Aircraft.build(callsign: 'BA001', type: 'A3N', altitude: 3000.ft, position: position)
     end
 
     let(:position) { Coordinate.new(latitude: 51.0, longitude: -0.2 ) }
@@ -25,18 +25,18 @@ RSpec.describe ATCLite::Aircraft do
 
   describe '#file_flightplan' do
     subject(:aircraft) do
-      ATCLite::Aircraft.file_flightplan(callsign: 'BA001', type: 'A3N', flightplan: flightplan)
+      Aircraft.file_flightplan(callsign: 'BA001', type: 'A3N', flightplan: flightplan)
     end
 
     include_context 'load navigation data'
 
     let(:flightplan) do
-      ATCLite::Flightplan::Flightplan.new(departure_airport: 'EGLL',
+      Flightplan::Flightplan.new(departure_airport: 'EGLL',
                                           enroute: 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP')
     end
-    let(:egll) { ATCLite::Navigation::Airport.lookup('EGLL') }
-    let(:umlat) { ATCLite::Navigation::Intersection.lookup('UMLAT', egll) }
-    let(:wobun) { ATCLite::Navigation::Intersection.lookup('WOBUN', egll) }
+    let(:egll) { Navigation::Airport.lookup('EGLL') }
+    let(:umlat) { Navigation::Intersection.lookup('UMLAT', egll) }
+    let(:wobun) { Navigation::Intersection.lookup('WOBUN', egll) }
 
     specify { expect(aircraft.callsign).to eq 'BA001' }
     specify { expect(aircraft.type).to eq 'A3N' }
@@ -49,7 +49,7 @@ RSpec.describe ATCLite::Aircraft do
   describe '#update_position' do
     shared_examples_for 'updated position based on heading' do |heading, latitude, longitude|
       subject(:aircraft) do
-        ATCLite::Aircraft.build(callsign: 'BA001', type: 'A3N',
+        Aircraft.build(callsign: 'BA001', type: 'A3N',
                                 speed: 3600.0, heading: heading, altitude: 330.fl, position: position)
       end
 
@@ -73,7 +73,7 @@ RSpec.describe ATCLite::Aircraft do
   describe '#update_heading' do
     shared_examples_for 'updated heading' do |current_heading, target_heading, new_heading|
       subject(:aircraft) do
-        ATCLite::Aircraft.build(callsign: 'BA001', type: 'A3N',
+        Aircraft.build(callsign: 'BA001', type: 'A3N',
                                 speed: 3600.0, heading: current_heading, altitude: 330.fl, position: position)
       end
 

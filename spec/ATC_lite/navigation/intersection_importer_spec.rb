@@ -2,10 +2,10 @@
 
 require 'rspec'
 
-RSpec.describe ATCLite::Navigation::IntersectionImporter do
+RSpec.describe Navigation::IntersectionImporter do
   describe '::parse_ints_file' do
     subject(:guvri) do
-      ATCLite::Navigation::Intersection.lookup('GUVRI', Coordinate.new(latitude: 38.0, longitude: 115.0))
+      Navigation::Intersection.lookup('GUVRI', Coordinate.new(latitude: 38.0, longitude: 115.0))
     end
 
     # rubocop: disable RSpec/BeforeAfterAll the data is read in read-only so no danger of state
@@ -13,7 +13,7 @@ RSpec.describe ATCLite::Navigation::IntersectionImporter do
     #                                       than for every test is better.
     before(:all) { described_class.parse_ints_file }
 
-    after(:all) { ATCLite::Navigation::Intersection.clear_data }
+    after(:all) { Navigation::Intersection.clear_data }
     # rubocop: enable RSpec/BeforeAfterAll
 
     specify { expect(guvri.latitude).to eq Latitude.new(38.497778) }

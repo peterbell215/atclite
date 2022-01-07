@@ -2,11 +2,11 @@
 
 require 'rspec'
 
-RSpec.describe ATCLite::AircraftRenderer do
-  let(:atc_screen) { ATCLite::ATCScreen.instance }
+RSpec.describe AircraftRenderer do
+  let(:atc_screen) { ATCScreen.instance }
 
   describe '#update' do
-    subject(:aircraft_renderer) { ATCLite::AircraftRenderer.new(aircraft) }
+    subject(:aircraft_renderer) { AircraftRenderer.new(aircraft) }
 
     let(:aircraft) { instance_double('ATCLite::Aircraft', x: atc_screen.centre_x, y: atc_screen.centre_y) }
     let(:line_instances) { Array.new(4) { line_double } }

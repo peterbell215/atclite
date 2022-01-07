@@ -2,7 +2,7 @@
 
 require 'rspec'
 
-RSpec.describe ATCLite::Navigation::AirwaySegmentIO do
+RSpec.describe Navigation::AirwaySegmentIO do
   describe '::parse' do
     subject(:airway_segment_hash) { described_class.parse('L746    0014 DASIS   38.908611 44.208056  L   B', 1) }
 
@@ -21,22 +21,22 @@ RSpec.describe ATCLite::Navigation::AirwaySegmentIO do
     #                                       leakage.  Its a large data file so reading once rather
     #                                       than for every test is better.
     before(:all) do
-      ATCLite::Navigation::RadioNavigationAidImporter.parse_navs_file('data/navs-uk.txt')
-      ATCLite::Navigation::IntersectionImporter.parse_ints_file('data/ints-uk.txt')
+      Navigation::RadioNavigationAidImporter.parse_navs_file('data/navs-uk.txt')
+      Navigation::IntersectionImporter.parse_ints_file('data/ints-uk.txt')
     end
 
     after(:all) do
-      ATCLite::Navigation::RadioNavigationAid.clear_data
-      ATCLite::Navigation::Intersection.clear_data
+      Navigation::RadioNavigationAid.clear_data
+      Navigation::Intersection.clear_data
     end
     # rubocop: enable RSpec/BeforeAfterAll
 
     subject(:segment) do
-      ATCLite::Navigation::AirwaySegment.new(airway: airway, index: 14, waypoint: waypoint, extra: %w[L B])
+      Navigation::AirwaySegment.new(airway: airway, index: 14, waypoint: waypoint, extra: %w[L B])
     end
 
-    let(:airway) { ATCLite::Navigation::Airway.find_or_create('L603') }
-    let(:waypoint) { ATCLite::Navigation::Intersection.lookup('BELOX') }
+    let(:airway) { Navigation::Airway.find_or_create('L603') }
+    let(:waypoint) { Navigation::Intersection.lookup('BELOX') }
 
     it 'creates an appropriate string' do
       expect(described_class.output(segment, [8, 5, 8, 10, 10, 0])).to eq 'L603    14   BELOX   53.887881 -3.489764 L B'

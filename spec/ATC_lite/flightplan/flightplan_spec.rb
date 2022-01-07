@@ -2,14 +2,14 @@
 
 require 'rspec'
 
-RSpec.describe ATCLite::Flightplan::Flightplan do
-  subject(:flightplan) { ATCLite::Flightplan::Flightplan.new(departure_airport: 'EGLL', enroute: enroute) }
+RSpec.describe Flightplan::Flightplan do
+  subject(:flightplan) { Flightplan::Flightplan.new(departure_airport: 'EGLL', enroute: enroute) }
 
   let(:enroute) { 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP' }
 
-  let(:egll) { ATCLite::Navigation::Airport.lookup('EGLL') }
-  let(:umlat) { ATCLite::Navigation::Intersection.lookup('UMLAT', egll) }
-  let(:wobun) { ATCLite::Navigation::Intersection.lookup('WOBUN', egll) }
+  let(:egll) { Navigation::Airport.lookup('EGLL') }
+  let(:umlat) { Navigation::Intersection.lookup('UMLAT', egll) }
+  let(:wobun) { Navigation::Intersection.lookup('WOBUN', egll) }
 
   include_context 'load navigation data'
 
@@ -33,7 +33,7 @@ RSpec.describe ATCLite::Flightplan::Flightplan do
     end
 
     context 'when flying direct' do
-      let(:tnt) { ATCLite::Navigation::RadioNavigationAid.lookup('TNT', egll) }
+      let(:tnt) { Navigation::RadioNavigationAid.lookup('TNT', egll) }
 
       it 'removes the previous waypoints and sets heading to the new waypoint' do
         flightplan.fly_direct(tnt)

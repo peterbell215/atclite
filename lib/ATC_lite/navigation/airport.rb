@@ -2,23 +2,21 @@
 
 require 'great-circle'
 
-module ATCLite
-  module Navigation
-    # Flightplan describes the flightplan the aircraft is following.  It is made up of a sequence of paths with the
-    # first element of the sequence being the current active path being followed.
-    class Airport < Waypoint
-      include NavigationStorage
+module Navigation
+  # Flightplan describes the flightplan the aircraft is following.  It is made up of a sequence of paths with the
+  # first element of the sequence being the current active path being followed.
+  class Airport < Waypoint
+    include NavigationStorage
 
-      attr_reader :fullname, :altitude, :runways
+    attr_reader :fullname, :altitude, :runways
 
-      # Constructor for the Airport object
-      def initialize(name:, fullname:, altitude:, latitude:, longitude:, runways:)
-        @fullname = fullname
-        @altitude = Altitude.new(altitude)
-        @runways = runways
+    # Constructor for the Airport object
+    def initialize(name:, fullname:, altitude:, latitude:, longitude:, runways:)
+      @fullname = fullname
+      @altitude = Altitude.new(altitude)
+      @runways = runways
 
-        super(latitude: latitude, longitude: longitude, name: name, region: nil)
-      end
+      super(latitude: latitude, longitude: longitude, name: name, region: nil)
     end
   end
 end

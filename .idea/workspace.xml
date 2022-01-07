@@ -6,7 +6,37 @@
   <component name="ChangeListManager">
     <list default="true" id="9343d27c-de66-432a-ad83-6811b0edc25a" name="Changes" comment="Fixes to make the structure work better.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/ATC_screen.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/ATC_screen.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/aircraft.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft_performance.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/aircraft_performance.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft_performance_entry.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/aircraft_performance_entry.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft_renderer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/aircraft_renderer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/altitude.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/altitude.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan/flightplan.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/flightplan/flightplan.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan/fly_heading.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/flightplan/fly_heading.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan/path.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/flightplan/path.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan/to_waypoint.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/flightplan/to_waypoint.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airport.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/airport.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airport_importer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/airport_importer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_importer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_importer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_segment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_segment.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_segment_io.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_segment_io.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/intersection.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/intersection.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/intersection_importer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/intersection_importer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_data_importer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_data_importer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_storage.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_storage.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/radio_navigation_aid.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/navigation/radio_navigation_aid.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/speed.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/speed.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/ATC_screen_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/ATC_screen_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/aircraft_performance_entry_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/aircraft_performance_entry_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/aircraft_performance_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/aircraft_performance_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/aircraft_renderer_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/aircraft_renderer_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/aircraft_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/aircraft_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/altitude_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/altitude_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/flightplan/flightplan_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/flightplan/flightplan_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/navigation/airport_importer_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/navigation/airport_importer_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/speed_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/speed_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -408,6 +438,7 @@
       <workItem from="1641361822422" duration="7829000" />
       <workItem from="1641413397693" duration="920000" />
       <workItem from="1641450318086" duration="6569000" />
+      <workItem from="1641533552760" duration="2617000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1638600789202</created>
@@ -456,7 +487,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/ATC_lite/aircraft.rb</url>
-          <line>68</line>
+          <line>67</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
@@ -465,7 +496,7 @@
         <line-breakpoint enabled="true" type="ruby-line">
           <condition expression="string.nil?" language="ruby" />
           <url>file://$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_data_importer.rb</url>
-          <line>105</line>
+          <line>104</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
@@ -473,7 +504,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_data_importer.rb</url>
-          <line>63</line>
+          <line>62</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
@@ -490,7 +521,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/ATC_lite/flightplan/flightplan.rb</url>
-          <line>40</line>
+          <line>39</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
@@ -505,16 +536,8 @@
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/spec/ATC_lite/aircraft_spec.rb</url>
-          <line>33</line>
-          <properties myBlockOrdinal="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/ATC_lite/aircraft.rb</url>
-          <line>28</line>
+          <line>27</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
@@ -522,7 +545,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/ATC_lite/aircraft.rb</url>
-          <line>32</line>
+          <line>31</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
@@ -583,7 +606,7 @@
     <SUITE FILE_PATH="coverage/atclite@ATC_lite.rcov" NAME="ATC_lite Coverage Results" MODIFIED="1638744085439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@aircraft_performance_spec.rcov" NAME="aircraft_performance_spec Coverage Results" MODIFIED="1640671678132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__AirwayImporter.rcov" NAME="ATCLite::Navigation::AirwayImporter Coverage Results" MODIFIED="1640589169437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
-    <SUITE FILE_PATH="coverage/atclite@Rspec.rcov" NAME="Rspec Coverage Results" MODIFIED="1641457273994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@Rspec.rcov" NAME="Rspec Coverage Results" MODIFIED="1641534689523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@speed_spec.rcov" NAME="speed_spec Coverage Results" MODIFIED="1641018473302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@airway_importer_spec.rcov" NAME="airway_importer_spec Coverage Results" MODIFIED="1641123984148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Aircraft.rcov" NAME="ATCLite::Aircraft Coverage Results" MODIFIED="1640863323832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
