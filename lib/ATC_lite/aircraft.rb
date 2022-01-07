@@ -6,8 +6,9 @@ module ATCLite
     KNOTS_TO_NM_PER_SECOND = 1.0 / 3600.00
     TURN_RATE_PER_SECOND = 2
 
-    attr_reader :callsign, :type, :speed, :heading, :altitude, :position, :roc, :performance_data, :flightplan
-    attr_accessor :target_heading, :target_altitude
+    attr_reader :callsign, :type, :speed, :heading, :altitude, :target_altitude, :position, :roc, :performance_data,
+                :flightplan
+    attr_accessor :target_heading
 
     # Build an aircraft with defined key parameters.  Once created, only aircraft object can update itself.
     def self.build(callsign:, type:, altitude:, position:, speed: 0.knots, heading: 0.degrees)
