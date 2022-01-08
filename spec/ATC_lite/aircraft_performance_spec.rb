@@ -10,13 +10,26 @@ RSpec.describe AircraftPerformance do
   end
 
   describe '#roc' do
-    specify { expect(aircraft_performance.roc(4000.ft, phase: :initial_climb)).to eq(2500) }
-  end
+    context 'when climbing' do
+      specify { expect(aircraft_performance.roc(4000.ft, 10_000.ft)).to eq(2500) }
+      specify { expect(aircraft_performance.roc(5000.ft, 10_000.ft)).to eq(2500) }
+      specify { expect(aircraft_performance.roc(200.fl, 280.fl)).to eq(2200) }
+      specify { expect(aircraft_performance.roc(280.fl, 330.fl)).to eq(1000) }
+    end
 
-  describe '#match_phase' do
-    it 'identifies an aircraft established in the cruise' do
-      aircraft = Aircraft.new(altitude: 350.fl)
-      expect(aircraft_performance.match_phase(aircraft)).to eq :cruise
+    context 'when at level flight' do
+      specify { expect(aircraft_performance.roc(4000.ft, 4000.ft)).to eq(0) }
+      specify { expect(aircraft_performance.roc(5000.ft, 5000.ft)).to eq(0) }
+      specify { expect(aircraft_performance.roc(200.fl, 200.fl)).to eq(0) }
+      specify { expect(aircraft_performance.roc(280.fl, 280.fl)).to eq(0) }
+    end
+
+    context 'when descending' do
+      specify { expect(aircraft_performance.roc(330.fl, 200.fl)).to eq(-1000) }
+      specify { expect(aircraft_performance.roc(290.fl, 200.fl)).to eq(-1000) }
+      specify { expect(aircraft_performance.roc(10_000.ft, 3000)).to eq(-3000) }
+      specify { expect(aircraft_performance.roc(6000.ft, 3000)).to eq(-1500) }
     end
   end
+
 end

@@ -42,6 +42,11 @@ class AircraftPerformanceEntry
   def upper_altitude=(value)
     @upper_altitude = Altitude.new(value)
   end
+
+  def altitude_in_range(altitude)
+    (self.lower_altitude.nil? || self.lower_altitude <= altitude) &&
+      (self.upper_altitude.nil? || altitude <= self.upper_altitude)
+  end
 end
 
 # Error raised if the phase is invalid.

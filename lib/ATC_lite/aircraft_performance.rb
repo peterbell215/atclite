@@ -25,50 +25,21 @@ class AircraftPerformance
   def initialize(type)
     @type = type
     @performance_data = AircraftPerformance.performance_data_library[@type]
+    @cruise_index = @performance_data.find_index{ |performance_entry| performance_entry.phase == :cruise }
   end
 
   def roc(altitude, target_altitude)
-    data = @performance_data.find do |performance_entry|
-      performance_entry.phase == phase &&
-        altitude.between?(performance_entry.lower_altitude || 0.ft, performance_entry.upper_altitude || 100_000.ft)
-    end
-    data&.roc
-  end
-
-  # Matching the flight phase to the aircraft is a little involved:
-  # * If the aircraft is at climbing or descending, then the phase is determined by the altitude.
-  # * if the aircraft is travelling level, then
-  def match_phase(aircraft)
-    case aircraft.altitude <=> aircraft.target_altitude
-    when 0 then _level_flight(aircraft)
-    when -1 then _climb
-    when +1 then _descent
+    case altitude <=> target_altitude
+    when 0 then 0
+    when -1 then find_entry(0..@cruise_index-1, altitude).roc
+    when +1 then find_entry((@cruise_index+1).., altitude).roc
     end
   end
 
   private
 
-  # Determine if the aircraft is in level flight what phase of the flight it is in.
-  def _level_flight(aircraft)
-    if aircraft.altitude >= @cruise_data.lower_altitude
-      :cruise
-    else
-      _find_phase(ATCLite::AircraftPerformanceEntry.PERMISSIBLE_PHASE_TRANSITIONS[aircraft.phase])
-    end
+  def find_entry(range, altitude)
+    @performance_data[range].find { |performance_entry| performance_entry.altitude_in_range(altitude) }
   end
 
-  def _climb
-    _find_phase %i[initial_climb climb]
-  end
-
-  def _descent
-    _find_phase %i[descent approach]
-  end
-
-  def _find_phase(possible_phases)
-    @performance_data.find do |performance_entry|
-      performance_entry.phase.in?(possible_phases) &&
-        altitude.between?(performance_entry.lower_altitude || 0.ft, performance_entry.upper_altitude || 100_000.ft)
-    end
-  end
 end

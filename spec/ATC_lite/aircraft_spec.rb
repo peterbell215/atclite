@@ -3,29 +3,31 @@
 require 'rspec'
 
 RSpec.describe Aircraft do
+  before { AircraftPerformance.load_file }
+
   describe '#initialize' do
-    subject(:aircraft) { Aircraft.new(callsign: 'BA001', type: 'A3N') }
+    subject(:aircraft) { Aircraft.new(callsign: 'BA001', type: 'A19N') }
 
     specify { expect(aircraft.callsign).to eq 'BA001' }
-    specify { expect(aircraft.type).to eq 'A3N' }
+    specify { expect(aircraft.type).to eq 'A19N' }
   end
 
   describe '#build' do
     subject(:aircraft) do
-      Aircraft.build(callsign: 'BA001', type: 'A3N', altitude: 3000.ft, position: position)
+      Aircraft.build(callsign: 'BA001', type: 'A19N', altitude: 3000.ft, position: position)
     end
 
     let(:position) { Coordinate.new(latitude: 51.0, longitude: -0.2 ) }
 
     specify { expect(aircraft.callsign).to eq 'BA001' }
-    specify { expect(aircraft.type).to eq 'A3N' }
+    specify { expect(aircraft.type).to eq 'A19N' }
     specify { expect(aircraft.altitude).to eq 3000.ft }
     specify { expect(aircraft.position).to eq Coordinate.new(latitude: 51.0, longitude: -0.2 ) }
   end
 
   describe '#file_flightplan' do
     subject(:aircraft) do
-      Aircraft.file_flightplan(callsign: 'BA001', type: 'A3N', flightplan: flightplan)
+      Aircraft.file_flightplan(callsign: 'BA001', type: 'A19N', flightplan: flightplan)
     end
 
     include_context 'load navigation data'
@@ -39,7 +41,7 @@ RSpec.describe Aircraft do
     let(:wobun) { Navigation::Intersection.lookup('WOBUN', egll) }
 
     specify { expect(aircraft.callsign).to eq 'BA001' }
-    specify { expect(aircraft.type).to eq 'A3N' }
+    specify { expect(aircraft.type).to eq 'A19N' }
     specify { expect(aircraft.position).to eq egll }
     specify { expect(aircraft.position).to_not be_equal egll }
     specify { expect(aircraft.heading).to eq egll.initial_heading_to(umlat) }
@@ -49,7 +51,7 @@ RSpec.describe Aircraft do
   describe '#update_position' do
     shared_examples_for 'updated position based on heading' do |heading, latitude, longitude|
       subject(:aircraft) do
-        Aircraft.build(callsign: 'BA001', type: 'A3N',
+        Aircraft.build(callsign: 'BA001', type: 'A19N',
                                 speed: 3600.0, heading: heading, altitude: 330.fl, position: position)
       end
 
@@ -73,7 +75,7 @@ RSpec.describe Aircraft do
   describe '#update_heading' do
     shared_examples_for 'updated heading' do |current_heading, target_heading, new_heading|
       subject(:aircraft) do
-        Aircraft.build(callsign: 'BA001', type: 'A3N',
+        Aircraft.build(callsign: 'BA001', type: 'A19N',
                                 speed: 3600.0, heading: current_heading, altitude: 330.fl, position: position)
       end
 
