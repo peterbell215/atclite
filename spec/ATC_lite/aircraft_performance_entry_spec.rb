@@ -7,7 +7,7 @@ RSpec.describe AircraftPerformanceEntry do
     context 'when the performance data is fully specified' do
       subject(:aircraft_performance_entry) do
         AircraftPerformanceEntry.new(phase: :initial_climb, ias: 250, roc: 1000, lower_altitude: 4000,
-                                              upper_altitude: 6000)
+                                     upper_altitude: 6000)
       end
 
       specify { expect(aircraft_performance_entry.phase).to eq(:initial_climb) }

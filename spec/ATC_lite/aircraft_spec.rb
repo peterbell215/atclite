@@ -17,12 +17,12 @@ RSpec.describe Aircraft do
       Aircraft.build(callsign: 'BA001', type: 'A19N', altitude: 3000.ft, position: position)
     end
 
-    let(:position) { Coordinate.new(latitude: 51.0, longitude: -0.2 ) }
+    let(:position) { Coordinate.new(latitude: 51.0, longitude: -0.2) }
 
     specify { expect(aircraft.callsign).to eq 'BA001' }
     specify { expect(aircraft.type).to eq 'A19N' }
     specify { expect(aircraft.altitude).to eq 3000.ft }
-    specify { expect(aircraft.position).to eq Coordinate.new(latitude: 51.0, longitude: -0.2 ) }
+    specify { expect(aircraft.position).to eq Coordinate.new(latitude: 51.0, longitude: -0.2) }
   end
 
   describe '#file_flightplan' do
@@ -34,7 +34,7 @@ RSpec.describe Aircraft do
 
     let(:flightplan) do
       Flightplan::Flightplan.new(departure_airport: 'EGLL',
-                                          enroute: 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP')
+                                 enroute: 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP')
     end
     let(:egll) { Navigation::Airport.lookup('EGLL') }
     let(:umlat) { Navigation::Intersection.lookup('UMLAT', egll) }
@@ -43,7 +43,7 @@ RSpec.describe Aircraft do
     specify { expect(aircraft.callsign).to eq 'BA001' }
     specify { expect(aircraft.type).to eq 'A19N' }
     specify { expect(aircraft.position).to eq egll }
-    specify { expect(aircraft.position).to_not be_equal egll }
+    specify { expect(aircraft.position).not_to be_equal egll }
     specify { expect(aircraft.heading).to eq egll.initial_heading_to(umlat) }
     specify { expect(aircraft.altitude).to eq egll.altitude }
   end
@@ -52,11 +52,11 @@ RSpec.describe Aircraft do
     shared_examples_for 'updated position based on heading' do |heading, latitude, longitude|
       subject(:aircraft) do
         Aircraft.build(callsign: 'BA001', type: 'A19N',
-                                speed: 3600.0, heading: heading, altitude: 330.fl, position: position)
+                       speed: 3600.0, heading: heading, altitude: 330.fl, position: position)
       end
 
       let(:position) { Coordinate.new(latitude: 0.0, longitude: 0.0) }
-      let(:arc_minute) { 1.0/60.0 }
+      let(:arc_minute) { 1.0 / 60.0 }
 
       it "calculates the updated position for #{heading}" do
         aircraft.update_position
@@ -76,7 +76,7 @@ RSpec.describe Aircraft do
     shared_examples_for 'updated heading' do |current_heading, target_heading, new_heading|
       subject(:aircraft) do
         Aircraft.build(callsign: 'BA001', type: 'A19N',
-                                speed: 3600.0, heading: current_heading, altitude: 330.fl, position: position)
+                       speed: 3600.0, heading: current_heading, altitude: 330.fl, position: position)
       end
 
       let(:position) { Coordinate.new(latitude: 0.0, longitude: 0.0) }

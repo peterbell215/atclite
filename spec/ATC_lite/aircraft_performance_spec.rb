@@ -11,6 +11,8 @@ RSpec.describe AircraftPerformance do
     specify { expect(aircraft_performance).not_to be_nil }
   end
 
+  # rubocop: disable Metrics/ParameterLists; driven by the need to test a number of items at the same time.
+  # rubocop: disable Layout/LineLength
   describe '#performance_data' do
     shared_examples 'the correct performance data is returned' do |altitude, target_altitude, current_phase, target_phase, speed, roc|
       context_string = case altitude <=> target_altitude
@@ -36,6 +38,8 @@ RSpec.describe AircraftPerformance do
         end
       end
     end
+    # rubocop: enable Metrics/ParameterLists
+    # rubocop: enable Layout/LineLength
 
     # rubocop: disable Layout/ExtraSpacing
     # rubocop: disable Layout/SpaceInsideArrayLiteralBrackets

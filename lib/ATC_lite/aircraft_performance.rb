@@ -22,12 +22,15 @@ class AircraftPerformance
     end
   end
 
+  # Constructor.  Is passed the type.
   def initialize(type)
     @type = type
     @performance_data = AircraftPerformance.performance_data_library[@type]
-    @cruise_index = @performance_data.find_index{ |performance_entry| performance_entry.phase == :cruise }
+    @cruise_index = @performance_data.find_index { |performance_entry| performance_entry.phase == :cruise }
   end
 
+  # Given an aircraft with a defined state, determine a set of performance characteristics that match the state of
+  # the aircraft.
   def performance_data(aircraft)
     data = case aircraft.altitude <=> aircraft.target_altitude
            when 0 then level_flight(aircraft)
@@ -38,34 +41,29 @@ class AircraftPerformance
     update_phase?(aircraft, data)
   end
 
+  private
+
   def level_flight(aircraft)
     data = if aircraft.altitude > @performance_data[@cruise_index - 1].lower_altitude
              @performance_data[@cruise_index]
-           elsif aircraft.phase.in? [:initial_climb, :climb]
-             search_subrange(0..@cruise_index - 1, aircraft.altitude).tap { |data| data.roc = 0 }
+           elsif aircraft.phase.in? %i[initial_climb climb]
+             search_subrange(0..@cruise_index - 1, aircraft.altitude).tap { |entry| entry.roc = 0 }
            else
-             search_subrange((@cruise_index + 1).., aircraft.altitude).tap { |data| data.roc = 0 }
+             search_subrange((@cruise_index + 1).., aircraft.altitude).tap { |entry| entry.roc = 0 }
            end
 
     update_phase?(aircraft, data)
   end
 
   def update_phase?(aircraft, data)
-    if aircraft.phase.in?([:descent, :approach]) && data.phase.in?([:initial_climb, :climb, :cruise])
+    if aircraft.phase.in?(%i[descent approach]) && data.phase.in?(%i[initial_climb climb cruise])
       data.dup.tap { |entry| entry.phase = aircraft.phase }
     else
       data
     end
   end
 
-  private
-
-  def speed_at_level_flight
-    return @performance_data[@cruise_index].speed if in_cruise?(altitude, target_altitude)
-  end
-
   def search_subrange(range, altitude)
     @performance_data[range].find { |performance_entry| performance_entry.altitude_in_range(altitude) }
   end
-
 end

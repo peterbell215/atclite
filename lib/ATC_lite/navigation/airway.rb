@@ -26,6 +26,7 @@ module Navigation
       @airways.values.lazy
     end
 
+    # Has an airways text file been loaded into memory?
     def self.loaded?
       !@airways.empty?
     end
