@@ -35,7 +35,7 @@ class Altitude
   alias to_i ft
 
   def fl
-    @ft * 100
+    @ft / 100
   end
 
   def to_s
