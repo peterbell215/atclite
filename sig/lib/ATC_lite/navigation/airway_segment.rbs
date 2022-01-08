@@ -1,0 +1,21 @@
+module Navigation
+  # Represents a segment within an airway
+  class AirwaySegment
+    attr_reader airway: Airway
+
+    attr_reader waypoint: Waypoint
+
+    attr_reader index: Integer
+
+    attr_reader extra: Array[String]
+
+    # Constructor for the AirwaySegment object
+    def initialize: (airway: Airway airway, index: Integer index, waypoint: Waypoint waypoint, extra: Array[String] extra) -> void
+
+    def eql?: ((AirwaySegment|Waypoint) other) -> bool
+
+    alias == eql?
+
+    def coerce: (untyped other) -> untyped
+  end
+end

@@ -1,0 +1,22 @@
+# Class to model of a specific aircraft its performance data and provide this back to the simulator.
+class AircraftPerformance
+  def self.performance_data_library: () -> ATCLite::AircraftPerformanceEntry
+
+  # Loads the performance data from the YAML file.
+  def self.load_file: (?filename: ::String filename) -> void
+
+  # Constructor.  Is passed the type.
+  def initialize: (String `type`) -> void
+
+  # Given an aircraft with a defined state, determine a set of performance characteristics that match the state of
+  # the aircraft.
+  def performance_data: (Aircraft aircraft) -> void
+
+  private
+
+  def level_flight: (Aircraft aircraft) -> AircraftPerformanceEntry
+
+  def update_phase?: (Aircraft aircraft, AircraftPerformanceEntry data) -> AircraftPerformanceEntry
+
+  def search_subrange: (untyped range, untyped altitude) -> untyped
+end

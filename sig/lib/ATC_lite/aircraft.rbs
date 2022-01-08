@@ -1,0 +1,61 @@
+# Details of an aircraft.
+class Aircraft
+  KNOTS_TO_NM_PER_SECOND: Float
+
+  TURN_RATE_PER_SECOND: ::Integer
+
+  attr_reader callsign: String
+
+  attr_reader type: String
+
+  attr_reader speed: Speed
+
+  attr_reader heading: Angle
+
+  attr_reader altitude: Altitude
+
+  attr_reader target_altitude: Altitude
+
+  attr_reader position: Coordinate
+
+  attr_reader roc: Integer
+
+  attr_reader performance_data: AircraftPerformance
+
+  attr_reader flightplan: Flightplan
+
+  attr_reader phase: untyped
+
+  attr_accessor target_heading: untyped
+
+  # Build an aircraft with defined key parameters.  Once created, only aircraft object can update itself.
+  def self.build: (callsign: untyped callsign, type: untyped `type`, altitude: untyped altitude, position: untyped position, ?speed: untyped speed, ?heading: untyped heading) -> untyped
+
+  # Create an aircraft from a flightplan.  In this case, the aircraft positoon is set to be at the departure airport.
+  # The altitude is set to the departure airport's altitude.  Speed is set to zero.  Heading is to zero.
+  def self.file_flightplan: (callsign: untyped callsign, type: untyped `type`, flightplan: untyped flightplan) -> untyped
+
+  # Create an aircraft object with a given callsign and of a particular type.
+  def initialize: (?callsign: ::String callsign, ?type: ::String `type`) -> untyped
+
+  def target_altitude=: (untyped value) -> untyped
+
+  # standard aircraft turn is 180 degrees per min, or 2 degrees per second
+  def update_heading: () -> (nil | untyped)
+
+  # calculates, given a speed over ground, the updated position.
+  def update_position: () -> untyped
+
+  private
+
+  attr_writer speed: untyped
+
+  attr_writer heading: untyped
+
+  attr_writer phase: untyped
+
+  def position=: (untyped value) -> untyped
+
+  # Altitude setter that also converts to the Altitude class if it is not.
+  def altitude=: (untyped value) -> untyped
+end

@@ -1,30 +1,28 @@
-module ATCLite
-  module Flightplan
-    class Path < Array
-      attr_reader waypoints: untyped
+module Flightplan
+  class Path < Array
+    attr_reader waypoints: untyped
 
-      def initialize: (departure_airport: untyped departure_airport, enroute: untyped enroute) -> untyped
+    def initialize: (departure_airport: untyped departure_airport, enroute: untyped enroute) -> untyped
 
-      # Given a string of the form 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP' build a path in the @waypoint
-      # array. The string has the form: 'Waypoint [Waypoint | Jetway Waypoint]*'.  If a waypoint is followed by
-      # a airway and a waypoint, then the path includes all waypoints from the initial waypoint along the airway
-      # to the specified airway.  In our example, UMLAT T418 WELIN provides UMLAT ? WELIN.  If a waypoint is followed
-      # by another waypoint it is considered a direct routing.
-      def enroute=: (untyped string) -> untyped
+    # Given a string of the form 'UMLAT T418 WELIN T420 TNT UN57 POL UN601 INPIP' build a path in the @waypoint
+    # array. The string has the form: 'Waypoint [Waypoint | Jetway Waypoint]*'.  If a waypoint is followed by
+    # a airway and a waypoint, then the path includes all waypoints from the initial waypoint along the airway
+    # to the specified airway.  In our example, UMLAT T418 WELIN provides UMLAT ? WELIN.  If a waypoint is followed
+    # by another waypoint it is considered a direct routing.
+    def enroute=: (untyped string) -> untyped
 
-      def to_s: () -> untyped
+    def to_s: () -> String
 
-      def desired_heading: (Coordinate position) -> Float
+    def desired_heading: (Coordinate position) -> Float
 
-      private
+    private
 
-      def _first_waypoint: (untyped current) -> untyped
+    def _first_waypoint: ((Navigation::Waypoint|Navigation::AirwaySegment) current) -> untyped
 
-      # Determines whether the current string identifier is an airway or a waypoint.
-      def _next: (untyped current, untyped previous) -> untyped
+    # Determines whether the current string identifier is an airway or a waypoint.
+    def _next: ((Navigation::Waypoint|Navigation::AirwaySegment) current, (Navigation::Waypoint|Navigation::AirwaySegment) previous) -> untyped
 
-      # If we are passed a previous waypoint and a jetway, inserts the intermedite waypoints on the airway.
-      def _along_airway: (untyped airway, untyped airway_entry, untyped airway_entry_index, untyped current) -> untyped
-    end
+    # If we are passed a previous waypoint and a jetway, inserts the intermedite waypoints on the airway.
+    def _along_airway: (Navigation::Airway airway, Navigation::AirwaySegment airway_entry, Integer airway_entry_index, (Navigation::Waypoint|Navigation::AirwaySegment) current) -> untyped
   end
 end

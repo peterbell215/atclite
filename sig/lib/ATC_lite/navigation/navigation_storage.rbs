@@ -1,0 +1,27 @@
+module Navigation
+  # Provides generic functionality to support having a set of navigation items held in a hash that can be searched.
+  module NavigationStorage
+    def self.included: (Class base) -> untyped
+
+    # Define the class methods for NavigationStorage
+    module ClassMethods
+      def add: (Waypoint object) -> Waypoint
+
+      def lookup: (String name, ?Coordinate? near_to) -> untyped
+
+      # output
+      def all: () -> Enumerator[]
+
+      def loaded?: () -> bool
+
+      # Allows complete wiping of the storage.  Important for RSpec tests, where loading the Intersections consumes
+      # significant memory.
+      def clear_data: () -> void
+    end
+  end
+
+  # If we look up a navigation reference using name only, and multiple references share the same name.
+  class AmbiguousReferenceError < StandardError
+    def initialize: (String name) -> void
+  end
+end

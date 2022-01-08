@@ -1,35 +1,33 @@
-module ATCLite
+# Class to represent an altitude.  Is aware of the difference between ft and FL.
+class Altitude
   include Comparable
 
-  # Class to represent an altitude.  Is aware of the difference between ft and FL.
-  class Altitude
-    def self.transition_altitude=: (Integer arg) -> void
+  def self.transition_altitude=: (Integer arg) -> void
 
-    def self.transition_altitude: () -> Integer
+  def self.transition_altitude: () -> Integer
 
-    def initialize: ((String | Integer | Altitude) altitude) -> void
+  def initialize: ((String | Integer | Altitude) altitude) -> void
 
-    def ==: ((Altitude|Integer) operand) -> bool
+  def ==: ((Altitude|Integer) operand) -> bool
 
-    # Provides a mechanism to compare altitude to other scalars by converting both to integer and comparing.
-    def <=>: (Altitude|Integer) -> Integer
+  # Provides a mechanism to compare altitude to other scalars by converting both to integer and comparing.
+  def <=>: (Altitude|Integer) -> Integer
 
-    # Returns the altitude in feet.
-    def ft: () -> Integer
+  # Returns the altitude in feet.
+  def ft: () -> Integer
 
-    alias to_i ft
+  alias to_i ft
 
-    def fl: () -> Integer
+  def fl: () -> Integer
 
-    def cooerce: (untyped value) -> ::Array[untyped]
-  end
+  def cooerce: (untyped value) -> ::Array[untyped]
+end
 
-  class AltitudeParameterError < Error
-  end
+class AltitudeParameterError < Error
+end
 
-  # Add the ability to write:
-  # * 1000.ft to create an Altitude object at 1000 ft
-  class ::Integer
-    def ft: () -> Altitude
-  end
+# Add the ability to write:
+# * 1000.ft to create an Altitude object at 1000 ft
+class ::Integer
+  def ft: () -> Altitude
 end

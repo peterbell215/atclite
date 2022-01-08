@@ -1,0 +1,21 @@
+module Navigation
+  # Airway describes the waypoints on an airway.
+  class Airway < Array
+    attr_reader name: String
+
+    def self.find_or_create: (String name) -> Airway
+
+    def self.lookup: (String name) -> Airway
+
+    def self.clear_data: () -> void
+
+    # output
+    def self.all: () -> Enumerator[untyped, untyped]
+
+    def self.loaded?: () -> bool
+
+    # Constructor for the Airway object
+    # rubocop: disable Lint/MissingSuper
+    def initialize: (String name) -> void
+  end
+end

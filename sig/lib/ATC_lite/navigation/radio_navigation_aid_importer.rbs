@@ -1,13 +1,11 @@
-module ATCLite
-  module Navigation
-    class RadioNavigationAidImporter
-      include NavigationDataImporter
+module Navigation
+  class RadioNavigationAidImporter
+    include NavigationDataImporter
 
-      NAVTYPE: Regexp
+    NAVTYPE: Regexp
 
-      FIELDS: [ [Symbol, Regexp] ]
+    FIELDS: [ [Symbol, Regexp] ]
 
-      def self.parse_navs_file: (?::String name) -> void
-    end
+    def self.parse_navs_file: (?::String name) -> void
   end
 end

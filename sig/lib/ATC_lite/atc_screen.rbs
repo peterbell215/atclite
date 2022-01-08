@@ -1,15 +1,13 @@
-module ATCLite
-  class ATCScreen
-    include Singleton
+class ATCScreen
+  include Singleton
 
-    def initialize: () -> void
+  def initialize: () -> void
 
-    def start: () -> void
+  def start: () -> void
 
-    def map_x: (Float x) -> Float
+  def map_x: (Float x) -> Float
 
-    def map_y: (Float y) -> Float
+  def map_y: (Float y) -> Float
 
-    def add_aircraft: (Aircraft aircraft) -> void
-  end
+  def add_aircraft: (Aircraft aircraft) -> void
 end
