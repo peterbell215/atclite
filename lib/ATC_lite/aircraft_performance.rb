@@ -28,17 +28,29 @@ class AircraftPerformance
     @cruise_index = @performance_data.find_index{ |performance_entry| performance_entry.phase == :cruise }
   end
 
-  def roc(altitude, target_altitude)
-    case altitude <=> target_altitude
+  def roc(aircraft)
+    case aircraft.altitude <=> aircraft.target_altitude
     when 0 then 0
-    when -1 then find_entry(0..@cruise_index-1, altitude).roc
-    when +1 then find_entry((@cruise_index+1).., altitude).roc
+    when -1 then search_subrange(0..@cruise_index-1, aircraft.altitude).roc
+    when +1 then search_subrange((@cruise_index+1).., aircraft.altitude).roc
     end
+  end
+
+  def target_speed(altitude, target_altitude)
+    return @performance_data[@cruise_index].speed if in_cruise?(altitude, target_altitude)
+  end
+
+  def in_cruise?(altitude, target_altitude)
+    altitude == target_altitude && altitude > @performance_data[@cruise_index-1]
   end
 
   private
 
-  def find_entry(range, altitude)
+  def speed_at_level_flight
+    return @performance_data[@cruise_index].speed if in_cruise?(altitude, target_altitude)
+  end
+
+  def search_subrange(range, altitude)
     @performance_data[range].find { |performance_entry| performance_entry.altitude_in_range(altitude) }
   end
 
