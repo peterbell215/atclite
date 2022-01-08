@@ -28,20 +28,34 @@ class AircraftPerformance
     @cruise_index = @performance_data.find_index{ |performance_entry| performance_entry.phase == :cruise }
   end
 
-  def roc(aircraft)
-    case aircraft.altitude <=> aircraft.target_altitude
-    when 0 then 0
-    when -1 then search_subrange(0..@cruise_index-1, aircraft.altitude).roc
-    when +1 then search_subrange((@cruise_index+1).., aircraft.altitude).roc
+  def performance_data(aircraft)
+    data = case aircraft.altitude <=> aircraft.target_altitude
+           when 0 then level_flight(aircraft)
+           when -1 then search_subrange(0..@cruise_index - 1, aircraft.altitude)
+           when +1 then search_subrange((@cruise_index + 1).., aircraft.altitude)
+           end
+
+    update_phase?(aircraft, data)
+  end
+
+  def level_flight(aircraft)
+    data = if aircraft.altitude > @performance_data[@cruise_index - 1].lower_altitude
+             @performance_data[@cruise_index]
+           elsif aircraft.phase.in? [:initial_climb, :climb]
+             search_subrange(0..@cruise_index - 1, aircraft.altitude).tap { |data| data.roc = 0 }
+           else
+             search_subrange((@cruise_index + 1).., aircraft.altitude).tap { |data| data.roc = 0 }
+           end
+
+    update_phase?(aircraft, data)
+  end
+
+  def update_phase?(aircraft, data)
+    if aircraft.phase.in?([:descent, :approach]) && data.phase.in?([:initial_climb, :climb, :cruise])
+      data.dup.tap { |entry| entry.phase = aircraft.phase }
+    else
+      data
     end
-  end
-
-  def target_speed(altitude, target_altitude)
-    return @performance_data[@cruise_index].speed if in_cruise?(altitude, target_altitude)
-  end
-
-  def in_cruise?(altitude, target_altitude)
-    altitude == target_altitude && altitude > @performance_data[@cruise_index-1]
   end
 
   private

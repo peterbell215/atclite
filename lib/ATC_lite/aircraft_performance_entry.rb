@@ -21,18 +21,26 @@ class AircraftPerformanceEntry
     missing_attributes.empty? || raise(MissingAttributesError.new(performance_data[:phase], missing_attributes))
   end
 
-  attr_accessor :phase, :ias, :roc
+  attr_accessor :phase, :roc
 
-  attr_reader :lower_altitude, :upper_altitude
+  attr_reader :lower_altitude, :upper_altitude, :ias
 
   def initialize(**performance_data)
     @phase = performance_data[:phase]
 
     AircraftPerformanceEntry.check_validity_of_performance_data(performance_data)
-    @ias = performance_data[:ias]
+    self.ias = performance_data[:ias]
     @roc = performance_data[:roc] || 0
     self.lower_altitude = performance_data[:lower_altitude] || 0.ft
     self.upper_altitude = performance_data[:upper_altitude] || 100_000.ft
+  end
+
+  def ias=(value)
+    @ias = if value.is_a?(Float) && value.between?(0.0, 1.0)
+             Speed.new(mach: value)
+           else
+             Speed.new(value)
+           end
   end
 
   def lower_altitude=(value)
@@ -55,6 +63,6 @@ class InvalidPhaseError < StandardError; end
 # Error raised if an attribute required for a specific phase is missing
 class MissingAttributesError < StandardError
   def initialize(phase, missing_attributes)
-    super("phase #{@phaser} is missing attributes #{missing_attributes}")
+    super("phase #{phase} is missing attributes #{missing_attributes}")
   end
 end

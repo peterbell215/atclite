@@ -11,7 +11,7 @@ RSpec.describe AircraftPerformanceEntry do
       end
 
       specify { expect(aircraft_performance_entry.phase).to eq(:initial_climb) }
-      specify { expect(aircraft_performance_entry.ias).to eq(250) }
+      specify { expect(aircraft_performance_entry.ias).to eq(250.knots) }
       specify { expect(aircraft_performance_entry.roc).to eq(1000) }
       specify { expect(aircraft_performance_entry.lower_altitude).to eq(Altitude.new(4000)) }
     end

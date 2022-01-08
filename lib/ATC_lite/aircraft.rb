@@ -6,7 +6,7 @@ class Aircraft
   TURN_RATE_PER_SECOND = 2
 
   attr_reader :callsign, :type, :speed, :heading, :altitude, :target_altitude, :position, :roc, :performance_data,
-              :flightplan
+              :flightplan, :phase
   attr_accessor :target_heading
 
   # Build an aircraft with defined key parameters.  Once created, only aircraft object can update itself.
@@ -18,6 +18,7 @@ class Aircraft
       self.speed = speed
       self.heading = heading.is_a?(Angle) ? heading : heading.degrees
       self.altitude = altitude
+      self.phase = :climb
     end
     aircraft
   end
@@ -33,6 +34,7 @@ class Aircraft
       self.speed = 0.knots
       self.heading = self.position.initial_heading_to flightplan.current
       self.altitude = departure_airport.altitude
+      self.phase = :takeoff
     end
     aircraft
   end
@@ -72,7 +74,7 @@ class Aircraft
 
   private
 
-  attr_writer :speed, :heading
+  attr_writer :speed, :heading, :phase
 
   def position=(value)
     @position = value.dup
