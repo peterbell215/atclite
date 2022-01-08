@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 # Class to represent an speed.  Speeds can either be defined in knots or mach.  The object is aware how the speed
 # was set, and automatically manages conversion if speed is requested in the alternative unit.
 class Speed
@@ -29,13 +28,26 @@ class Speed
     @knots || @mach * mach_1_for_altitude_and_temperature(altitude, temperature)
   end
 
+  # Defines how the speed was originally defined (knots or mach)
+  def set_in
+    @mach && :mach || :knots
+  end
+
+  # Comparison operator for speed.  If the two speeds have been defined differently, we cannot compare without
+  # having calculated the other taking altitude and temperature into account.  Under these circumstances, a
+  # SpeedCannotCompareError is thrown.
+  def ==(other)
+    raise SpeedCannotCompareError if self.set_in != other.set_in
+
+    self.set_in == :knots ? @knots == other.knots : @mach == other.mach
+  end
+
   private
 
   # Table the provides the speed of sound at altitudes 5000ft apart.  Above FL 350, speed of sound is close to
   # constant
   #
   # rubocop: disable Layout/ExtraSpacing - array laid out for easier reading
-  # rubocop: disable Layout/SpaceInsideArrayLiteralBrackets
   SPEED_OF_SOUND_BY_FL = [
     #    alt, Celsius, knots
     { altitude:   0.fl, celsius:  15.0, knots: 661.0 },
@@ -48,7 +60,6 @@ class Speed
     { altitude: 350.fl, celsius: -56.0, knots: 574.0 }
   ].freeze
   # rubocop: enable Layout/ExtraSpacing
-  # rubocop: enable Layout/SpaceInsideArrayLiteralBrackets
 
   # Private method that interpolates the speed of sound for a give altitude.
   # @todo: needs to add adjusting for temperature
@@ -61,6 +72,13 @@ class Speed
     end
 
     SPEED_OF_SOUND_BY_FL.last[:knots]
+  end
+end
+
+# Error class for when two speeds, one in knots the other in mach, are being compared.
+class SpeedCannotCompareError < StandardError
+  def initialize(msg = 'Cannot compare two speeds were one defined in Knots and the other in Mach')
+    super
   end
 end
 

@@ -17,6 +17,15 @@ RSpec.describe Speed do
     end
   end
 
+  describe '#==' do
+    context 'when both are set in knots' do
+      specify { expect(Speed.new(100)).to eq Speed.new(100) }
+      specify { expect(Speed.new(100)).not_to eq Speed.new(160) }
+      specify { expect(Speed.new(mach: 0.8)).to eq Speed.new(mach:0.8) }
+      specify { expect(Speed.new(mach: 0.8)).not_to eq Speed.new(mach:0.9) }
+      specify { expect { Speed.new(100) == Speed.new(mach:0.8) }.to raise_error SpeedCannotCompareError }
+    end
+  end
   describe 'conversions' do
     context 'when speed is set in knots' do
       subject(:airspeed) { described_class.new(airspeed_in_knots) }
