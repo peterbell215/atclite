@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   spec.add_dependency 'activesupport'
   spec.add_dependency 'ruby2d'
+  spec.add_dependency 'gtk3'
 
   spec.add_development_dependency 'bundler', '~> 2.2'
   spec.add_development_dependency 'rake'
