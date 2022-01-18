@@ -54,21 +54,6 @@ class ATCScreen
 
       aircraft_renderer.draw(cr, x, y)
     end
-
-
-
-    # cr.arc(330, 60, 40, 0, 2.0*Math::PI);
-    # cairo_stroke_preserve(cr);
-    # cairo_fill(cr);
-
-    # cr.fill
-    # cr.destroy
-    # @radar_screen.queue_draw_area(x - 3, y - 3, 6, 6)
-  end
-
-  def map_to_screen(cr)
-
-
   end
 
   # Maps a x position in the simulator space to a x coordinate on the ATC screen based on the ATC screen centre and
