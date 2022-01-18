@@ -19,11 +19,29 @@ module ATCLite
   class Error < StandardError; end
 
   def self.run
-    # aircraft = Aircraft.new(x: 100, y: 100)
+    load_data
 
-    # ATCScreen.instance.add_aircraft(aircraft)
+    aircraft = Aircraft.build(callsign: 'BA001', type: 'A19N',
+                              speed: 3600.0, heading: 90, altitude: 100.fl,
+                              position: Coordinate.new(latitude: 51.2, longitude: 0.3))
+
+    ATCScreen.instance.add_aircraft(aircraft)
 
     ATCScreen.instance.start
+
+    loop do
+      sleep 1
+
+      ATCScreen.instance.refresh
+    end
+  end
+
+  def self.load_data
+    AircraftPerformance.load_file('../data/aircraft_performance.yaml')
+    Navigation::RadioNavigationAidIO.parse_navs_file('../data/navs-uk.txt')
+    Navigation::IntersectionIO.parse_ints_file('../data/ints-uk.txt')
+    Navigation::AirwayIO.parse_awys_file('../data/awys-uk.txt')
+    Navigation::AirportIO.parse_apts_file('../data/apts-uk.txt')
   end
 end
 

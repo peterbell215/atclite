@@ -13,7 +13,7 @@ class AircraftPerformance
   end
 
   # Loads the performance data from the YAML file.
-  def self.load_file(filename: 'data/aircraft_performance.yaml')
+  def self.load_file(filename = 'data/aircraft_performance.yaml')
     loaded_file = YAML.load_file(filename)
 
     loaded_file.each_pair do |aircraft_type, overall_performance_data|

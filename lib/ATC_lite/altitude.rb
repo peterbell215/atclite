@@ -58,7 +58,7 @@ class Altitude
 end
 
 # Error that is raised if a poorly formatted altitude string is passed to the initializer.
-class AltitudeParameterError < Error
+class AltitudeParameterError < StandardError
   attr_reader :altitude_string
 
   def initialize(altitude_string)
