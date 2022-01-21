@@ -33,18 +33,22 @@ class ATCScreen
     @radar_screen = builder.get_object("radar_screen")
     @radar_screen.signal_connect("draw") { |_widget, cr| draw_radar_screen(cr) }
 
+    GLib::Timeout.add(1000){ refresh }
+
     Gtk.main
   end
 
   def refresh
+    @aircraft_renderers.each do |aircraft_renderer|
+      aircraft_renderer.aircraft.update_position
+    end
+
     @radar_screen.queue_draw
   end
 
   def draw_radar_screen(cr)
     puts 'draw_radar_screen'
 
-    # cr = Cairo::Context.new(@surface)
-    # cr.rectangle(x - 3, y - 3, 6, 6)
     cr.set_source_rgb(0.0, 0.2, 0.0)
     cr.paint
 

@@ -22,18 +22,12 @@ module ATCLite
     load_data
 
     aircraft = Aircraft.build(callsign: 'BA001', type: 'A19N',
-                              speed: 3600.0, heading: 90, altitude: 100.fl,
+                              speed: 200.0, heading: 0, altitude: 100.fl,
                               position: Coordinate.new(latitude: 51.2, longitude: 0.3))
 
     ATCScreen.instance.add_aircraft(aircraft)
 
     ATCScreen.instance.start
-
-    loop do
-      sleep 1
-
-      ATCScreen.instance.refresh
-    end
   end
 
   def self.load_data
