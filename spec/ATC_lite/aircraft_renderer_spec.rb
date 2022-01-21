@@ -8,14 +8,14 @@ RSpec.describe AircraftRenderer do
   describe '#draw' do
     subject(:aircraft_renderer) { AircraftRenderer.new(aircraft) }
 
-    let(:aircraft) { instance_double('Aircraft', callsign: 'BA001') }
+    let(:aircraft) { instance_double('Aircraft::Aircraft', callsign: 'BA001') }
     let(:cr) { instance_double(Cairo::Context) }
     let(:layout) { instance_double(Pango::Layout) }
     let(:font_description) { instance_double(Pango::FontDescription) }
 
     describe 'draws a box on the radar screen' do
       before do
-        allow(cr).to receive_messages(set_source_rgb: nil, set_line_width: nil, rectangle: nil, stroke: nil, move_to: nil )
+        allow(cr).to receive_messages(set_source_rgb: nil, set_line_width: nil, rectangle: nil, stroke: nil, move_to: nil)
 
         allow(cr).to receive(:create_pango_layout).and_return(layout)
         allow(cr).to receive(:show_pango_layout)

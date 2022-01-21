@@ -2,10 +2,10 @@
 
 require 'rspec'
 
-RSpec.describe AircraftPerformance do
-  subject(:aircraft_performance) { AircraftPerformance.new('A19N') }
+RSpec.describe Aircraft::AircraftPerformance do
+  subject(:aircraft_performance) { Aircraft::AircraftPerformance.new('A19N') }
 
-  before { AircraftPerformance.load_file }
+  before { Aircraft::AircraftPerformance.load_file }
 
   describe 'Initialization from file' do
     specify { expect(aircraft_performance).not_to be_nil }
@@ -23,7 +23,9 @@ RSpec.describe AircraftPerformance do
 
       context "when at #{altitude} #{context_string}" do
         let(:current_performance_data) { aircraft_performance.performance_data(aircraft) }
-        let(:aircraft) { instance_double(Aircraft, altitude: altitude, target_altitude: target_altitude, phase: :climb) }
+        let(:aircraft) do
+          instance_double(Aircraft::Aircraft, altitude: altitude, target_altitude: target_altitude, phase: :climb)
+        end
 
         specify 'for roc' do
           expect(current_performance_data.roc).to eq roc
