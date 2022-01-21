@@ -5,41 +5,28 @@ require 'rspec'
 RSpec.describe AircraftRenderer do
   let(:atc_screen) { ATCScreen.instance }
 
-  describe '#update' do
+  describe '#draw' do
     subject(:aircraft_renderer) { AircraftRenderer.new(aircraft) }
 
-    let(:aircraft) { instance_double('ATCLite::Aircraft', x: atc_screen.centre_x, y: atc_screen.centre_y) }
-    let(:line_instances) { Array.new(4) { line_double } }
+    let(:aircraft) { instance_double('Aircraft', callsign: 'BA001') }
+    let(:cr) { instance_double(Cairo::Context) }
+    let(:layout) { instance_double(Pango::Layout) }
+    let(:font_description) { instance_double(Pango::FontDescription) }
 
-    let(:line_class) { class_double(Line).as_stubbed_const }
+    describe 'draws a box on the radar screen' do
+      before do
+        allow(cr).to receive_messages(set_source_rgb: nil, set_line_width: nil, rectangle: nil, stroke: nil, move_to: nil )
 
-    before { allow(line_class).to receive(:new).and_return(*line_instances) }
+        allow(cr).to receive(:create_pango_layout).and_return(layout)
+        allow(cr).to receive(:show_pango_layout)
+        allow(layout).to receive_messages(:text= => true, :font_description= => true)
 
-    describe 'transforms the aircraft position to a screen position' do
-      let(:box) { { left: Window.width / 2 - 5, right: Window.width / 2 + 5, top: Window.height / 2 - 5, bottom: Window.height / 2 + 5 } }
+        aircraft_renderer.draw(cr, 200, 200)
+      end
 
-      before { aircraft_renderer.update }
-
-      specify { line_parameters_correct?(line_instances[0], x1: box[:left], y1: box[:top], x2: box[:right], y2: box[:top]) }
-      specify { line_parameters_correct?(line_instances[1], x1: box[:right], y1: box[:top], x2: box[:right], y2: box[:bottom]) }
-      specify { line_parameters_correct?(line_instances[2], x1: box[:right], y1: box[:bottom], x2: box[:left], y2: box[:bottom]) }
-      specify { line_parameters_correct?(line_instances[3], x1: box[:left], y1: box[:bottom], x2: box[:left], y2: box[:top]) }
-    end
-
-    def line_double
-      line_instance = instance_double(Line)
-      allow(line_instance).to receive(:x1=)
-      allow(line_instance).to receive(:y1=)
-      allow(line_instance).to receive(:x2=)
-      allow(line_instance).to receive(:y2=)
-      line_instance
-    end
-
-    def line_parameters_correct?(line_instance, x1:, y1:, x2:, y2:)
-      expect(line_instance).to have_received(:x1=).with(x1)
-      expect(line_instance).to have_received(:y1=).with(y1)
-      expect(line_instance).to have_received(:x2=).with(x2)
-      expect(line_instance).to have_received(:y2=).with(y2)
+      specify { expect(cr).to have_received(:rectangle).with(195, 195, 10, 10) }
+      specify { expect(cr).to have_received(:move_to).with(215, 190) }
+      specify { expect(layout).to have_received(:text=).with('BA001') }
     end
   end
 end
