@@ -18,7 +18,7 @@ class ATCScreen
     @centre = Coordinate.new(longitude: 0.0, latitude: 52.0)
   end
 
-  attr_reader :centre, :scale
+  attr_reader :centre, :scale, :radar_screen
 
   def start
     builder = Gtk::Builder.new(file: UI_FILE)
@@ -64,13 +64,13 @@ class ATCScreen
   # Maps a x position in the simulator space to a x coordinate on the ATC screen based on the ATC screen centre and
   # scale.
   def map_x(x)
-    @radar_screen.allocated_width / 2 + x * @scale
+    radar_screen.allocated_width / 2 + x * scale
   end
 
   # Maps a y position in the simulator space to a y coordinate on the ATC screen based on the ATC screen centre and
   # scale.
   def map_y(y)
-     @radar_screen.allocated_height / 2 - y * @scale
+     radar_screen.allocated_height / 2 - y * scale
   end
 
   def add_aircraft(aircraft)
