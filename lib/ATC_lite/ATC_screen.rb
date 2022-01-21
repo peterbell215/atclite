@@ -56,6 +56,7 @@ class ATCScreen
       x = map_x(centre.delta_x(aircraft_renderer.position))
       y = map_y(centre.delta_y(aircraft_renderer.position))
 
+      puts "draw_radar_screen: #{aircraft_renderer.position} -> (#{x}, #{y})"
       aircraft_renderer.draw(cr, x, y)
     end
   end
@@ -63,13 +64,13 @@ class ATCScreen
   # Maps a x position in the simulator space to a x coordinate on the ATC screen based on the ATC screen centre and
   # scale.
   def map_x(x)
-    x * @scale + @radar_screen.allocated_width / 2
+    @radar_screen.allocated_width / 2 + x * @scale
   end
 
   # Maps a y position in the simulator space to a y coordinate on the ATC screen based on the ATC screen centre and
   # scale.
   def map_y(y)
-    y * @scale + @radar_screen.allocated_height / 2
+     @radar_screen.allocated_height / 2 - y * @scale
   end
 
   def add_aircraft(aircraft)
