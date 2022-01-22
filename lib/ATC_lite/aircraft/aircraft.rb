@@ -52,6 +52,10 @@ module Aircraft
       @target_altitude = Altitude.new(value)
     end
 
+    def update
+      update_position
+    end
+
     # standard aircraft turn is 180 degrees per min, or 2 degrees per second
     def update_heading
       @monitor.synchronize do

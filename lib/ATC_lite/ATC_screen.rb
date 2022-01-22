@@ -24,26 +24,18 @@ class ATCScreen
     builder = Gtk::Builder.new(file: UI_FILE)
 
     # Connect signal handlers to the constructed widgets
-    window = builder.get_object("window")
-    window.signal_connect("destroy") { Gtk.main_quit }
+    window = builder.get_object('window')
+    window.signal_connect('destroy') { Gtk.main_quit }
 
-    quit_btn = builder.get_object("quit_btn")
-    quit_btn.signal_connect("clicked") { Gtk.main_quit }
+    quit_btn = builder.get_object('quit_btn')
+    quit_btn.signal_connect('clicked') { Gtk.main_quit }
 
-    @radar_screen = builder.get_object("radar_screen")
-    @radar_screen.signal_connect("draw") { |_widget, cr| draw_radar_screen(cr) }
+    @radar_screen = builder.get_object('radar_screen')
+    @radar_screen.signal_connect('draw') { |_widget, cr| draw_radar_screen(cr) }
 
-    GLib::Timeout.add(1000){ refresh }
+    GLib::Timeout.add(12000){ @radar_screen.queue_draw }
 
     Gtk.main
-  end
-
-  def refresh
-    @aircraft_renderers.each do |aircraft_renderer|
-      aircraft_renderer.aircraft.update_position
-    end
-
-    @radar_screen.queue_draw
   end
 
   def draw_radar_screen(cr)

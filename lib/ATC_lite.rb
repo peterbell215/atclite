@@ -22,8 +22,10 @@ module ATCLite
                                         speed: 200.0, heading: 0, altitude: 100.fl,
                                         position: Coordinate.new(latitude: 51.2, longitude: 0.3))
 
-    ATCScreen.instance.add_aircraft(aircraft)
+    Aircraft::AircraftStore.instance.add_aircraft(aircraft)
+    Aircraft::AircraftStore.instance.start
 
+    ATCScreen.instance.add_aircraft(aircraft)
     ATCScreen.instance.start
   end
 
