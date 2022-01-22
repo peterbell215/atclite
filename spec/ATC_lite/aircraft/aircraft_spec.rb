@@ -72,6 +72,34 @@ RSpec.describe Aircraft::Aircraft do
     it_behaves_like 'updated position based on heading', 270.0.degrees, 0.0, -1.0
   end
 
+  describe '#position_history' do
+    subject(:aircraft) do
+      Aircraft::Aircraft.build(callsign: 'BA001', type: 'A19N',
+                               speed: 3600.0, heading: 90.0.degrees, altitude: 330.fl, position: position)
+    end
+
+    let(:position) { Coordinate.new(latitude: 0.0, longitude: 0.0) }
+
+    it 'has one element in the history on initialization' do
+      expect(aircraft.position_history.size).to eq 1
+      expect(aircraft.position_history.first).to eq position
+    end
+
+    it 'has three elements in the history after three updates' do
+      2.times  { aircraft.update_position }
+      expect(aircraft.position_history.size).to eq 3
+      expect(aircraft.position_history.first).to eq position
+      expect(aircraft.position_history.last).to eq aircraft.position
+    end
+
+    it 'drops positions from the history once four updates exist' do
+      6.times  { aircraft.update_position }
+      expect(aircraft.position_history.size).to eq 4
+      expect(aircraft.position_history.first).not_to eq position
+      expect(aircraft.position_history.last).to eq aircraft.position
+    end
+  end
+
   describe '#update_heading' do
     shared_examples_for 'updated heading' do |current_heading, target_heading, new_heading|
       subject(:aircraft) do

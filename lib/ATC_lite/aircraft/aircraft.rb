@@ -7,7 +7,7 @@ module Aircraft
     TURN_RATE_PER_SECOND = 2
 
     attr_reader :callsign, :type, :speed, :heading, :altitude, :target_altitude, :position, :roc, :performance_data,
-                :flightplan, :phase
+                :flightplan, :phase, :position_history
     attr_accessor :target_heading
 
     # Build an aircraft with defined key parameters.  Once created, only aircraft object can update itself.
@@ -31,7 +31,7 @@ module Aircraft
       departure_airport = flightplan.departure_airport
 
       aircraft.instance_eval do
-        self.position = departure_airport
+        self.position = departure_airport.dup
         self.speed = 0.knots
         self.heading = self.position.initial_heading_to flightplan.current
         self.altitude = departure_airport.altitude
@@ -45,9 +45,11 @@ module Aircraft
       @callsign = callsign
       @type = type
       @performance_data = AircraftPerformance.new(type)
+      @position_history = []
       @monitor = Monitor.new
     end
 
+    # Set the target altitude
     def target_altitude=(value)
       @target_altitude = Altitude.new(value)
     end
@@ -56,7 +58,7 @@ module Aircraft
       update_position
     end
 
-    # standard aircraft turn is 180 degrees per min, or 2 degrees per second
+    # Standard aircraft turn is 180 degrees per min, or 2 degrees per second
     def update_heading
       @monitor.synchronize do
         return if @target_heading == @heading
@@ -78,7 +80,7 @@ module Aircraft
       @monitor.synchronize do
         distance_covered_in_1_s = self.speed * KNOTS_TO_NM_PER_SECOND
 
-        @position.new_position!(distance: distance_covered_in_1_s, heading: heading)
+        self.position = self.position.new_position(distance: distance_covered_in_1_s, heading: heading)
       end
     end
 
@@ -87,7 +89,10 @@ module Aircraft
     attr_writer :speed, :heading, :phase
 
     def position=(value)
-      @position = value.dup
+      @position = value
+      @position_history.shift 1 if @position_history.size >= 4
+      @position_history.push @position
+      @position
     end
 
     # Altitude setter that also converts to the Altitude class if it is not.
