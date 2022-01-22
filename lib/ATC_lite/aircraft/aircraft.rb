@@ -45,6 +45,7 @@ module Aircraft
       @callsign = callsign
       @type = type
       @performance_data = AircraftPerformance.new(type)
+      @monitor = Monitor.new
     end
 
     def target_altitude=(value)
@@ -53,24 +54,28 @@ module Aircraft
 
     # standard aircraft turn is 180 degrees per min, or 2 degrees per second
     def update_heading
-      return if @target_heading == @heading
+      @monitor.synchronize do
+        return if @target_heading == @heading
 
-      delta = (@target_heading - @heading)
-      delta += 360 if delta < -180
-      delta -= 360 if delta > 180
+        delta = (@target_heading - @heading)
+        delta += 360 if delta < -180
+        delta -= 360 if delta > 180
 
-      delta = [-TURN_RATE_PER_SECOND, delta].max
-      delta = [delta, TURN_RATE_PER_SECOND].min
+        delta = [-TURN_RATE_PER_SECOND, delta].max
+        delta = [delta, TURN_RATE_PER_SECOND].min
 
-      @heading += delta
-      @heading.abs!
+        @heading += delta
+        @heading.abs!
+      end
     end
 
     # calculates, given a speed over ground, the updated position.
     def update_position
-      distance_covered_in_1_s = self.speed * KNOTS_TO_NM_PER_SECOND
+      @monitor.synchronize do
+        distance_covered_in_1_s = self.speed * KNOTS_TO_NM_PER_SECOND
 
-      @position.new_position!(distance: distance_covered_in_1_s, heading: heading)
+        @position.new_position!(distance: distance_covered_in_1_s, heading: heading)
+      end
     end
 
     private
