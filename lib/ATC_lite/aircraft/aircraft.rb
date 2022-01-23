@@ -7,7 +7,7 @@ module Aircraft
     TURN_RATE_PER_SECOND = 2
 
     attr_reader :callsign, :type, :speed, :heading, :altitude, :target_altitude, :position, :roc, :performance_data,
-                :flightplan, :phase, :position_history
+                :flightplan, :phase
     attr_accessor :target_heading
 
     # Build an aircraft with defined key parameters.  Once created, only aircraft object can update itself.
@@ -90,8 +90,6 @@ module Aircraft
 
     def position=(value)
       @position = value
-      @position_history.shift 1 if @position_history.size >= 4
-      @position_history.push @position
       @position
     end
 
