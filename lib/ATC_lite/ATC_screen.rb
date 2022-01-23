@@ -33,7 +33,7 @@ class ATCScreen
     @radar_screen = builder.get_object('radar_screen')
     @radar_screen.signal_connect('draw') { |_widget, cr| draw_radar_screen(cr) }
 
-    GLib::Timeout.add(12000){ @radar_screen.queue_draw }
+    GLib::Timeout.add(12_000){ @radar_screen.queue_draw }
 
     Gtk.main
   end
@@ -44,19 +44,24 @@ class ATCScreen
     cr.set_source_rgb(0.0, 0.2, 0.0)
     cr.paint
 
-    @aircraft_renderers.each do |aircraft_renderer|
-      x = map_x(centre.delta_x(aircraft_renderer.position))
-      y = map_y(centre.delta_y(aircraft_renderer.position))
-
-      puts "draw_radar_screen: #{aircraft_renderer.position} -> (#{x}, #{y})"
-      aircraft_renderer.draw(cr, x, y)
-    end
+    @aircraft_renderers.each { |aircraft_renderer| aircraft_renderer.draw(cr) }
   end
 
-  # Maps a x position in the simulator space to a x coordinate on the ATC screen based on the ATC screen centre and
+  # Maps a position in the simulator space to an x, y  coordinate on the ATC screen based on the ATC screen centre and
   # scale.
-  def map_x(x)
-    radar_screen.allocated_width / 2 + x * scale
+  def map(position)
+    x = radar_screen.allocated_width / 2 + centre.delta_x(position) * scale
+    y = radar_screen.allocated_height / 2 - centre.delta_y(position) * scale
+    [x, y]
+  end
+
+  def add_aircraft(aircraft)
+    @aircraft_renderers.push(AircraftRenderer.new(aircraft))
+  end
+
+  def on_screen?(position)
+    position.longitude.between?(@eastern_edge, @western_edge) &&
+      position.latitude.between?(@southern_edge, @northern_edge)
   end
 
   # Maps a y position in the simulator space to a y coordinate on the ATC screen based on the ATC screen centre and
