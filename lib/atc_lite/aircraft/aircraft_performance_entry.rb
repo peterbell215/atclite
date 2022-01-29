@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'ATC_lite/altitude'
+require 'atc_lite/altitude'
 
 module Aircraft
   # Single entry of performance data for an aircraft.  Used by AircraftPerformance

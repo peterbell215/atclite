@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe ATCLite do
+RSpec.describe AtcLite do
   it 'has a version number' do
-    expect(ATCLite::VERSION).not_to be nil
+    expect(AtcLite::VERSION).not_to be nil
   end
 end

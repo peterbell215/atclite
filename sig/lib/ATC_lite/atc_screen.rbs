@@ -1,13 +1,34 @@
+UI_FILE: untyped
+
+# Class that creates the ATC screen.
 class ATCScreen
   include Singleton
 
   def initialize: () -> void
 
+  attr_reader centre: Position
+
+  attr_reader scale: Numeric
+
+  attr_reader radar_screen: Gtk3::GtkDrawingArea
+
   def start: () -> void
 
-  def map_x: (Float x) -> Float
+  def scale=: (Numeric scale) -> void
 
-  def map_y: (Float y) -> Float
+  def draw_radar_screen: (Cairo cr) -> untyped
 
-  def add_aircraft: (Aircraft aircraft) -> void
+  def navigation_aids: () -> Array[Navigation::RadioNavigationAid]
+
+  # Maps a position in the simulator space to an x, y  coordinate on the ATC screen based on the ATC screen centre and
+  # scale.
+  def map: (untyped position) -> [Numeric, Numeric]
+
+  def add_aircraft: (untyped aircraft) -> void
+
+  def on_screen?: (Position position) -> bool
+
+  private
+
+  def bounding_box: () -> bool
 end

@@ -6,15 +6,14 @@ PATH
 PATH
   remote: .
   specs:
-    ATCLite (0.0.0)
+    AtcLite (0.0.0)
       activesupport
       gtk3
-      ruby2d
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.0)
+    activesupport (7.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -95,7 +94,6 @@ GEM
     rubocop-rspec (2.6.0)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
-    ruby2d (0.11.1)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
@@ -104,7 +102,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  ATCLite!
+  AtcLite!
   bundler (~> 2.2)
   great-circle!
   rake

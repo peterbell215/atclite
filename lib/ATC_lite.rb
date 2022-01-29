@@ -2,19 +2,21 @@
 
 require 'active_support'
 require 'great-circle'
+require 'gtk3'
 
-require_relative 'ATC_lite/version'
-require_relative 'ATC_lite/ATC_screen'
-require_relative 'ATC_lite/navigation'
-require_relative 'ATC_lite/flightplan'
-require_relative 'ATC_lite/aircraft'
+require_relative 'atc_lite/version'
+require_relative 'atc_lite/atc_screen'
+require_relative 'atc_lite/navigation'
+require_relative 'atc_lite/flightplan'
+require_relative 'atc_lite/aircraft'
 
-require_relative 'ATC_lite/aircraft_renderer'
-require_relative 'ATC_lite/altitude'
-require_relative 'ATC_lite/speed'
+require_relative 'atc_lite/aircraft_renderer'
+require_relative 'atc_lite/navigation_aid_renderer'
+require_relative 'atc_lite/altitude'
+require_relative 'atc_lite/speed'
 
 # Module to hold the application
-module ATCLite
+module AtcLite
   def self.run
     load_data
 
@@ -25,8 +27,8 @@ module ATCLite
     Aircraft::AircraftStore.instance.add_aircraft(aircraft)
     Aircraft::AircraftStore.instance.start
 
-    ATCScreen.instance.add_aircraft(aircraft)
-    ATCScreen.instance.start
+    AtcScreen.instance.add_aircraft(aircraft)
+    AtcScreen.instance.start
   end
 
   def self.load_data

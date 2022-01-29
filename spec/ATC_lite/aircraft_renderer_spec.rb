@@ -3,7 +3,7 @@
 require 'rspec'
 
 RSpec.describe AircraftRenderer do
-  let(:atc_screen) { ATCScreen.instance }
+  let(:atc_screen) { AtcScreen.instance }
   let(:radar_screen) { instance_double(Gtk::DrawingArea, allocated_height: 400, allocated_width: 300) }
 
   before do

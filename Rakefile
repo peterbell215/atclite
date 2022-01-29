@@ -29,14 +29,14 @@ namespace :test_data do
 
   desc 'Extract a subset of airports covering UK airspace'
   task :apts do
-    ATCLite::Navigation::AirportIO.parse_apts_file unless ATCLite::Navigation::Airport.loaded?
+    AtcLite::Navigation::AirportIO.parse_apts_file unless AtcLite::Navigation::Airport.loaded?
 
     file = File.open('data/apts-uk.txt', 'w')
 
-    ATCLite::Navigation::Airport.all.each do |airport|
+    AtcLite::Navigation::Airport.all.each do |airport|
       next if airport.name !~ /^EG[A-Z]{2}/ && !in_uk_airspace?(airport)
 
-      file.puts ATCLite::Navigation::AirportIO.output(airport, [5, 25, 6, 12, 12, 0])
+      file.puts AtcLite::Navigation::AirportIO.output(airport, [5, 25, 6, 12, 12, 0])
     rescue StandardError
       warn("Standard error caught outputing airport #{airport.name}")
       raise
@@ -45,14 +45,14 @@ namespace :test_data do
 
   desc 'Extract a subset of navigation aids close to UK airspace'
   task :navs do
-    ATCLite::Navigation::RadioNavigationAidIO.parse_navs_file unless ATCLite::Navigation::Intersection.loaded?
+    AtcLite::Navigation::RadioNavigationAidIO.parse_navs_file unless AtcLite::Navigation::Intersection.loaded?
 
     file = File.open('data/navs-uk.txt', 'w')
 
-    ATCLite::Navigation::RadioNavigationAid.all.each do |navigation_aid|
+    AtcLite::Navigation::RadioNavigationAid.all.each do |navigation_aid|
       next unless in_uk_airspace?(navigation_aid)
 
-      file.puts ATCLite::Navigation::RadioNavigationAidIO.output(navigation_aid, [10, 40, 13, 13, 4, 7, 0])
+      file.puts AtcLite::Navigation::RadioNavigationAidIO.output(navigation_aid, [10, 40, 13, 13, 4, 7, 0])
     rescue StandardError
       warn("Standard error caught outputing navigation aid #{navigation_aid.name}")
       raise
@@ -61,14 +61,14 @@ namespace :test_data do
 
   desc 'Extract a subset of intersections close to UK airspace'
   task :intersections do
-    ATCLite::Navigation::IntersectionIO.parse_ints_file unless ATCLite::Navigation::Intersection.loaded?
+    AtcLite::Navigation::IntersectionIO.parse_ints_file unless AtcLite::Navigation::Intersection.loaded?
 
     file = File.open('data/ints-uk.txt', 'w')
 
-    ATCLite::Navigation::Intersection.all.each do |intersection|
+    AtcLite::Navigation::Intersection.all.each do |intersection|
       next unless in_uk_airspace?(intersection)
 
-      file.puts ATCLite::Navigation::IntersectionIO.output(intersection, [10, 26, 13, 13, 7, 0])
+      file.puts AtcLite::Navigation::IntersectionIO.output(intersection, [10, 26, 13, 13, 7, 0])
     rescue StandardError
       warn("Standard error caught outputing intersection #{intersection.name}")
       raise
@@ -77,16 +77,16 @@ namespace :test_data do
 
   desc 'Extract a subset of airways that intersect UK airspace'
   task :airways do
-    ATCLite::Navigation::RadioNavigationAidIO.parse_navs_file unless ATCLite::Navigation::RadioNavigationAid.loaded?
-    ATCLite::Navigation::IntersectionIO.parse_ints_file unless ATCLite::Navigation::Intersection.loaded?
-    ATCLite::Navigation::AirwayIO.parse_awys_file unless ATCLite::Navigation::Airway.loaded?
+    AtcLite::Navigation::RadioNavigationAidIO.parse_navs_file unless AtcLite::Navigation::RadioNavigationAid.loaded?
+    AtcLite::Navigation::IntersectionIO.parse_ints_file unless AtcLite::Navigation::Intersection.loaded?
+    AtcLite::Navigation::AirwayIO.parse_awys_file unless AtcLite::Navigation::Airway.loaded?
 
     file = File.open('data/awys-uk.txt', 'w')
 
-    ATCLite::Navigation::Airway.all.each do |airway|
+    AtcLite::Navigation::Airway.all.each do |airway|
       next unless airway.all? { |waypoint| in_uk_airspace?(waypoint) }
 
-      file.puts ATCLite::Navigation::AirwayIO.output_airway(airway, [8, 5, 20, 14, 14, 0])
+      file.puts AtcLite::Navigation::AirwayIO.output_airway(airway, [8, 5, 20, 14, 14, 0])
     rescue StandardError
       warn("Standard error caught outputing airway #{airway.name}")
       raise

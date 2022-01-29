@@ -38,7 +38,7 @@
         </excluded>
       </library>
     </orderEntry>
-    <orderEntry type="library" scope="PROVIDED" name="activesupport (v7.0.0, RVM: ruby-3.0.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activesupport (v7.0.1, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ast (v2.4.2, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="atk (v3.4.9, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.2.22, RVM: ruby-3.0.2) [gem]" level="application" />
@@ -74,7 +74,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.15.0, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rspec (v2.6.0, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.11.0, RVM: ruby-3.0.2) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ruby2d (v0.11.1, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.4, RVM: ruby-3.0.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v2.1.0, RVM: ruby-3.0.2) [gem]" level="application" />
   </component>

@@ -90,7 +90,6 @@ module Aircraft
 
     def position=(value)
       @position = value
-      @position
     end
 
     # Altitude setter that also converts to the Altitude class if it is not.

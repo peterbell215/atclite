@@ -11,23 +11,23 @@ class AircraftRenderer
   FONT_DESCRIPTION = Pango::FontDescription.new('Monospace 12').freeze
 
   def initialize(aircraft)
-    @atc_screen = ATCScreen.instance
+    @atc_screen = AtcScreen.instance
     @aircraft = aircraft
     @position_history = []
   end
 
-  def draw(cr)
+  def draw(context)
     save_position
 
     x = y = 0
 
     position_history.each_with_index do |pos, index|
-      x, y = ATCScreen.instance.map(pos)
-      draw_box(cr, x, y, index)
+      x, y = AtcScreen.instance.map(pos)
+      draw_box(context, x, y, index)
       puts "draw_radar_screen: #{position}[#{index}] -> (#{x}, #{y})"
     end
 
-    draw_text(cr, x, y)
+    draw_text(context, x, y)
   end
 
   private
@@ -37,19 +37,21 @@ class AircraftRenderer
     @position_history.push aircraft.position.dup
   end
 
-  def draw_box(cr, x, y, index)
+  # rubocop: disable Naming/MethodParameterName x, y are the obvious parameter names
+  def draw_box(context, x, y, index)
     grey_scale = 0.2 * (index + 1)
-    cr.set_source_rgb(grey_scale, grey_scale, grey_scale)
-    cr.set_line_width(1)
-    cr.rectangle(x - 5, y - 5, 10, 10)
-    cr.stroke
+    context.set_source_rgb(grey_scale, grey_scale, grey_scale)
+    context.set_line_width(1)
+    context.rectangle(x - 5, y - 5, 10, 10)
+    context.stroke
   end
 
-  def draw_text(cr, x, y)
-    cr.move_to(x + 15, y - 10)
-    layout = cr.create_pango_layout
+  def draw_text(context, x, y)
+    context.move_to(x + 15, y - 10)
+    layout = context.create_pango_layout
     layout.text = aircraft.callsign
     layout.font_description = FONT_DESCRIPTION
-    cr.show_pango_layout(layout)
+    context.show_pango_layout(layout)
   end
+  # rubocop: enable Naming/MethodParameterName x, y are the obvious parameter names
 end

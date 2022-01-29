@@ -5,9 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9343d27c-de66-432a-ad83-6811b0edc25a" name="Changes" comment="Fixes to make the structure work better.">
+      <change afterPath="$PROJECT_DIR$/lib/atc_lite/atc_screen.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft/aircraft.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite/aircraft/aircraft.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/aircraft/aircraft_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/aircraft/aircraft_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rakefile" beforeDir="false" afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atclite.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/atclite.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exe/ATC_lite" beforeDir="false" afterPath="$PROJECT_DIR$/exe/ATC_lite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ATC_lite.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/ATC_screen.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/aircraft.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft/aircraft.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/aircraft/aircraft.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft/aircraft_performance.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/aircraft/aircraft_performance.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft/aircraft_performance_entry.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/aircraft/aircraft_performance_entry.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft/aircraft_store.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/aircraft/aircraft_store.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/aircraft_renderer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/aircraft_renderer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/altitude.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/altitude.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/atc_lite.ui" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/atc_lite.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/flightplan.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan/flightplan.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/flightplan/flightplan.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan/fly_heading.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/flightplan/fly_heading.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan/path.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/flightplan/path.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/flightplan/to_waypoint.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/flightplan/to_waypoint.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airport.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/airport.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airport_io.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/airport_io.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/airway.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_io.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/airway_io.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_segment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/airway_segment.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/airway_segment_io.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/airway_segment_io.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/intersection.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/intersection.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/intersection_io.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/intersection_io.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_data_io.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/navigation_data_io.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_storage.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/navigation_storage.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/radio_navigation_aid.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/radio_navigation_aid.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/radio_navigation_aid_io.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/radio_navigation_aid_io.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/runway.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/runway.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/runway_io.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/runway_io.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/navigation/waypoint.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/navigation/waypoint.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/speed.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/speed.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ATC_lite/version.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/version.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sig/lib/ATC_lite/atc_screen.rbs" beforeDir="false" afterPath="$PROJECT_DIR$/sig/lib/ATC_lite/atc_screen.rbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/ATC_screen_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/ATC_screen_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite/aircraft_renderer_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite/aircraft_renderer_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/ATC_lite_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/ATC_lite_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,19 +81,19 @@
     <setting file="file://$PROJECT_DIR$/spec/ATC_lite/navigation/runway_io_spec.rb" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/ATC_lite.rb" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gemfile.lock" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_data_io.rb" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/atc_lite/navigation/navigation_data_io.rb" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/spec/ATC_lite/navigation/airport_io_spec.rb" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/spec/ATC_lite_spec.rb" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/spec/spec_helper.rb" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/ATC_lite/navigation/waypoint.rb" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/atc_lite/navigation/waypoint.rb" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/spec/ATC_lite/navigation/waypoint_spec.rb" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/ATC_lite/navigation.rb" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/ATC_lite/navigation/runway.rb" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/ATC_lite/navigation/runway_io.rb" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/ATC_lite/navigation/airport_io.rb" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/atc_lite/navigation.rb" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/atc_lite/navigation/runway.rb" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/atc_lite/navigation/runway_io.rb" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/atc_lite/navigation/airport_io.rb" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.rvm/gems/ruby-3.0.2/gems/rspec-support-3.10.3/lib/rspec/support.rb" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/atclite.gemspec" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/lib/ATC_lite/navigation/airway_io.rb" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/atc_lite/navigation/airway_io.rb" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Gemfile" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -113,7 +153,7 @@
       <command value="rake test_data:airways" />
     </option>
   </component>
-  <component name="RunManager" selected="RSpec.Aircraft::Aircraft">
+  <component name="RunManager" selected="RSpec.Rspec">
     <configuration name="ATCScreen" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="atclite" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
@@ -149,77 +189,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="ATCScreen#map_x" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
-      <module name="atclite" />
-      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="true" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="RVM: ruby-3.0.2" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/ATC_lite/ATC_screen_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="$MODULE_DIR$/spec/ATC_lite/ATC_screen_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="'**/*_spec.rb'" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="ATCScreen#map_x" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="--no-color" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ATC_screen_spec" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
-      <module name="atclite" />
-      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="true" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="RVM: ruby-3.0.2" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/ATC_lite/ATC_screen_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="$MODULE_DIR$/spec/ATC_lite/ATC_screen_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="'**/*_spec.rb'" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="--no-color" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Aircraft::Aircraft" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+    <configuration name="ATCScreen#map" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
       <module name="atclite" />
       <predefined_log_file enabled="true" id="RUBY_RSPEC" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -239,11 +209,81 @@
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$MODULE_DIR$/spec" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/ATC_lite/aircraft/aircraft_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/ATC_lite/ATC_screen_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="Aircraft::Aircraft" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="ATCScreen#map" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="--no-color" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AircraftRenderer" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+      <module name="atclite" />
+      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="true" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="RVM: ruby-3.0.2" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$MODULE_DIR$/spec" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/ATC_lite/aircraft_renderer_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="AircraftRenderer" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="--no-color" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AircraftRenderer#draw draws a box on the radar screen" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true" nameIsGenerated="true">
+      <module name="atclite" />
+      <predefined_log_file enabled="true" id="RUBY_RSPEC" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="true" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="RVM: ruby-3.0.2" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$MODULE_DIR$/spec" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/spec/ATC_lite/aircraft_renderer_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATHS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="AircraftRenderer#draw draws a box on the radar screen" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="--no-color" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
@@ -317,7 +357,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
       <method v="2" />
     </configuration>
-    <configuration name="ATC_lite" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+    <configuration name="atc_lite" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="atclite" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="" />
       <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/exe" />
@@ -338,19 +378,19 @@
     </configuration>
     <list>
       <item itemvalue="RSpec.Rspec" />
-      <item itemvalue="RSpec.ATCScreen#map_x" />
-      <item itemvalue="RSpec.ATC_screen_spec" />
       <item itemvalue="RSpec.ATCScreen" />
-      <item itemvalue="Ruby.ATC_lite" />
-      <item itemvalue="RSpec.Aircraft::Aircraft" />
+      <item itemvalue="RSpec.ATCScreen#map" />
+      <item itemvalue="RSpec.AircraftRenderer#draw draws a box on the radar screen" />
+      <item itemvalue="RSpec.AircraftRenderer" />
+      <item itemvalue="Ruby.atc_lite" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="RSpec.Aircraft::Aircraft" />
-        <item itemvalue="Ruby.ATC_lite" />
+        <item itemvalue="Ruby.atc_lite" />
+        <item itemvalue="RSpec.AircraftRenderer" />
+        <item itemvalue="RSpec.AircraftRenderer#draw draws a box on the radar screen" />
+        <item itemvalue="RSpec.ATCScreen#map" />
         <item itemvalue="RSpec.ATCScreen" />
-        <item itemvalue="RSpec.ATC_screen_spec" />
-        <item itemvalue="RSpec.ATCScreen#map_x" />
       </list>
     </recent_temporary>
   </component>
@@ -424,7 +464,12 @@
       <workItem from="1642543228102" duration="1097000" />
       <workItem from="1642573072170" duration="3208000" />
       <workItem from="1642739847021" duration="6987000" />
-      <workItem from="1642830156727" duration="5142000" />
+      <workItem from="1642830156727" duration="8838000" />
+      <workItem from="1642917313378" duration="6451000" />
+      <workItem from="1642962862244" duration="413000" />
+      <workItem from="1643004244895" duration="4631000" />
+      <workItem from="1643351539589" duration="812000" />
+      <workItem from="1643432475747" duration="8477000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1638600789202</created>
@@ -473,7 +518,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <condition expression="string.nil?" language="ruby" />
-          <url>file://$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_data_io.rb</url>
+          <url>file://$PROJECT_DIR$/lib/atc_lite/navigation/navigation_data_io.rb</url>
           <line>104</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
@@ -481,7 +526,7 @@
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/lib/ATC_lite/navigation/navigation_data_io.rb</url>
+          <url>file://$PROJECT_DIR$/lib/atc_lite/navigation/navigation_data_io.rb</url>
           <line>62</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
@@ -498,7 +543,7 @@
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/lib/ATC_lite/flightplan/flightplan.rb</url>
+          <url>file://$PROJECT_DIR$/lib/atc_lite/flightplan/flightplan.rb</url>
           <line>39</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
@@ -514,7 +559,7 @@
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/lib/ATC_lite/navigation/waypoint.rb</url>
+          <url>file://$PROJECT_DIR$/lib/atc_lite/navigation/waypoint.rb</url>
           <line>29</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
@@ -522,20 +567,12 @@
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/lib/ATC_lite/speed.rb</url>
+          <url>file://$PROJECT_DIR$/lib/atc_lite/speed.rb</url>
           <line>67</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/lib/ATC_lite/ATC_screen.rb</url>
-          <line>64</line>
-          <properties myBlockOrdinal="-1">
-            <option name="block-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -567,6 +604,7 @@
     <SUITE FILE_PATH="coverage/atclite@ATLite.rcov" NAME="ATLite Coverage Results" MODIFIED="1638614108980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@airway_segment_io_spec.rcov" NAME="airway_segment_io_spec Coverage Results" MODIFIED="1641138024868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__AirwayImporter__parse.rcov" NAME="ATCLite::Navigation::AirwayImporter::parse Coverage Results" MODIFIED="1640532030144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@AircraftRenderer.rcov" NAME="AircraftRenderer Coverage Results" MODIFIED="1643008826733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__NavigationDataImport__navs_line_when_the_line_is_misformed_sends_an_appropriate_error_message_to_stderr.rcov" NAME="ATCLite::Navigation::NavigationDataImport::navs_line when the line is misformed sends an appropriate error message to stderr Coverage Results" MODIFIED="1640324420798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Altitude.rcov" NAME="ATCLite::Altitude Coverage Results" MODIFIED="1640979465783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__AirwayImporter__parse_awys_file.rcov" NAME="ATCLite::Navigation::AirwayImporter::parse_awys_file Coverage Results" MODIFIED="1641198858052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
@@ -587,7 +625,7 @@
     <SUITE FILE_PATH="coverage/atclite@ATC_screen_spec.rcov" NAME="ATC_screen_spec Coverage Results" MODIFIED="1639207780924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATC_screen.rcov" NAME="ATC_screen Coverage Results" MODIFIED="1641719120425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/ATC_lite" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__NavigationDataImporter__parse_navs_file.rcov" NAME="ATCLite::Navigation::NavigationDataImporter::parse_navs_file Coverage Results" MODIFIED="1640338457992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
-    <SUITE FILE_PATH="coverage/atclite@ATCScreen.rcov" NAME="ATCScreen Coverage Results" MODIFIED="1642749836725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@ATCScreen.rcov" NAME="ATCScreen Coverage Results" MODIFIED="1642924603595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__IntersectionImporter.rcov" NAME="ATCLite::Navigation::IntersectionImporter Coverage Results" MODIFIED="1640346691937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Altitude__.rcov" NAME="ATCLite::Altitude#+ Coverage Results" MODIFIED="1640973949089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@airport_importer_spec.rcov" NAME="airport_importer_spec Coverage Results" MODIFIED="1641065764104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
@@ -595,14 +633,16 @@
     <SUITE FILE_PATH="coverage/atclite@ATCLite__AircraftRenderer_update_transforms_the_aircraft_position_to_a_screen_position.rcov" NAME="ATCLite::AircraftRenderer#update transforms the aircraft position to a screen position Coverage Results" MODIFIED="1639204074112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@waypoint_spec.rcov" NAME="waypoint_spec Coverage Results" MODIFIED="1641221886547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__AircraftPerformance_roc.rcov" NAME="ATCLite::AircraftPerformance#roc Coverage Results" MODIFIED="1639777381667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
-    <SUITE FILE_PATH="coverage/atclite@ATC_lite.rcov" NAME="ATC_lite Coverage Results" MODIFIED="1642836907273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/exe" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@ATC_lite.rcov" NAME="ATC_lite Coverage Results" MODIFIED="1643444058256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/exe" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@aircraft_performance_spec.rcov" NAME="aircraft_performance_spec Coverage Results" MODIFIED="1640671678132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__AirwayImporter.rcov" NAME="ATCLite::Navigation::AirwayImporter Coverage Results" MODIFIED="1640589169437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
-    <SUITE FILE_PATH="coverage/atclite@Rspec.rcov" NAME="Rspec Coverage Results" MODIFIED="1642837907222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@AircraftRenderer_draw_draws_a_box_on_the_radar_screen.rcov" NAME="AircraftRenderer#draw draws a box on the radar screen Coverage Results" MODIFIED="1643006410559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@Rspec.rcov" NAME="Rspec Coverage Results" MODIFIED="1643446868143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@airway_importer_spec.rcov" NAME="airway_importer_spec Coverage Results" MODIFIED="1641123984148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@speed_spec.rcov" NAME="speed_spec Coverage Results" MODIFIED="1641643294251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Aircraft.rcov" NAME="ATCLite::Aircraft Coverage Results" MODIFIED="1640863323832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@test_data_apts__atclite.rcov" NAME="test_data:apts: atclite Coverage Results" MODIFIED="1641151211233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@ATCScreen_map.rcov" NAME="ATCScreen#map Coverage Results" MODIFIED="1643005260168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Flightplan__Path.rcov" NAME="ATCLite::Flightplan::Path Coverage Results" MODIFIED="1641023845936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__AirwaySegmentIO__output.rcov" NAME="ATCLite::Navigation::AirwaySegmentIO::output Coverage Results" MODIFIED="1641139975485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Altitude_Integer__fl.rcov" NAME="ATCLite::Altitude Integer::fl Coverage Results" MODIFIED="1640976868726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
