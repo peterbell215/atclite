@@ -28,7 +28,7 @@ module Navigation
 
       # output
       def all
-        @data.values.flatten.each
+        (@data.present? ? @data.values.flatten : []).each
       end
 
       def loaded?

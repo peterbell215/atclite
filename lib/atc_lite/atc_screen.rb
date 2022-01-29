@@ -18,7 +18,6 @@ class AtcScreen
     @aircraft_renderers = []
     @navigation_aid_renderers = []
     @centre = Coordinate.new(longitude: 0.0, latitude: 52.0)
-
   end
 
   # Defines the centre of the radar screen

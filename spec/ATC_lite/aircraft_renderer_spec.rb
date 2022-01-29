@@ -30,7 +30,10 @@ RSpec.describe AircraftRenderer do
     end
 
     describe 'draws a box on the radar screen' do
-      before { aircraft_renderer.draw(cr) }
+      before do
+        atc_screen.scale = 10
+        aircraft_renderer.draw(cr)
+      end
 
       specify { expect(cr).to have_received(:rectangle).with(145.0, 195.0, 10, 10) }
       specify { expect(cr).to have_received(:move_to).with(165.0, 190.0) }

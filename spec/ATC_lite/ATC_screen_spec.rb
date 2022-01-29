@@ -5,7 +5,10 @@ require 'rspec'
 RSpec.describe AtcScreen do
   subject(:atc_screen) { AtcScreen.instance }
 
-  before { allow(atc_screen).to receive(:radar_screen).and_return(radar_screen) }
+  before do
+    allow(atc_screen).to receive(:radar_screen).and_return(radar_screen)
+    atc_screen.scale = 10
+  end
 
   let(:radar_screen) { instance_double(Gtk::DrawingArea, allocated_height: 400, allocated_width: 300) }
 
@@ -16,7 +19,6 @@ RSpec.describe AtcScreen do
     let(:east) { [atc_screen.centre.new_position(heading: 90.0.degrees, distance: 1.0), atc_screen.scale, 0.0] }
     
     shared_examples 'for compass point' do |compass_heading|
-
       it "correctly maps the point for #{compass_heading}" do
         position, delta_x, delta_y = self.send(compass_heading)
         screen_x, screen_y = atc_screen.map(position)
