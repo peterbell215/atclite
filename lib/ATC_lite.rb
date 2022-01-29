@@ -5,15 +5,11 @@ require 'great-circle'
 require 'gtk3'
 
 require_relative 'atc_lite/version'
+require_relative 'atc_lite/units'
 require_relative 'atc_lite/atc_screen'
 require_relative 'atc_lite/navigation'
 require_relative 'atc_lite/flightplan'
 require_relative 'atc_lite/aircraft'
-
-require_relative 'atc_lite/aircraft_renderer'
-require_relative 'atc_lite/navigation_aid_renderer'
-require_relative 'atc_lite/altitude'
-require_relative 'atc_lite/speed'
 
 # Module to hold the application
 module AtcLite

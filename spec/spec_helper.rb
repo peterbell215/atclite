@@ -14,4 +14,4 @@ RSpec.configure do |config|
   end
 end
 
-require_relative 'ATC_lite/shared_contexts/load_all_data'
+require_relative 'atc_lite/shared_contexts/load_all_data'

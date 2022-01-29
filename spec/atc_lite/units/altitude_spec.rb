@@ -2,7 +2,7 @@
 
 require 'rspec'
 
-RSpec.describe Altitude do
+RSpec.describe Units::Altitude do
   describe '::transition_altitude' do
     it 'defaults to 6000ft' do
       expect(Altitude.transition_altitude).to eq(6000)

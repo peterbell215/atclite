@@ -13,7 +13,7 @@ RSpec.describe Aircraft::AircraftPerformanceEntry do
       specify { expect(aircraft_performance_entry.phase).to eq(:initial_climb) }
       specify { expect(aircraft_performance_entry.ias).to eq(250.knots) }
       specify { expect(aircraft_performance_entry.roc).to eq(1000) }
-      specify { expect(aircraft_performance_entry.lower_altitude).to eq(Altitude.new(4000)) }
+      specify { expect(aircraft_performance_entry.lower_altitude).to eq(Units::Altitude.new(4000)) }
     end
 
     context 'when the hash is incomplete' do

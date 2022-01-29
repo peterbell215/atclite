@@ -2,7 +2,7 @@
 
 require 'rspec'
 
-RSpec.describe Speed do
+RSpec.describe Units::Speed do
   describe '#initialize' do
     context 'with a tas' do
       subject(:airspeed) { described_class.new(100) }
