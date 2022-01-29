@@ -9,7 +9,7 @@ class NavigationAidRenderer
   delegate :position, to: :navigation_aid
 
   RADIUS = 6
-  HALF_RADIUS = RADIUS/2
+  HALF_RADIUS = RADIUS / 2
   FONT_DESCRIPTION = Pango::FontDescription.new('Monospace 12').freeze
 
   def initialize(navigation_aid)
@@ -17,34 +17,36 @@ class NavigationAidRenderer
     @navigation_aid = navigation_aid
   end
 
-  def draw(cr)
-    cr.set_source_rgb(0.6, 0.6, 0.6)
-    cr.set_line_width(1)
+  def draw(context)
+    context.set_source_rgb(0.6, 0.6, 0.6)
+    context.set_line_width(1)
 
     x, y = AtcScreen.instance.map(navigation_aid)
 
-    draw_hexagon(cr, x, y)
-    draw_text(cr, x, y)
+    draw_hexagon(context, x, y)
+    draw_text(context, x, y)
   end
 
   private
 
-  def draw_hexagon(cr, x, y)
-    cr.move_to(x - HALF_RADIUS, y - RADIUS)
-    cr.line_to(x + HALF_RADIUS, y - RADIUS)
-    cr.line_to(x + RADIUS, y)
-    cr.line_to(x + HALF_RADIUS, y + RADIUS)
-    cr.line_to(x - HALF_RADIUS, y + RADIUS)
-    cr.line_to(x - RADIUS, y)
-    cr.close_path
-    cr.stroke
+  # rubocop: disable Naming/MethodParameterName x, y are obvious names for these parameters
+  def draw_hexagon(context, x, y)
+    context.move_to(x - HALF_RADIUS, y - RADIUS)
+    context.line_to(x + HALF_RADIUS, y - RADIUS)
+    context.line_to(x + RADIUS, y)
+    context.line_to(x + HALF_RADIUS, y + RADIUS)
+    context.line_to(x - HALF_RADIUS, y + RADIUS)
+    context.line_to(x - RADIUS, y)
+    context.close_path
+    context.stroke
   end
 
-  def draw_text(cr, x, y)
-    cr.move_to(x + 15, y - 10)
-    layout = cr.create_pango_layout
+  def draw_text(context, x, y)
+    context.move_to(x + 15, y - 10)
+    layout = context.create_pango_layout
     layout.text = navigation_aid.name
     layout.font_description = FONT_DESCRIPTION
-    cr.show_pango_layout(layout)
+    context.show_pango_layout(layout)
   end
+  # rubocop: enable Naming/MethodParameterName
 end

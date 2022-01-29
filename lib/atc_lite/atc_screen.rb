@@ -7,7 +7,7 @@ require 'singleton'
 require_relative 'aircraft_renderer'
 require_relative 'navigation_aid_renderer'
 
-UI_FILE = "#{File.expand_path(File.dirname(__FILE__))}/atc_lite.ui".freeze
+UI_FILE = "#{__dir__}/atc_lite.ui".freeze
 
 # Class that creates the ATC screen.
 class AtcScreen
@@ -45,7 +45,7 @@ class AtcScreen
 
     self.scale = 5
 
-    GLib::Timeout.add(12_000){ @radar_screen.queue_draw }
+    GLib::Timeout.add(12_000) { @radar_screen.queue_draw }
 
     Gtk.main
   end
@@ -58,14 +58,14 @@ class AtcScreen
   end
 
   # Draws the radar screen.
-  def draw_radar_screen(cr)
+  def draw_radar_screen(context)
     puts 'draw_radar_screen'
 
-    cr.set_source_rgb(0.0, 0.2, 0.0)
-    cr.paint
+    context.set_source_rgb(0.0, 0.2, 0.0)
+    context.paint
 
-    @aircraft_renderers.each { |aircraft_renderer| aircraft_renderer.draw(cr) }
-    @navigation_aid_renderers.each { |vor_renderer| vor_renderer.draw(cr) }
+    @aircraft_renderers.each { |aircraft_renderer| aircraft_renderer.draw(context) }
+    @navigation_aid_renderers.each { |vor_renderer| vor_renderer.draw(context) }
   end
 
   # Maps a position in the simulator space to an x, y coordinate on the ATC screen based on the ATC screen centre and

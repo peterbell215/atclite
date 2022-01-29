@@ -95,5 +95,4 @@ RSpec.describe Aircraft::Aircraft do
     it_behaves_like 'updated heading', 359, 10, 1
     it_behaves_like 'updated heading', 1, 350, 359
   end
-
 end

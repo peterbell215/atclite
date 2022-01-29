@@ -20,7 +20,7 @@ module Navigation
     end
 
     def to_s
-      "#{name} #{navtype.to_s}#{coordinates_to_s}"
+      "#{name} #{navtype}#{coordinates_to_s}"
     end
   end
 end

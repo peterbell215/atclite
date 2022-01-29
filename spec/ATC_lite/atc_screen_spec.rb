@@ -17,7 +17,7 @@ RSpec.describe AtcScreen do
     let(:south) { [atc_screen.centre.new_position(heading: 180.0.degrees, distance: 1.0), 0.0, atc_screen.scale] }
     let(:west) { [atc_screen.centre.new_position(heading: 270.0.degrees, distance: 1.0), -atc_screen.scale, 0.0] }
     let(:east) { [atc_screen.centre.new_position(heading: 90.0.degrees, distance: 1.0), atc_screen.scale, 0.0] }
-    
+
     shared_examples 'for compass point' do |compass_heading|
       it "correctly maps the point for #{compass_heading}" do
         position, delta_x, delta_y = self.send(compass_heading)
@@ -33,11 +33,11 @@ RSpec.describe AtcScreen do
     it_behaves_like 'for compass point', :west
     it_behaves_like 'for compass point', :east
   end
-  
+
   describe '#scale=' do
-    
+
   end
-  
+
   describe '#on_screen?' do
     it 'returns false for a point to the north to screen area' do
 
