@@ -23,8 +23,8 @@ module AtcLite
     Aircraft::AircraftStore.instance.add_aircraft(aircraft)
     Aircraft::AircraftStore.instance.start
 
-    AtcScreen.instance.add_aircraft(aircraft)
-    AtcScreen.instance.start
+    AtcScreen::AtcScreen.instance.add_aircraft(aircraft)
+    AtcScreen::AtcScreen.instance.start
   end
 
   def self.load_data

@@ -3,7 +3,7 @@
 require 'rspec'
 
 RSpec.describe AtcScreen do
-  subject(:atc_screen) { AtcScreen.instance }
+  subject(:atc_screen) { AtcScreen::AtcScreen.instance }
 
   before do
     allow(atc_screen).to receive(:radar_screen).and_return(radar_screen)
@@ -34,13 +34,17 @@ RSpec.describe AtcScreen do
     it_behaves_like 'for compass point', :east
   end
 
-  describe '#scale=' do
-
-  end
-
   describe '#on_screen?' do
-    it 'returns false for a point to the north to screen area' do
+    [0.0.degrees, 90.0.degrees, 180.0.degrees, 270.0.degrees].each do |compass|
+      it "determines on_screen correctly for #{compass} degrees" do
+        nm_distance_to_edge = (compass.in?([0.0.degrees, 180.0.degrees]) ? 400 : 300) / 2.0 / atc_screen.scale
 
+        off_screen = atc_screen.centre.new_position(heading: 0.0.degrees, distance: nm_distance_to_edge + 10)
+        on_screen = atc_screen.centre.new_position(heading: 0.0.degrees, distance: nm_distance_to_edge - 10)
+
+        expect(atc_screen).not_to be_on_screen(off_screen)
+        expect(atc_screen).to be_on_screen(on_screen)
+      end
     end
   end
 end

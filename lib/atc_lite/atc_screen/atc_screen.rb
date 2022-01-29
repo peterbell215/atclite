@@ -44,7 +44,7 @@ module AtcScreen
       @radar_screen = builder.get_object('radar_screen')
       @radar_screen.signal_connect('draw') { |_widget, cr| draw_radar_screen(cr) }
 
-      self.scale = 5
+      self.scale = 10
 
       GLib::Timeout.add(12_000) { @radar_screen.queue_draw }
 
@@ -66,7 +66,7 @@ module AtcScreen
       context.paint
 
       @aircraft_renderers.each { |aircraft_renderer| aircraft_renderer.draw(context) }
-      @navigation_aid_renderers.each { |vor_renderer| vor_renderer.draw(context) }
+      @navigation_aid_renderers.each { |nav_renderer| nav_renderer.draw(context) }
     end
 
     # Maps a position in the simulator space to an x, y coordinate on the ATC screen based on the ATC screen centre and
@@ -83,7 +83,7 @@ module AtcScreen
 
     # Returns whether the passed position is visible on the radar screen.
     def on_screen?(position)
-      position.longitude.between?(@eastern_edge, @western_edge) &&
+      position.longitude.between?(@western_edge, @eastern_edge) &&
         position.latitude.between?(@southern_edge, @northern_edge)
     end
 
@@ -94,7 +94,7 @@ module AtcScreen
       @navigation_aid_renderers =
         Navigation::RadioNavigationAid.all
                                       .select { |nav_aid| self.on_screen?(nav_aid) }
-                                      .each { |navigation_aid| NavigationAidRenderer.new(navigation_aid) }
+                                      .map { |navigation_aid| NavigationAidRenderer.new(navigation_aid) }
     end
 
     # Calculates the bounding box that defines the outer boundaries in latitudes and longitudes of the current radar
