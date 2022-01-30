@@ -58,22 +58,13 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
+            <property name="baseline-position">top</property>
             <child>
-              <object class="GtkToggleButton" id="ndb_button">
-                <property name="label" translatable="yes">NDBs</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <object class="GtkToggleButton" id="vor_button">
-                <property name="label" translatable="yes">VORs</property>
+              <object class="GtkToggleButton" id="navigation_aids_btn">
+                <property name="label" translatable="yes">Nav Aids</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>

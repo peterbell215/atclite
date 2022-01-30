@@ -39,8 +39,8 @@ module AtcScreen
       setup_radar_screen(builder)
       setup_scale_slider(builder)
 
-      @vor_button = builder.get_object('vor_button')
-      @vor_button.signal_connect('toggled') { |_| @radar_screen.queue_draw }
+      @navigation_aids_button = builder.get_object('navigation_aids_btn')
+      @navigation_aids_button.signal_connect('toggled') { |_| @radar_screen.queue_draw }
 
       GLib::Timeout.add(12_000) { @radar_screen.queue_draw }
 
@@ -84,7 +84,7 @@ module AtcScreen
     end
 
     def navigation_aid_labels?
-      @vor_button.active?
+      @navigation_aids_button.active?
     end
 
     private

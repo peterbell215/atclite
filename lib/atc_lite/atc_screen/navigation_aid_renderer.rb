@@ -24,7 +24,7 @@ module AtcScreen
 
       x, y = AtcScreen.instance.map(navigation_aid)
 
-      draw_hexagon(context, x, y)
+      navigation_aid.navtype == 'VOR' ? draw_hexagon(context, x, y) : draw_triangle(context, x, y)
       draw_text(context, x, y) if @atc_screen.navigation_aid_labels?
     end
 
@@ -38,6 +38,14 @@ module AtcScreen
       context.line_to(x + HALF_RADIUS, y + RADIUS)
       context.line_to(x - HALF_RADIUS, y + RADIUS)
       context.line_to(x - RADIUS, y)
+      context.close_path
+      context.stroke
+    end
+
+    def draw_triangle(context, x, y)
+      context.move_to(x, y - RADIUS)
+      context.line_to(x + RADIUS, y + RADIUS)
+      context.line_to(x - RADIUS, y + RADIUS)
       context.close_path
       context.stroke
     end
