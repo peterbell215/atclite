@@ -25,7 +25,7 @@ module AtcScreen
       x, y = AtcScreen.instance.map(navigation_aid)
 
       draw_hexagon(context, x, y)
-      draw_text(context, x, y)
+      draw_text(context, x, y) if @atc_screen.navigation_aid_labels?
     end
 
     private

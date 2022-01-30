@@ -39,6 +39,9 @@ module AtcScreen
       setup_radar_screen(builder)
       setup_scale_slider(builder)
 
+      @vor_button = builder.get_object('vor_button')
+      @vor_button.signal_connect('toggled') { |_| @radar_screen.queue_draw }
+
       GLib::Timeout.add(12_000) { @radar_screen.queue_draw }
 
       Gtk.main
@@ -55,7 +58,6 @@ module AtcScreen
     def draw_radar_screen(context)
       puts 'draw_radar_screen'
 
-      self.scale = @scale_adjustment.value
       context.set_source_rgb(0.0, 0.2, 0.0)
       context.paint
 
@@ -81,11 +83,19 @@ module AtcScreen
         position.latitude.between?(@southern_edge, @northern_edge)
     end
 
+    def navigation_aid_labels?
+      @vor_button.active?
+    end
+
     private
 
     def setup_scale_slider(builder)
       @scale_adjustment = builder.get_object('scale_adjustment')
-      @scale_adjustment.signal_connect('value_changed') { @radar_screen.queue_draw }
+      self.scale = @scale_adjustment.value
+      @scale_adjustment.signal_connect('value_changed') do
+        self.scale = @scale_adjustment.value
+        @radar_screen.queue_draw
+      end
     end
 
     def setup_radar_screen(builder)
