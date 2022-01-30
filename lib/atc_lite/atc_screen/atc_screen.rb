@@ -35,16 +35,9 @@ module AtcScreen
       builder = Gtk::Builder.new(file: UI_FILE)
 
       # Connect signal handlers to the constructed widgets
-      window = builder.get_object('window')
-      window.signal_connect('destroy') { Gtk.main_quit }
-
-      quit_btn = builder.get_object('quit_btn')
-      quit_btn.signal_connect('clicked') { Gtk.main_quit }
-
-      @radar_screen = builder.get_object('radar_screen')
-      @radar_screen.signal_connect('draw') { |_widget, cr| draw_radar_screen(cr) }
-
-      self.scale = 10
+      window_closedown(builder)
+      setup_radar_screen(builder)
+      setup_scale_slider(builder)
 
       GLib::Timeout.add(12_000) { @radar_screen.queue_draw }
 
@@ -62,6 +55,7 @@ module AtcScreen
     def draw_radar_screen(context)
       puts 'draw_radar_screen'
 
+      self.scale = @scale_adjustment.value
       context.set_source_rgb(0.0, 0.2, 0.0)
       context.paint
 
@@ -88,6 +82,24 @@ module AtcScreen
     end
 
     private
+
+    def setup_scale_slider(builder)
+      @scale_adjustment = builder.get_object('scale_adjustment')
+      @scale_adjustment.signal_connect('value_changed') { @radar_screen.queue_draw }
+    end
+
+    def setup_radar_screen(builder)
+      @radar_screen = builder.get_object('radar_screen')
+      @radar_screen.signal_connect('draw') { |_widget, cr| draw_radar_screen(cr) }
+    end
+
+    def window_closedown(builder)
+      window = builder.get_object('window')
+      window.signal_connect('destroy') { Gtk.main_quit }
+
+      quit_btn = builder.get_object('quit_btn')
+      quit_btn.signal_connect('clicked') { Gtk.main_quit }
+    end
 
     # Generates an array of renderers for navigation aids visible on the radar screen.
     def navigation_aids

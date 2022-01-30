@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9343d27c-de66-432a-ad83-6811b0edc25a" name="Changes" comment="Fixes to make the structure work better.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/atc_lite/atc_screen/atc_lite.ui" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/atc_screen/atc_lite.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/atc_lite/atc_screen/atc_screen.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/atc_lite/atc_screen/atc_screen.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -463,7 +463,7 @@
       <workItem from="1643004244895" duration="4631000" />
       <workItem from="1643351539589" duration="812000" />
       <workItem from="1643432475747" duration="14919000" />
-      <workItem from="1643518220638" duration="2507000" />
+      <workItem from="1643518220638" duration="3400000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1638600789202</created>
@@ -570,7 +570,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/lib/atc_lite/atc_screen/atc_screen.rb</url>
-          <line>85</line>
+          <line>83</line>
           <properties myBlockOrdinal="-1">
             <option name="block-ordinal" value="-1" />
           </properties>
@@ -591,7 +591,7 @@
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__NavigationDataImporter.rcov" NAME="ATCLite::Navigation::NavigationDataImporter Coverage Results" MODIFIED="1640343816491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Aircraft_update_altitude_and_phase_when_it_is_flying_level_during_the_initial_climb.rcov" NAME="ATCLite::Aircraft#update_altitude_and_phase when it is flying level during the initial climb Coverage Results" MODIFIED="1639815259246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Navigation__AirportImporter.rcov" NAME="ATCLite::Navigation::AirportImporter Coverage Results" MODIFIED="1641146014315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
-    <SUITE FILE_PATH="coverage/atclite@atc_lite.rcov" NAME="atc_lite Coverage Results" MODIFIED="1643521299544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/exe" MODULE_NAME="atclite" />
+    <SUITE FILE_PATH="coverage/atclite@atc_lite.rcov" NAME="atc_lite Coverage Results" MODIFIED="1643522193571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/exe" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@AircraftPerformance_roc_when_descending.rcov" NAME="AircraftPerformance#roc when descending Coverage Results" MODIFIED="1641619214988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@ATCLite__Flightplan__Path_enroute_processing.rcov" NAME="ATCLite::Flightplan::Path enroute processing Coverage Results" MODIFIED="1641237465582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
     <SUITE FILE_PATH="coverage/atclite@navigation_data_import_spec.rcov" NAME=" Coverage Results" MODIFIED="1640330434759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="atclite" />
