@@ -6,6 +6,7 @@ require 'singleton'
 
 require_relative 'aircraft_renderer'
 require_relative 'navigation_aid_renderer'
+require_relative 'intersection_renderer'
 
 UI_FILE = "#{__dir__}/atc_lite.ui".freeze
 
@@ -18,6 +19,7 @@ module AtcScreen
     def initialize
       @aircraft_renderers = []
       @navigation_aid_renderers = []
+      @intersection_renderers = []
       @centre = Coordinate.new(longitude: 0.0, latitude: 52.0)
     end
 
@@ -38,9 +40,8 @@ module AtcScreen
       window_closedown(builder)
       setup_radar_screen(builder)
       setup_scale_slider(builder)
-
-      @navigation_aids_button = builder.get_object('navigation_aids_btn')
-      @navigation_aids_button.signal_connect('toggled') { |_| @radar_screen.queue_draw }
+      setup_nav_aids_btn(builder)
+      setup_intersection_btn(builder)
 
       GLib::Timeout.add(12_000) { @radar_screen.queue_draw }
 
@@ -52,6 +53,7 @@ module AtcScreen
       @scale = scale
       bounding_box
       navigation_aids
+      intersections
     end
 
     # Draws the radar screen.
@@ -63,6 +65,11 @@ module AtcScreen
 
       @aircraft_renderers.each { |aircraft_renderer| aircraft_renderer.draw(context) }
       @navigation_aid_renderers.each { |nav_renderer| nav_renderer.draw(context) }
+      @intersection_renderers.each { |intersection_renderer| intersection_renderer.draw(context) }
+    end
+
+    def inspect
+      "centre: #{@centre}, scale: #{@scale}"
     end
 
     # Maps a position in the simulator space to an x, y coordinate on the ATC screen based on the ATC screen centre and
@@ -87,7 +94,21 @@ module AtcScreen
       @navigation_aids_button.active?
     end
 
+    def intersection_labels?
+      @intersection_button.active?
+    end
+
     private
+
+    def setup_nav_aids_btn(builder)
+      @navigation_aids_button = builder.get_object('navigation_aids_btn')
+      @navigation_aids_button.signal_connect('toggled') { |_| @radar_screen.queue_draw }
+    end
+
+    def setup_intersection_btn(builder)
+      @intersection_button = builder.get_object('intersection_btn')
+      @intersection_button.signal_connect('toggled') { |_| @radar_screen.queue_draw }
+    end
 
     def setup_scale_slider(builder)
       @scale_adjustment = builder.get_object('scale_adjustment')
@@ -117,6 +138,14 @@ module AtcScreen
         Navigation::RadioNavigationAid.all
                                       .select { |nav_aid| self.on_screen?(nav_aid) }
                                       .map { |navigation_aid| NavigationAidRenderer.new(navigation_aid) }
+    end
+
+    # Generates an array of renderers for navigation aids visible on the radar screen.
+    def intersections
+      @intersection_renderers =
+        Navigation::Intersection.all
+                                .select { |intersection| self.on_screen?(intersection) }
+                                .map { |intersection| IntersectionRenderer.new(intersection) }
     end
 
     # Calculates the bounding box that defines the outer boundaries in latitudes and longitudes of the current radar
